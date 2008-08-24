@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for flexforms belonging to extension 'hisodat'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="mainSheetTitle">General</label>
+			<label index="controllerSelection">Plugin Mode</label>
+			<label index="controllerSelection.searchForms">Search</label>
+			<label index="controllerSelection.searchResultList">Searchresults</label>
+			<label index="controllerSelection.detailsView">Record details</label>
+			<label index="storageFolderSelection">Storage folder</label>
+			<label index="recursive">Levels</label>
+			<label index="searchSheetTitle">Search Configuration</label>
+			<label index="searchTypeSelection">Select searchtype</label>
+			<label index="searchTypeSelection.quickSearchForm">Quick Search</label>
+			<label index="searchTypeSelection.standardSearchForm">Standard Search</label>
+			<label index="searchTypeSelection.expertSearchForm">Expert Search</label>
+			<label index="destinationPid">Destination PID for the form</label>
+			<label index="listSheetTitle">Resultlist</label>
+			<label index="singlePid">Destination PID with single view</label>
+			<label index="singleSheetTitle">Singleview</label>
+			<label index="backToListPid">PID for the backlink to listview</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="mainSheetTitle">Allgemein</label>
+			<label index="controllerSelection">Plugin-Modus</label>
+			<label index="controllerSelection.searchForms">Suche</label>
+			<label index="controllerSelection.searchResultList">Suchergebnisse</label>
+			<label index="controllerSelection.detailsView">Detailansicht</label>
+			<label index="storageFolderSelection">Startpunkt</label>
+			<label index="recursive">Ebenentiefe</label>
+			<label index="searchSheetTitle">Suche</label>
+			<label index="searchTypeSelection">Suchtyp auswählen</label>
+			<label index="searchTypeSelection.quickSearchForm">Schnellsuche</label>
+			<label index="searchTypeSelection.standardSearchForm">Standardsuche</label>
+			<label index="searchTypeSelection.expertSearchForm">Expertensuche</label>
+			<label index="destinationPid">Zielseite für das Suchformular</label>
+			<label index="listSheetTitle">Trefferliste</label>
+			<label index="singlePid">Seite mit der Detailansicht</label>
+			<label index="singleSheetTitle">Detailansicht</label>
+			<label index="backToListPid">Zurückseite mit der Listenansicht</label>
+		</languageKey>
+	</data>
+</T3locallang>

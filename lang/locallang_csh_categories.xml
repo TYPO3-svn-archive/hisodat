@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Language file for HISODAT categories table</description>
+        <type>CSH</type>
+        <csh_table>tx_hisodat_categories</csh_table>
+        <labelContext type="array">
+        </labelContext>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="hidden.description">Check this to hide the category.</label>
+            <label index="title.description">Enter a category name.</label>
+            <label index="parent_category.description">Choose the parent category from the category tree.</label>
+            <label index="description.description">Additional category information.</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="hidden.description">Wenn Sie diese Checkbox aktivieren, wird die Kategorie verborgen.</label>
+            <label index="title.description">Geben Sie hier den Namen der Kategorie an.</label>
+            <label index="parent_category.description">Wählen Sie die übergeordnete Kategorie aus dem Kategoriebaum aus.</label>
+            <label index="description.description">Genauere Informationen zur Kategorie.</label>
+        </languageKey>
+    </data>
+    <orig_hash type="array">
+        <languageKey index="default" type="array">
+            <label index="hidden.description" type="integer">85630678</label>
+            <label index="title.description" type="integer">110430679</label>
+            <label index="parent_category.description" type="integer">89733301</label>
+            <label index="description.description" type="integer">239737742</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="hidden.description" type="integer">85630678</label>
+            <label index="title.description" type="integer">110430679</label>
+            <label index="parent_category.description" type="integer">89733301</label>
+            <label index="description.description" type="integer">239737742</label>
+        </languageKey>
+    </orig_hash>
+    <orig_text type="array">
+        <languageKey index="default" type="array">
+        </languageKey>
+        <languageKey index="de" type="array">
+        </languageKey>
+    </orig_text>
+</T3locallang>

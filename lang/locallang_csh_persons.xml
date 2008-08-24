@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Language file for HISODAT persons table</description>
+        <type>CSH</type>
+        <csh_table>tx_hisodat_persons</csh_table>
+        <labelContext type="array">
+        </labelContext>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="hidden.description">Check this box and the person record will be hidden.</label>
+            <label index="pers_inst.description">Is it a person or an institution? Depending on the type different fields have to be filled in.</label>
+            <label index="gender.description">Define the gender for persons.</label>
+            <label index="firstname.description">Enter the firstname (e.g. &quot;John&quot;).</label>
+            <label index="lastname.description">Enter the lastname or main name (e.g. for kings) into this field (&quot;Lackland&quot;).</label>
+            <label index="nameaddons.description">Enter additional name attributes.</label>
+            <label index="titles.description">If the person bears a title you can enter it here.</label>
+            <label index="date_comment.description">Associated life dates for display on the website. For a historically precise dating use the two fields below. You can separate the dates for birth and death with the &quot;|&quot; character.</label>
+            <label index="date_start.description">Date of birth for the database search. Use YYYY-MM-DD as format. Always enter an end date in the next field as well. If a date is uncertain, make an educated guess and use the first day of a month.</label>
+            <label index="date_end.description">Date of death for the database search. Use YYYY-MM-DD as format. Always enter a start date in the field above as well. If a date is uncertain, make an educated guess and use the first day of a month..</label>
+            <label index="image.description">Images of the person or institution.</label>
+            <label index="description.description">Enter additonal information concerning the person or institution.</label>
+            <label index="persons_uids.description">Here you can set the person in relation to other persons or institutions.</label>
+            <label index="localities_uids.description">Here you can associate localities with the person.</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="hidden.description">Wenn Sie diese Checkbox aktivieren, wird der Personendatensatz verborgen.</label>
+            <label index="pers_inst.description">Geben Sie an, ob es sich um eine natürliche Person oder eine juristische Person bzw. eine Institution handelt. Je nach Typ werden unterschiedliche Felder ausgefüllt.</label>
+            <label index="gender.description">Geben Sie bei natürlichen Personen das Geschlecht der Person an.</label>
+            <label index="firstname.description">Tragen Sie den Vornamen in dieses Feld ein (Bsp. &quot;Hägar&quot;).</label>
+            <label index="lastname.description">Tragen Sie den Nachnahmen oder Hauptnamen (z.B. bei Königen) in dieses Feld ein.</label>
+            <label index="nameaddons.description">In dieses Feld können Sie Namenszusätze eintragen (Bsp. &quot;der Schreckliche&quot;).</label>
+            <label index="titles.description">Falls die Person einen Titel oder ein Amt innehat, können Sie dies hier vermerken.</label>
+            <label index="date_comment.description">Datumsangaben für die Online-Anzeige. Diese Angaben dienen nur der Anzeige und können in einem beliebigen Format ausgefüllt werden. Nutzen Sie das &quot;|&quot; Zeichen, wenn Sie eine Datumsangabe in ein Anfangs- und Enddatum auftrennen möchten.</label>
+            <label index="date_start.description">Datierungsfeld für die Datenbanksuche (z.B. für das Geburtsdatum der Person). Datieren Sie die Lokalität im Format JJJJ-MM-TT. Geben Sie unbedingt im nächsten Feld auch ein Enddatum ein. Falls Start/Ende nicht genau bekannt sind, schätzen Sie einen ungefähren Wert, indem Sie auf ein ungefähres Jahr oder einen ungefähren Monat datieren und den 1. des Monats als Stichtag benutzen.</label>
+            <label index="date_end.description">Datierungsfeld für die Datenbanksuche (z.B. für das Todesdatum der Person). Datieren Sie die Lokalität im Format JJJJ-MM-TT. Geben Sie unbedingt im vorherigen Feld auch ein Anfangsdatum ein. Falls Start/Ende nicht genau bekannt sind, schätzen Sie einen ungefähren Wert, indem Sie auf ein ungefähres Jahr oder einen ungefähren Monat datieren und den letzten Tag des Monats als Stichtag benutzen.</label>
+            <label index="image.description">Geben Sie hier Bilder von der Person oder Institution an. Bilder müssen auf den Server hochgeladen werden.</label>
+            <label index="description.description">In dieses Freitext-Feld können Sie genauere Informationen zur Person wie z.B. eine Kurzbiographie eintragen.</label>
+            <label index="persons_uids.description">Sie können eine Person anderen Personen zuordnen und dabei genauer angeben, welches Beziehung zwischen beiden Personen besteht.</label>
+            <label index="localities_uids.description">Sie können eine Person verschiedenen Lokalitäten zuordnen und angeben, in welcher Beziehung die Person zur jeweiligen LokalitÃ¤t steht.</label>
+        </languageKey>
+    </data>
+    <orig_hash type="array">
+        <languageKey index="default" type="array">
+            <label index="hidden.description" type="integer">160482482</label>
+            <label index="pers_inst.description" type="integer">29775317</label>
+            <label index="gender.description" type="integer">55504068</label>
+            <label index="firstname.description" type="integer">30221357</label>
+            <label index="lastname.description" type="integer">117906193</label>
+            <label index="nameaddons.description" type="integer">199203969</label>
+            <label index="title.description" type="integer">51901028</label>
+            <label index="date_comment.description" type="integer">96242457</label>
+            <label index="date_start.description" type="integer">147435878</label>
+            <label index="date_end.description" type="integer">5360942</label>
+            <label index="image.description" type="integer">232280329</label>
+            <label index="description.description" type="integer">165238311</label>
+            <label index="persons_uids.description" type="integer">151483319</label>
+            <label index="localities_uids.description" type="integer">265514736</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="hidden.description" type="integer">160482482</label>
+            <label index="pers_inst.description" type="integer">29775317</label>
+            <label index="gender.description" type="integer">55504068</label>
+            <label index="firstname.description" type="integer">30221357</label>
+            <label index="lastname.description" type="integer">117906193</label>
+            <label index="nameaddons.description" type="integer">199203969</label>
+            <label index="title.description" type="integer">51901028</label>
+            <label index="date_comment.description" type="integer">96242457</label>
+            <label index="date_start.description" type="integer">147435878</label>
+            <label index="date_end.description" type="integer">5360942</label>
+            <label index="image.description" type="integer">232280329</label>
+            <label index="description.description" type="integer">165238311</label>
+            <label index="persons_uids.description" type="integer">151483319</label>
+            <label index="localities_uids.description" type="integer">265514736</label>
+        </languageKey>
+    </orig_hash>
+    <orig_text type="array">
+        <languageKey index="default" type="array">
+        </languageKey>
+        <languageKey index="de" type="array">
+        </languageKey>
+    </orig_text>
+</T3locallang>

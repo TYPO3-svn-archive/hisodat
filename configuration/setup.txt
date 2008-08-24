@@ -1,0 +1,83 @@
+#################################################################################
+# TypoScript Configuration for the plugin.tx_hisodat							#
+# @author Torsten Schrade <schradt@uni-mainz.de>								#
+#################################################################################
+
+# note: it appears that values that are equal to a FF value are overriden with an empty value if the value is empty in the FF
+
+# Includes
+includeLibs.tx_div = EXT:div/class.tx_div.php
+includeLibs.tx_lib_switch = EXT:lib/class.tx_lib_switch.php
+includeLibs.tx_hisodat_controllers_searchForms = EXT:hisodat/controllers/class.tx_hisodat_controllers_searchForms.php
+includeLibs.tx_hisodat_controllers_searchResultList = EXT:hisodat/controllers/class.tx_hisodat_controllers_searchResultList.php
+includeLibs.tx_hisodat_controllers_detailsView = EXT:hisodat/controllers/class.tx_hisodat_controllers_detailsView.php
+includeLibs.tx_hisodat_controllers_resultBrowser = EXT:hisodat/resultbrowser/class.tx_hisodat_controllers_resultBrowser.php
+
+# common config
+temp.tx_hisodat.configurations {
+	pathToTemplateDirectory = {$plugin.tx_hisodat.basics.templatePath}
+	pathToLanguageFile = {$plugin.tx_hisodat.basics.languageFile}
+	singlePid =
+	backToListPid =
+	destinationPid = {$plugin.tx_hisodat.searchForms.destinationPid}
+	resultBrowser {
+		templateDirectory = EXT:hisodat/resultbrowser/
+		templateFile = resultBrowserTemplate.php
+		pagerIndexMode =
+		useCacheHash =
+		resultsPerView = 10
+		precedingViewsCount = 3
+		succeedingViewsCount = 3
+		offsetName = offset
+		alwaysShowBrowser = 0
+	}
+}
+
+# The controller switch
+plugin.tx_hisodat.controllerSwitch = USER
+plugin.tx_hisodat.controllerSwitch {
+
+	userFunc = tx_lib_switch->main
+
+	searchForms = USER_INT
+	searchForms {
+		userFunc = tx_hisodat_controllers_searchForms->main
+		configurations < temp.tx_hisodat.configurations
+		configurations {
+			resultBrowser >
+			quickSearchForm.templateFile = {$plugin.tx_hisodat.searchForms.quickSearchForm.templateFile}
+			standardSearchForm.templateFile = {$plugin.tx_hisodat.searchForms.standardSearchForm.templateFile}
+			expertSearchForm.templateFile = {$plugin.tx_hisodat.searchForms.expertSearchForm.templateFile}
+		}
+	}
+
+	searchResultList = USER_INT
+	searchResultList {
+		userFunc = tx_hisodat_controllers_searchResultList->main
+		configurations < temp.tx_hisodat.configurations
+		configurations {
+			selectFields = uid,pid,signature,signature_add,short
+			quickSearchResult {
+				fullTextFields = signature, signature_add, date_comment, short, sourcetext, description, imagecaption
+				templateFile = {$plugin.tx_hisodat.searchResultList.quickSearchResult.templateFile}
+			}
+			standardSearchResult.templateFile =
+			expertSearchResult.templateFile =
+			personsSearchResult.templateFile =
+			localitiesSearchResult.templateFile =
+		}
+	}
+
+	detailsView = USER_INT
+	detailsView {
+		userFunc = tx_hisodat_controllers_detailsView->main
+		configurations < temp.tx_hisodat.configurations
+		configurations {
+			selectFields = *
+			sources.templateFile = {$plugin.tx_hisodat.detailsView.sources.templateFile}
+		}
+	}
+}
+
+# reference the plugin object to the content setup
+tt_content.list.20.tx_hisodat =< plugin.tx_hisodat.controllerSwitch

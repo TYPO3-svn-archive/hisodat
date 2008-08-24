@@ -1,0 +1,57 @@
+2008-04-4 - 0.0.15 <schradt@uni-mainz.de>
+	* NEW: first working version of standard search with date search fields
+	* NEW: controller action to be called by backlink from detailsview back to listview
+	* FIX: The cleanup of parameters in resultBrowser did not work correctly
+	* INFO: code refactoring and better storage of search results
+	* FIX: change to fulltext index - date_comment was not included
+
+2008-04-01 <schradt@uni-mainz.de>
+	* NEW: resultBrowser.alwaysShowBrowser for list and singlebrowser
+
+2008-03-31 <schradt@uni-mainz.de>
+	* BUGFIX: changed currentRow to currentKey in singleview and fixed the increment
+	* NEW: added a rowcounter for listview which can be accessed via $result.rowcount
+
+2008-03-31 - 0.0.14 <schradt@uni-mainz.de>
+	* NEW: quicksearch with list and singleview finished
+	* NEW: moved the IMH specific templates to the imh extension
+	* BUGFIX: Cleanup of messed up TS setup
+
+2008-03-28 - 0.0.13 <schradt@uni-mainz.de>
+	* first (unfinished but functional) version of quicksearch with list and singleview
+
+2008-03-05 - 0.0.11 <schradt@uni-mainz.de>
+	* tx_hisodat_sources set to MyIsam due to FULLTEXT indexes
+	* some DB indexes set in ext_tables.sql
+
+2008-01-15 - 0.0.10 <schradt@uni-mainz.de>
+	* adapted to lib/div structure
+
+2007-18-12 - 0.0.9 <schradt@uni-mainz.de>
+	* renamed tx_hisodat_cat => tx_hisodat_categories
+	* splitted $TCA file in tca_main.php and tca_mm.php
+	* applied IRRE patch 0005772.patch: Combination mode doesn't save new child records correctly (for tx_hisodat_keywords)
+	* issue monitored: Configure PID for new elements using IRRE. This will be NECESSARY!!!
+	* literature table is now related to sources, persons, localities, entities via a shared MM table
+	* renaming scheme for MM tables: tx_hisodat_mm... removed the ff_attr bit
+	* changed the persons table and removed the institutions bit
+	* introduced the new entities tables
+	* divider2tabs now localizable; new dividers on persons, entities and localities tables
+
+2007-12-06 - 0.0.8 <schradt@uni-mainz.de>
+	* removed ff_ tables from listview
+
+2007-11-28 - 0.0.7 <schradt@uni-mainz.de>
+	* new scheme for extension configuration: now its possible to define page IDs for the different types of records in EM as well as in PageTSConfig. With this its possible to manage several HISODAT projects within one database.
+
+2007-11-25 - 0.0.6 <schradt@uni-mainz.de>
+	* renaming to "hisodat" to conform with lib/div naming conventions
+	* inserted english translation
+	* converted locallang files to xml format
+
+2007-11-08 <schradt@uni-mainz.de>
+	* uploads/tx_caghisodat set as standard upload folder
+
+2007-08-28 - 0.0.5
+	* possibility to add literature relations to persons and localities
+	* pers_pers, pers_loc, loc_loc => changed field description to text NOT NULL

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Language file for HISODAT localities table</description>
+        <type>CSH</type>
+        <csh_table>tx_hisodat_localities</csh_table>
+        <labelContext type="array">
+        </labelContext>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="hidden.description">Check this to hide the locality record.</label>
+            <label index="title.description">Enter the name of the locality.</label>
+            <label index="municipality.description">Enter the modern name or place of the locality.</label>
+            <label index="field_name.description">Associated field name of the locality.</label>
+            <label index="latitude.description">Latitude (decimal value; check out http://www.fcc.gov/mb/audio/bickel/DDMMSS-decimal.html).</label>
+            <label index="longitude.description">Longitude (decimal value; check out http://www.fcc.gov/mb/audio/bickel/DDMMSS-decimal.html).</label>
+            <label index="date_comment.description">Associated date for display on the website. For a historically precise dating use the two fields below. You can separate startdate and enddate with the &quot;|&quot; character.</label>
+            <label index="date_start.description">Start date for the database search. Use YYYY-MM-DD as format. Always enter an end date in the next field as well. If a date is uncertain, make an educated guess and use the first day of a month.</label>
+            <label index="date_end.description">End date for the database search. Use YYYY-MM-DD as format. Always enter a start date in the field above as well. If a date is uncertain, make an educated guess and use the first day of a month.</label>
+            <label index="image.description">Insert images of the locality.</label>
+            <label index="description.description">Use this field for further information concerning the locality.</label>
+            <label index="persons_uids.description">Associate persons with this locality.</label>
+            <label index="localities_uids.description">Associate other localities with this locality.</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="hidden.description">Wenn Sie diese Checkbox aktivieren, wird die Lokalität verborgen.</label>
+            <label index="title.description">Geben Sie hier den Namen der Lokalität an.</label>
+            <label index="municipality.description">Mit diesem Feld können Sie die Lokalität mit einer heutigen Gemeinde verknüpfen.</label>
+            <label index="field_name.description">Geben Sie einen Flurnamen zur Lokalität an.</label>
+            <label index="latitude.description">Breitengrad der Lokalität als Dezimalgrad-Angabe. Auf der Seite http://www.fcc.gov/mb/audio/bickel/DDMMSS-decimal.html können Sie Gradangaben in Dezimalgrade umrechnen lassen.</label>
+            <label index="longitude.description">Längengrad der Lokalität als Dezimalgrad-Angabe. Auf der Seite http://www.fcc.gov/mb/audio/bickel/DDMMSS-decimal.html können Sie Gradangaben in Dezimalgrade umrechnen lassen.</label>
+            <label index="date_comment.description">Datumsangaben für die Anzeige auf der Webseite. Diese Angaben dienen nur der Anzeige und können in einem beliebigen Format ausgefüllt werden. Nutzen Sie das &quot;|&quot; Zeichen, wenn Sie eine Datumsangabe in ein Anfangs- und Enddatum auftrennen möchten.</label>
+            <label index="date_start.description">Datierungsfeld für die Datenbanksuche. Datieren Sie die Lokalität im Format JJJJ-MM-TT. Geben Sie unbedingt im nächsten Feld auch ein Enddatum ein. Falls Start/Ende nicht genau bekannt sind, schätzen Sie einen ungefähren Wert, indem Sie auf ein ungefähres Jahr oder einen ungefähren Monat datieren und den 1. des Monats als Stichtag benutzen.</label>
+            <label index="date_end.description">Datierungsfeld für die Datenbanksuche. Datieren Sie die Lokalität im Format JJJJ-MM-TT. Geben Sie unbedingt im vorherigen Feld auch ein Anfangsdatum ein. Falls Start/Ende nicht genau bekannt sind, schätzen Sie einen ungefähren Wert, indem Sie auf ein ungefähres Jahr oder einen ungefähren Monat datieren und den letzten des Monats als Stichtag benutzen.</label>
+            <label index="image.description">Geben Sie hier Bilder von der Lokalität an.</label>
+            <label index="description.description">In diesem Freitext-Feld können Sie zusätzliche Informationen zur Lokalität angeben.</label>
+            <label index="persons_uids.description">Verknüpfen Sie andere Personen mit dieser Lokalität.</label>
+            <label index="localities_uids.description">Verknüpfen Sie andere Lokalitäten mit dieser Lokalität.</label>
+        </languageKey>
+    </data>
+    <orig_hash type="array">
+        <languageKey index="default" type="array">
+            <label index="hidden.description" type="integer">248964845</label>
+            <label index="title.description" type="integer">125799285</label>
+            <label index="municipality.description" type="integer">125905433</label>
+            <label index="field_name.description" type="integer">238673888</label>
+            <label index="latitude.description" type="integer">195416153</label>
+            <label index="longitude.description" type="integer">11349836</label>
+            <label index="date_comment.description" type="integer">196820675</label>
+            <label index="date_start.description" type="integer">153152706</label>
+            <label index="date_end.description" type="integer">34724546</label>
+            <label index="image.description" type="integer">221011841</label>
+            <label index="description.description" type="integer">191675000</label>
+            <label index="persons_uids.description" type="integer">87393614</label>
+            <label index="localities_uids.description" type="integer">38680030</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="hidden.description" type="integer">248964845</label>
+            <label index="title.description" type="integer">125799285</label>
+            <label index="municipality.description" type="integer">125905433</label>
+            <label index="field_name.description" type="integer">238673888</label>
+            <label index="latitude.description" type="integer">195416153</label>
+            <label index="longitude.description" type="integer">11349836</label>
+            <label index="date_comment.description" type="integer">196820675</label>
+            <label index="date_start.description" type="integer">153152706</label>
+            <label index="date_end.description" type="integer">34724546</label>
+            <label index="image.description" type="integer">221011841</label>
+            <label index="description.description" type="integer">191675000</label>
+            <label index="persons_uids.description" type="integer">87393614</label>
+            <label index="localities_uids.description" type="integer">38680030</label>
+        </languageKey>
+    </orig_hash>
+    <orig_text type="array">
+        <languageKey index="default" type="array">
+        </languageKey>
+        <languageKey index="de" type="array">
+        </languageKey>
+    </orig_text>
+</T3locallang>

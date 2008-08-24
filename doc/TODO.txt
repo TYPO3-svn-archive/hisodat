@@ -1,0 +1,17 @@
+Next steps:
+- don't forget to do the quickSearch on the imhfields as well
+
+------------------
+
+
+* localities: with which fieldtype to save latitude longitude?
+
+* dates: with which field type to save dates => strings at the moment
+
+* is it possible to substitute the foreign_wheres completely by PAGE_TSCONFIG_STRING ?
+
+* adapt csh files to the new structure
+
+* ATTENTION: Because there is no destination PID for IRRE records, we don't see existing relations between different tables across sysfolders from the "other" sides
+
+* do a check on required fields

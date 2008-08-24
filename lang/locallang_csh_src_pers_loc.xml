@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Language file for HISODAT intermediary table</description>
+        <type>CSH</type>
+        <csh_table>tx_hisodat_ff_attr_src_pers</csh_table>
+        <labelContext type="array">
+        </labelContext>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="is_issuer.description">Activate this checkbox if the person or institution is the issuer of the source.</label>
+            <label index="is_crlocation.description">Activate this checkbox if the source was issued at this locality.</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="is_issuer.description">Aktivieren Sie diese Checkbox, wenn es sich um den Aussteller der Quelle handelt.</label>
+            <label index="is_crlocation.description">Aktivieren Sie diese Checkbox, wenn es sich bei der Lokalität um den Ausstellungsort der Quelle handelt.</label>
+        </languageKey>
+    </data>
+    <orig_hash type="array">
+        <languageKey index="default" type="array">
+            <label index="is_issuer.description" type="integer">30235819</label>
+            <label index="is_crlocation.description" type="integer">77100436</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="is_issuer.description" type="integer">30235819</label>
+            <label index="is_crlocation.description" type="integer">77100436</label>
+        </languageKey>
+    </orig_hash>
+    <orig_text type="array">
+        <languageKey index="default" type="array">
+        </languageKey>
+        <languageKey index="de" type="array">
+        </languageKey>
+    </orig_text>
+</T3locallang>

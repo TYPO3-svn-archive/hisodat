@@ -1,0 +1,38 @@
+#################################################################################
+# Constants for the plugin.tx_hisodat											#
+# @author Torsten Schrade <schradt@uni-mainz.de>								#
+#################################################################################
+
+## BASICS ##
+
+#cat=plugin.tx_hisodat.basics/enable/10; type=string; label= Template path: Path to the HISODAT template directory
+plugin.tx_hisodat.basics.templatePath = EXT:hisodat/templates/
+
+#cat=plugin.tx_hisodat.basics/enable/20; type=string; label= Language file: Name of the language file that keeps the translations
+plugin.tx_hisodat.basics.languageFile = EXT:hisodat/lang/locallang.xml
+
+
+## SEARCHFORMS ##
+
+#cat=plugin.tx_hisodat.searchForms/enable/10; type=int+; label= Destination PID: The target page for the quickSearchForm form
+plugin.tx_hisodat.searchForms.destinationPid =
+
+#cat=plugin.tx_hisodat.searchForms/enable/20; type=string; label= Quick search template file: Smarty template for the quick search form
+plugin.tx_hisodat.searchForms.quickSearchForm.templateFile = quickSearchForm.tpl
+
+#cat=plugin.tx_hisodat.searchForms/enable/30; type=string; label= Standard search template file: Smarty template for the standard search form
+plugin.tx_hisodat.searchForms.standardSearchForm.templateFile = standardSearchForm.tpl
+
+#cat=plugin.tx_hisodat.searchForms/enable/40; type=string; label= Expert search template file: Smarty template for the expert search form
+plugin.tx_hisodat.searchForms.expertSearchForm.templateFile = expertSearchForm.tpl
+
+
+## RESULT LISTS ##
+
+#cat=plugin.tx_hisodat.searchResultList/enable/10; type=string; label= Template file: Smarty template for a list of records from the sources table
+plugin.tx_hisodat.searchResultList.quickSearchResult.templateFile = quickSearchResult.tpl
+
+## DETAILS VIEW ##
+
+#cat=plugin.tx_hisodat.detailsView/enable/10; type=string; label= Template file: Smarty template for the details view of a source
+plugin.tx_hisodat.detailsView.sources.templateFile = detailsViewSources.tpl

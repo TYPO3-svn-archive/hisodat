@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Language file for HISODAT sources table</description>
+        <type>CSH</type>
+        <csh_table>tx_hisodat_sources</csh_table>
+        <labelContext type="array">
+        </labelContext>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="hidden.description">Activate this checkbox and the source record will be hidden.</label>
+            <label index="signature.description">Enter the signature or unique identifier for the source.</label>
+            <label index="signature_add.description">Enter additonal information to the signature.</label>
+            <label index="archive_uid.description">Choose the archive or institution that keeps the source.</label>
+            <label index="date_start.description">Enter a precise date (format YYYY-MM-DD) for the source if possible. If this is not possible make an educated quess and use the first of a given month as day.</label>
+            <label index="date_end.description">Enter a date if the source was issued within a period. If you cannot give a precise date make an educated guess and use the last of a month as day.</label>
+            <label index="date_comment.description">Additional date information.</label>
+            <label index="short.description">Use this field for a short abstract of the source content.</label>
+            <label index="sourcetext.description">Enter the original text of the source.</label>
+            <label index="description.description">Description / Comments regarding the source.</label>
+            <label index="categories_uids.description">Categories for the source. Use categories to organize your sources (e.g. source material).</label>
+            <label index="keywords_uids.description">Select keywords for the source.</label>
+            <label index="localities_uids.description">Associate localities that appear in the text of the source. If the localitiy is the place where the source was issued, check the box accordingly.</label>
+            <label index="persons_uids.description">Associate persons or institutions that appear in the text of the source. If the person or institution is the issuer of the source, check the box accordingly.</label>
+            <label index="literature_uids.description">Associate literature records with the source.</label>
+            <label index="sources_uids.description">Sources can be in relation towards each other. Here you can associate other sources of your sample.</label>
+            <label index="image.description">Add images of the source.</label>
+            <label index="imagecaption.description">Add a caption text for the image.</label>
+            <label index="editor_id.description">The current editor of this source record.</label>
+            <label index="editor_comment.description">Enter any editorial comments regarding the source. This is just used for internal informatio purposes.</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="hidden.description">Wenn Sie diese Checkbox aktivieren, wird der Quellendatensatz verborgen.</label>
+            <label index="signature.description">Tragen Sie hier die Signatur der Quelle, die Quellennummer oder einen ähnlichen, eindeutigen Bezeichner ein.</label>
+            <label index="signature_add.description">Hier können Sie Zusätze zur Signatur angeben. Sollten Quellen umgewidmet worden sein, können Sie in diesem Feld die ehemalige Signatur aufnehmen.</label>
+            <label index="archive_uid.description">Wählen Sie aus dieser Liste das Archiv aus, in dem die Quelle liegt. Mit Klick auf das Plus können Sie ein neues Archiv anlegen.</label>
+            <label index="date_start.description">Geben Sie das exakte Datum ein soweit möglich.</label>
+            <label index="date_end.description">Wenn sich die Datierung über einen Zeitraum erstrecken soll, geben Sie hier das Enddatum ein</label>
+            <label index="date_comment.description">Ein Zusatz zum Datum (insb. bei nicht genau datierbaren Quellen).</label>
+            <label index="short.description">Dieses Feld können Sie für eine Kurzwiedergabe des Quelleninhaltes benutzen (z.B. für einen Kopfregest). Die Quellenzusammenfassung wird in Übersichts- und Ergebnislisten angezeigt.</label>
+            <label index="sourcetext.description">Geben Sie in dieses Feld den Originaltext der Quelle ein.</label>
+            <label index="description.description">In diesem Feld befindet sich die Quellenbeschreibung und/oder der Text der Quelle.</label>
+            <label index="categories_uids.description">Quellenkategorien können frei definiert werden und sind hierarchisch geordnet. Im Unterschied zu Schlagwörtern wird die Kategorienliste &quot;strenger&quot; definiert. Kategorien müssen sich nicht unbedingt am Inhalt einer Quelle orientieren. Kategorien könnten z.B. auch das Material beschreiben, auf dem die Quelle überliefert ist.</label>
+            <label index="keywords_uids.description">Schlagworte können frei vergeben werden und orientieren sich am Inhalt einer Quelle. über Schlagworte können unterschiedliche Quellen zusammengefasst werden. Die Schlagwortliste ergibt sich während der Eingabe der Quellen und ist somit &quot;offener&quot; als die Kategorienliste.</label>
+            <label index="localities_uids.description">Eine Lokalität ist zunächst ein Ort, der in der Quelle auftaucht. Es kann sich aber auch um ein Objekt wie zum Beispiel eine Burg oder eine abseits gelegene Abtei handeln. Einer Quelle können mehrere Lokalitäten zugeordnet werden. Wenn es sich bei der Lokalität um den Ausstellungsort der Quelle handelt, markieren Sie die Checkbox &quot;Ist Austellungsort&quot;.</label>
+            <label index="persons_uids.description">Einer Quelle können mehrere Personendatensätze zugeordnet werden. Hierbei handelt es sich entweder um in der Quelle auftauchende natürliche oder juristische Personen bzw. Institutionen (z.B. ein Domkapitel). Wenn es sich bei der Person um den Aussteller der Quelle handelt, markieren Sie die entsprechende Checkbox.</label>
+            <label index="literature_uids.description">Hier können Sie der Quelle beliebig viele Literaturhinweise zuordnen. Wählen Sie das Werk aus der Liste aus und geben Sie Band/Seite an. Falls das Werk noch nicht in der Liste existiert, können Sie mit Klick auf das Plus neben der Auswahlliste einen neuen Literaturdatensatz anlegen.</label>
+            <label index="sources_uids.description">Quellen können zueinander in Beziehung gesetzt werden. Dies bietet sich z.B. an, wenn sich die Quellen inhaltlich aufeinander beziehen. Die hier zugeordneten Quellen werden in der Detailansicht der Quelle als Links angefügt und der Benutzer kann direkt zu diesen Datensätzen springen.</label>
+            <label index="image.description">Geben Sie hier Bilder von der Quelle an. Bilder müssen zunächst auf den Server hochgeladen werden.</label>
+            <label index="imagecaption.description">Geben Sie hier Bildunterschriften an. Wenn mehrere Bilder mit dem Datensatz verknüpft sind, schreiben Sie jede Bildunterschrift in eine neue Zeile.</label>
+            <label index="editor_id.description">Der aktuelle Bearbeiter dieses Quelldatensatzes.</label>
+            <label index="editor_comment.description">Tragen Sie hier Ihre Bearbeitungshinweise zum Quelldatensatz ein.</label>
+        </languageKey>
+    </data>
+    <orig_hash type="array">
+        <languageKey index="default" type="array">
+            <label index="hidden.description" type="integer">29308494</label>
+            <label index="signature.description" type="integer">268064891</label>
+            <label index="signature_add.description" type="integer">259847450</label>
+            <label index="archive_uid.description" type="integer">196834256</label>
+            <label index="date_start.description" type="integer">71268561</label>
+            <label index="date_end.description" type="integer">243527098</label>
+            <label index="date_comment.description" type="integer">62128307</label>
+            <label index="short.description" type="integer">90707130</label>
+            <label index="sourcetext.description" type="integer">214877504</label>
+            <label index="description.description" type="integer">111293272</label>
+            <label index="categories_uids.description" type="integer">97745449</label>
+            <label index="keywords_uids.description" type="integer">175265033</label>
+            <label index="localities_uids.description" type="integer">57454547</label>
+            <label index="persons_uids.description" type="integer">237266169</label>
+            <label index="literature_uids.description" type="integer">110817162</label>
+            <label index="sources_uids.description" type="integer">137537014</label>
+            <label index="image.description" type="integer">217522509</label>
+            <label index="imagecaption.description" type="integer">128196291</label>
+            <label index="editor_id.description" type="integer">121537849</label>
+            <label index="editor_comment.description" type="integer">252441524</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="hidden.description" type="integer">29308494</label>
+            <label index="signature.description" type="integer">268064891</label>
+            <label index="signature_add.description" type="integer">259847450</label>
+            <label index="archive_uid.description" type="integer">196834256</label>
+            <label index="date_start.description" type="integer">71268561</label>
+            <label index="date_end.description" type="integer">243527098</label>
+            <label index="date_comment.description" type="integer">62128307</label>
+            <label index="short.description" type="integer">90707130</label>
+            <label index="sourcetext.description" type="integer">214877504</label>
+            <label index="description.description" type="integer">111293272</label>
+            <label index="categories_uids.description" type="integer">97745449</label>
+            <label index="keywords_uids.description" type="integer">175265033</label>
+            <label index="localities_uids.description" type="integer">57454547</label>
+            <label index="persons_uids.description" type="integer">237266169</label>
+            <label index="literature_uids.description" type="integer">110817162</label>
+            <label index="sources_uids.description" type="integer">137537014</label>
+            <label index="image.description" type="integer">217522509</label>
+            <label index="imagecaption.description" type="integer">128196291</label>
+            <label index="editor_id.description" type="integer">121537849</label>
+            <label index="editor_comment.description" type="integer">252441524</label>
+        </languageKey>
+    </orig_hash>
+    <orig_text type="array">
+        <languageKey index="default" type="array">
+        </languageKey>
+        <languageKey index="de" type="array">
+        </languageKey>
+    </orig_text>
+</T3locallang>

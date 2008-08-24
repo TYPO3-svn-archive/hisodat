@@ -1,0 +1,94 @@
+# configuration file with default PageTSConfig settings for the extension tx_hisodat
+TCEFORM {
+	tx_hisodat_categories {
+		parent_category.PAGE_TSCONFIG_IDLIST < tx_hisodat.CATEGORIES_PIDLIST
+	}
+
+	tx_hisodat_relations {
+		parent_relation.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
+	}
+
+	tx_hisodat_sources {
+		archive_uid.PAGE_TSCONFIG_IDLIST < tx_hisodat.ARCHIVES_PIDLIST
+		categories_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.CATEGORIES_PIDLIST
+	}
+
+	tx_hisodat_mm_src_key {
+		uid_src.PAGE_TSCONFIG_IDLIST < tx_hisodat.SOURCES_PIDLIST
+		uid_key.PAGE_TSCONFIG_IDLIST < tx_hisodat.KEYWORDS_PIDLIST
+	}
+
+	tx_hisodat_mm_src_pers {
+		uid_src.PAGE_TSCONFIG_IDLIST < tx_hisodat.SOURCES_PIDLIST
+		uid_pers.PAGE_TSCONFIG_IDLIST < tx_hisodat.PERSONS_PIDLIST
+	}
+
+	tx_hisodat_mm_src_loc {
+		uid_src.PAGE_TSCONFIG_IDLIST < tx_hisodat.SOURCES_PIDLIST
+		uid_loc.PAGE_TSCONFIG_IDLIST < tx_hisodat.LOCALITIES_PIDLIST
+	}
+
+	tx_hisodat_mm_src_ent {
+		uid_src.PAGE_TSCONFIG_IDLIST < tx_hisodat.SOURCES_PIDLIST
+		uid_ent.PAGE_TSCONFIG_IDLIST < tx_hisodat.ENTITIES_PIDLIST
+	}
+
+	tx_hisodat_mm_lit {
+		uid_local.PAGE_TSCONFIG_IDLIST < tx_hisodat.SOURCES_PIDLIST
+		uid_foreign.PAGE_TSCONFIG_IDLIST < tx_hisodat.LITERATURE_PIDLIST
+	}
+
+	tx_hisodat_mm_pers_pers {
+		uid_local.PAGE_TSCONFIG_IDLIST < tx_hisodat.PERSONS_PIDLIST
+		uid_foreign.PAGE_TSCONFIG_IDLIST < tx_hisodat.PERSONS_PIDLIST
+		relations_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
+	}
+
+	tx_hisodat_mm_pers_loc {
+		uid_pers.PAGE_TSCONFIG_IDLIST < tx_hisodat.PERSONS_PIDLIST
+		uid_loc.PAGE_TSCONFIG_IDLIST < tx_hisodat.LOCALITIES_PIDLIST
+		relations_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
+	}
+
+	tx_hisodat_mm_loc_loc {
+		uid_local.PAGE_TSCONFIG_IDLIST < tx_hisodat.LOCALITIES_PIDLIST
+		uid_foreign.PAGE_TSCONFIG_IDLIST < tx_hisodat.LOCALITIES_PIDLIST
+		relations_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
+	}
+
+	tx_hisodat_mm_ent_ent {
+		uid_local.PAGE_TSCONFIG_IDLIST < tx_hisodat.ENTITIES_PIDLIST
+		uid_foreign.PAGE_TSCONFIG_IDLIST < tx_hisodat.ENTITIES_PIDLIST
+		relations_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
+	}
+
+	tx_hisodat_mm_ent_pers {
+		uid_pers.PAGE_TSCONFIG_IDLIST < tx_hisodat.PERSONS_PIDLIST
+		uid_ent.PAGE_TSCONFIG_IDLIST < tx_hisodat.ENTITIES_PIDLIST
+		relations_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
+	}
+
+	tx_hisodat_mm_ent_loc {
+		uid_ent.PAGE_TSCONFIG_IDLIST < tx_hisodat.ENTITIES_PIDLIST
+		uid_loc.PAGE_TSCONFIG_IDLIST < tx_hisodat.LOCALITIES_PIDLIST
+		relations_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
+	}
+}
+
+# the ff_ and mm_ tables are unnecessary in list view
+mod.web_list.hideTables := addToList(
+tx_hisodat_mm_src_key,
+tx_hisodat_mm_src_pers,
+tx_hisodat_mm_src_loc,
+tx_hisodat_mm_src_ent,
+tx_hisodat_mm_lit,
+tx_hisodat_mm_pers_pers,
+tx_hisodat_mm_pers_loc,
+tx_hisodat_mm_loc_loc,
+tx_hisodat_mm_ent_pers,
+tx_hisodat_mm_ent_loc,
+tx_hisodat_mm_ent_ent
+)
+
+# RTE configuration
+RTE.config.tx_hisodat_sources.description.proc.overruleMode=ts_css
