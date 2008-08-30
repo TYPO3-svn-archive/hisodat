@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2005 Torsten Schrade (t.schrade@connecta.ag)
+*  (c) 2008 Torsten Schrade (t.schrade@connecta.ag)
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -22,7 +22,7 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 /**
- * HOOK class for backend processing of TCEFORM - not used yet
+ * HOOK class for backend processing of TCEFORM
  *
  * @author	Torsten Schrade <schradt@uni-mainz.de>
  */
@@ -30,11 +30,17 @@
 
 
 class tx_hisodat_t3lib_tceforms {
-/*
-	function getSingleField_preProcess($table, $field, $row, $altName, $palette, $extra, $pal, $this) {
+
+	function getSingleField_preProcess($table, $field, &$row, $altName, $palette, $extra, $pal, $pObj) {
+
+		// extend the whitelist of TCA properties that can be overriden from PageTSConfig
+		$pObj->allowOverrideMatrix['select'][] = 'wizards';
+		$pObj->allowOverrideMatrix['select'][] = 'foreign_table';
+		$pObj->allowOverrideMatrix['select'][] = 'foreign_table_where';
 
 	}
 
+/*
 	function getSingleField_postProcess($table, $field, $row, $out, $PA, $this) {
 
 	}

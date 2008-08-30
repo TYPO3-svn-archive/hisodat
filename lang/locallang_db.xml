@@ -254,7 +254,7 @@
 			<label index="tx_hisodat_sources.div4">Medien</label>
 			<label index="tx_hisodat_sources.div5">Bearbeitung</label>
             <label index="tx_hisodat_sources.signature">Signatur</label>
-            <label index="tx_hisodat_sources.signature_add">Signaturzusatz oder alte Signatur</label>
+            <label index="tx_hisodat_sources.signature_add">Signaturzusatz</label>
             <label index="tx_hisodat_sources.archive_uid">Archiv</label>
             <label index="tx_hisodat_sources.literature_uids">Literaturhinweise</label>
             <label index="tx_hisodat_sources.date_start">Datierung (Anfang)</label>

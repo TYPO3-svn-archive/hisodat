@@ -2,20 +2,24 @@
 if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 
 // GENERAL CONFIGURATION
-
 t3lib_div::loadTCA('tt_content');
 
-// add flexform for the plugin configuration in BE
+
+
+// FLEXFORMS
 $TCA['tt_content']['types']['list']['subtypes_excludelist']['tx_hisodat']='layout,select_key,pages,recursive';
 $TCA['tt_content']['types']['list']['subtypes_addlist']['tx_hisodat']='pi_flexform';
 t3lib_extMgm::addPiFlexFormValue('tx_hisodat', 'FILE:EXT:hisodat/configuration/flexform.xml');
 t3lib_extMgm::addPlugin(array('HISODAT', 'tx_hisodat'));
 
-// add static TypoScript
+
+
+// TYPOSCRIPT
 t3lib_extMgm::addStaticFile($_EXTKEY, './configuration', 'HISODAT: Base');
 
-// BACKEND RELATED
 
+
+// BACKEND RELATED
 if (TYPO3_MODE=='BE') {
 	//class for category tree
 	include_once(t3lib_extMgm::extPath($_EXTKEY).'configuration/class.tx_hisodat_treeview.php');
@@ -24,14 +28,17 @@ if (TYPO3_MODE=='BE') {
 	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['tx_hisodat_wizicon'] = t3lib_extMgm::extPath($_EXTKEY).'configuration/class.tx_hisodat_wizicon.php';
 
 	// include hook class
-#	include_once(t3lib_extMgm::extPath($_EXTKEY).'configuration/class.tx_hisodat_t3lib_tceforms.php');
+	include_once(t3lib_extMgm::extPath($_EXTKEY).'configuration/class.tx_hisodat_t3lib_tceforms.php');
 
 	// register hook for tceforms
-#	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tceforms.php']['getSingleFieldClass'][] = 'configuration/tx_hisodat_t3lib_tceforms';
+	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tceforms.php']['getSingleFieldClass'][] = 'EXT:hisodat/configuration/class.tx_hisodat_t3lib_tceforms.php:tx_hisodat_t3lib_tceforms';
+
 }
 
-// TABLE CONFIGURATION
 
+
+
+// TABLE CONFIGURATION
 // archive table: each source belongs to a certain archive
 t3lib_extMgm::allowTableOnStandardPages('tx_hisodat_archives');
 t3lib_extMgm::addLLrefForTCAdescr('tx_hisodat_archives','EXT:hisodat/lang/locallang_csh_archives.php');
@@ -225,15 +232,11 @@ $TCA['tx_hisodat_sources'] = Array (
 
 
 ### MM TABLES ###
-
-
-
 /*
 $TCA['tx_hisodat_mm_src_cat'] = Array ();
 $TCA['tx_hisodat_mm_src_src'] = Array ();
 => classic TYPO3 MM table that is not edited directly
 */
-
 t3lib_extMgm::allowTableOnStandardPages('tx_hisodat_mm_src_key');
 $TCA['tx_hisodat_mm_src_key'] = Array (
 	'ctrl' => Array (

@@ -3,7 +3,6 @@ Next steps:
 
 ------------------
 
-
 * localities: with which fieldtype to save latitude longitude?
 
 * dates: with which field type to save dates => strings at the moment

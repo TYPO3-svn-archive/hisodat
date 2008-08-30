@@ -970,7 +970,6 @@ $TCA['tx_hisodat_relations'] = Array (
 	)
 );
 
-
 $TCA['tx_hisodat_sources'] = Array (
 	'ctrl' => $TCA['tx_hisodat_sources']['ctrl'],
 	'interface' => Array (

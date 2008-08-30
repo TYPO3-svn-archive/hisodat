@@ -1,3 +1,6 @@
+2008-08-30 - 0.0.16 <schradt@uni-mainz.de>
+	* NEW: added TCEforms hook to extend the whitelist of config options that can be overriden from PageTSConfig. Now it's possible to override the wizard_add pid, foreign_table, foreign_table_where clauses
+
 2008-04-4 - 0.0.15 <schradt@uni-mainz.de>
 	* NEW: first working version of standard search with date search fields
 	* NEW: controller action to be called by backlink from detailsview back to listview

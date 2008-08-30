@@ -75,20 +75,8 @@ TCEFORM {
 	}
 }
 
-# the ff_ and mm_ tables are unnecessary in list view
-mod.web_list.hideTables := addToList(
-tx_hisodat_mm_src_key,
-tx_hisodat_mm_src_pers,
-tx_hisodat_mm_src_loc,
-tx_hisodat_mm_src_ent,
-tx_hisodat_mm_lit,
-tx_hisodat_mm_pers_pers,
-tx_hisodat_mm_pers_loc,
-tx_hisodat_mm_loc_loc,
-tx_hisodat_mm_ent_pers,
-tx_hisodat_mm_ent_loc,
-tx_hisodat_mm_ent_ent
-)
+# the ff_ and mm_ tables are unnecessary in list view (has to be in one line)
+mod.web_list.hideTables := addToList(tx_hisodat_mm_src_key,tx_hisodat_mm_src_pers,tx_hisodat_mm_src_loc,tx_hisodat_mm_src_ent,tx_hisodat_mm_lit,tx_hisodat_mm_pers_pers,tx_hisodat_mm_pers_loc,tx_hisodat_mm_loc_loc,tx_hisodat_mm_ent_pers,tx_hisodat_mm_ent_loc,tx_hisodat_mm_ent_ent)
 
 # RTE configuration
 RTE.config.tx_hisodat_sources.description.proc.overruleMode=ts_css

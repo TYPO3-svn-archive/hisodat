@@ -36,3 +36,8 @@ AND (uid_pers1 = 3 AND rel_pers1 = 3)
 OR (uid_pers2 = 3 AND rel_pers2 = 3)
 ORDER by uid
 LIMIT 0, 30
+
+BUGS OF IMPORTANCE
+------------------
+0005772: Combination mode doesn't save new child records correctly (closed)
+0005242: Storage page for child records (closed)
