@@ -23,4 +23,4 @@ LOCALITIES_PIDLIST = 1
 ENTITIES_PIDLIST = 1
 
 # cat=basic/enable/90; type=string; label=LLL:EXT:hisodat/lang/locallang_extconf.xml:RELATIONS_PIDLIST
-RELATIONS_PIDLIST = 1
+# RELATIONS_PIDLIST = 1

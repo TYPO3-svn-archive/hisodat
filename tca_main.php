@@ -109,7 +109,7 @@ $TCA['tx_hisodat_categories'] = Array (
 $TCA['tx_hisodat_keywords'] = Array (
 	'ctrl' => $TCA['tx_hisodat_keywords']['ctrl'],
 	'interface' => Array (
-		'showRecordFieldList' => 'hidden,title,description'
+		'showRecordFieldList' => 'hidden,title,description,sources_uids'
 	),
 	'feInterface' => $TCA['tx_hisodat_keywords']['feInterface'],
 	'columns' => Array (
@@ -140,9 +140,31 @@ $TCA['tx_hisodat_keywords'] = Array (
 				'rows' => '5',
 			)
 		),
+		'sources_uids' => Array (
+			'exclude' => 1,
+			'l10n_mode' => 'exclude',
+			'label' => 'Zugeordnete Quellen',
+			'config' => Array (
+				'type' => 'inline',
+				'foreign_table' => 'tx_hisodat_mm_src_key',
+				'foreign_field' => 'uid_key',
+				'foreign_sortby' => 'srcsort',
+				'foreign_label' => 'uid_src',
+				'foreign_unique' => 'uid_src',
+				'size' => 5,
+				'minitems' => 0,
+				'maxitems' => 50,
+				'appearance' => Array (
+					'collapseAll' => 1,
+					'expandSingle' =>1,
+					#'useCombination' => 1,
+					#'newRecordLinkPosition' => 'bottom',
+				),
+			)
+		),
 	),
 	'types' => Array (
-		'0' => Array('showitem' => 'hidden,title,description')
+		'0' => Array('showitem' => 'hidden,title,description,sources_uids')
 	),
 	'palettes' => Array (
 		'1' => Array('showitem' => '')
@@ -248,7 +270,7 @@ $TCA['tx_hisodat_literature'] = Array (
 $TCA['tx_hisodat_persons'] = Array (
 	'ctrl' => $TCA['tx_hisodat_persons']['ctrl'],
 	'interface' => Array (
-		'showRecordFieldList' => 'hidden,gender,firstname,lastname,nameaddons,namevariants,title,date_comment,date_start,date_end,image,description,persons_uids,entities_uids,localities_uids,literature_uids'
+		'showRecordFieldList' => 'hidden,gender,name,namevariants,title,date_comment,date_start,date_end,image,description,persons_uids,entities_uids,localities_uids,literature_uids'
 	),
 	'feInterface' => $TCA['tx_hisodat_persons']['feInterface'],
 	'columns' => Array (
@@ -273,17 +295,7 @@ $TCA['tx_hisodat_persons'] = Array (
 				'default' => '1',
 			)
 		),
-		'firstname' => Array (
-			'exclude' => 1,
-			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.firstname',
-			'config' => Array (
-				'type' => 'input',
-				'size' => '30',
-				'max' => '255',
-				'eval' => 'trim',
-			)
-		),
-		'lastname' => Array (
+		'name' => Array (
 			'exclude' => 1,
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.lastname',
 			'config' => Array (
@@ -291,16 +303,6 @@ $TCA['tx_hisodat_persons'] = Array (
 				'size' => '30',
 				'max' => '255',
 				'eval' => 'required,trim',
-			)
-		),
-		'nameaddons' => Array (
-			'exclude' => 1,
-			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.nameaddons',
-			'config' => Array (
-				'type' => 'input',
-				'size' => '30',
-				'max' => '255',
-				'eval' => 'trim',
 			)
 		),
 		'namevariants' => Array (
@@ -470,10 +472,14 @@ $TCA['tx_hisodat_persons'] = Array (
 		),
 	),
 	'types' => Array (
-		'1' => Array('showitem' => '
-						--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.div1,hidden,gender,firstname,lastname,nameaddons,namevariants,title,date_comment,date_start,date_end,image,description,
-						--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.div2,persons_uids,localities_uids,entities_uids,literature_uids'
-					),
+#		'0' => Array('showitem' => '
+#						--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.div1,hidden,gender,name,namevariants,title,date_comment,date_start,date_end,image,description,
+#						--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.div2,persons_uids,localities_uids,entities_uids,literature_uids'
+#		),
+		'0' => Array('showitem' => '
+						--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.div1,hidden,gender,name,namevariants,title,date_comment,date_start,date_end,image,description,
+						--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.div2,literature_uids'
+		),
 	),
 	'palettes' => Array (
 		'1' => Array('showitem' => '')
@@ -692,9 +698,13 @@ $TCA['tx_hisodat_localities'] = Array (
 		),
 	),
 	'types' => Array (
+#		'0' => Array('showitem' => '
+#				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.div1,hidden,title,namevariants,municipality,field_name,latitude,longitude,date_comment,date_start,date_end,image,description,
+#				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.div2,persons_uids,localities_uids,entities_uids,literature_uids
+#				')
 		'0' => Array('showitem' => '
 				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.div1,hidden,title,namevariants,municipality,field_name,latitude,longitude,date_comment,date_start,date_end,image,description,
-				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.div2,persons_uids,localities_uids,entities_uids,literature_uids
+				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.div2,literature_uids
 				')
 	),
 	'palettes' => Array (
@@ -885,16 +895,19 @@ $TCA['tx_hisodat_entities'] = Array (
 		),
 	),
 	'types' => Array (
-		'1' => Array('showitem' => '
+#		'0' => Array('showitem' => '
+#				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_entities.div1,hidden,title,namevariants,date_comment,date_start,date_end,image,description,
+#				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_entities.div2,persons_uids,localities_uids,entities_uids,literature_uids'),
+		'0' => Array('showitem' => '
 				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_entities.div1,hidden,title,namevariants,date_comment,date_start,date_end,image,description,
-				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_entities.div2,persons_uids,localities_uids,entities_uids,literature_uids'),
+				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_entities.div2,literature_uids'),
 	),
 	'palettes' => Array (
 		'1' => Array('showitem' => '')
 	)
 );
 
-
+/*
 $TCA['tx_hisodat_relations'] = Array (
 	'ctrl' => $TCA['tx_hisodat_relations']['ctrl'],
 	'interface' => Array (
@@ -969,6 +982,7 @@ $TCA['tx_hisodat_relations'] = Array (
 		'1' => Array('showitem' => '')
 	)
 );
+*/
 
 $TCA['tx_hisodat_sources'] = Array (
 	'ctrl' => $TCA['tx_hisodat_sources']['ctrl'],
@@ -1127,15 +1141,23 @@ $TCA['tx_hisodat_sources'] = Array (
 				'minitems' => 0,
 				'maxitems' => 50,
 				'MM' => 'tx_hisodat_mm_src_cat',
+				'wizards' => Array(
+					'_PADDING' => 2,
+					'_VERTICAL' => 1,
+					'add' => Array(
+						'type' => 'script',
+						'title' => 'Neue Kategorie anlegen',
+						'icon' => 'add.gif',
+						'params' => Array(
+							'table'=>'tx_hisodat_categories',
+							'pid' => '###CURRENT_PID###',
+							'setValue' => 'prepend'
+						),
+						'script' => 'wizard_add.php',
+					),
+				),
 			)
 		),
-		/* PROBLEM: There appears to be a problem in class.t3lib_tceforms_inline.php concerning several foreign_selectors for one table => the config for all fields will be in PA and therefore
-		* the attribution with $selConfig['PA']['fieldConf']['config'] is problematic. The foreign_selector will have no items.
-		* Further, there is a bug with useCombination and new records that needs patch 0005772. Additionally, the foreign_unique feature doesn't work as expected.
-		*
-		* SOLUTION: We do it the classic way ii.e records will be chosen from a selectbox in the MM table. No new keywords can be crated within the source record for the moment, they will have to exist beforehand.
-		* Nevertheless we still leave it with a MM table for future solutions to the above problems.
-		*/
 		'keywords_uids' => Array (
 			'exclude' => 1,
 			'l10n_mode' => 'exclude',
@@ -1143,19 +1165,19 @@ $TCA['tx_hisodat_sources'] = Array (
 			'config' => Array (
 				'type' => 'inline',
 				'foreign_table' => 'tx_hisodat_mm_src_key',
-				'foreign_field' => 'uid_src',
-				#'foreign_selector' => 'uid_key',
-				'foreign_sortby' => 'keysort',
-				#'foreign_unique' => 'uid_key',
-				'foreign_label' => 'uid_key',
+				'foreign_field' => 'uid_src', # write the uid of the source into this field
+				'foreign_sortby' => 'keysort', # sorting of keywords within the source record
+				'foreign_label' => 'uid_key', # label of the keyword retrieved by it's uid'
+				'foreign_selector' => 'uid_key', # choose existing keywords from - SEE BUG
+				'foreign_unique' => 'uid_key', # keywords have to be unique for each source - SEE BUG
 				'size' => 5,
 				'minitems' => 0,
 				'maxitems' => 50,
 				'appearance' => Array (
 					'collapseAll' => 1,
 					'expandSingle' =>1,
-					#'useCombination' => 1,
-					#'newRecordLinkPosition' => 'bottom',
+					'useCombination' => 1,
+					'newRecordLinkPosition' => 'bottom',
 				),
 			)
 		),
@@ -1223,12 +1245,17 @@ $TCA['tx_hisodat_sources'] = Array (
 				'foreign_table_field' => 'parenttable',
 				'foreign_sortby' => 'litsort',
 				'foreign_label' => 'uid_foreign',
+				#'foreign_selector' => 'uid_foreign', # BUG: if a relation with useCombination to an alread existing record is created, the combination table stays empty
+				#'foreign_unique' => 'uid_foreign',
+				// therefore a small configuration hack is employed - the select of the intermediate table get's a wizard_add that only appears if the record was saved;
 				'size' => 1,
 				'minitems' => 0,
 				'maxitems' => 50,
 				'appearance' => Array (
 					'collapseAll' => 1,
 					'expandSingle' =>1,
+					#'useCombination' => 1,
+					'newRecordLinkPosition' => 'bottom',
 				),
 			)
 		),
@@ -1275,7 +1302,15 @@ $TCA['tx_hisodat_sources'] = Array (
 			'exclude' => 1,
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_sources.editor_id',
 			'config' => Array (
-				'type' => 'none',
+				'type' => 'select',
+				'items' => Array (
+					Array('',0),
+				),
+				'foreign_table' => 'be_users',
+				'foreign_table_where' => 'AND be_users.usergroup IN (###PAGE_TSCONFIG_IDLIST###) ORDER BY be_users.realName',
+				'size' => 1,
+				'minitems' => 0,
+				'maxitems' => 1,
 			)
 		),
 		'editor_comment' => Array (

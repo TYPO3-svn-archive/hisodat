@@ -23,6 +23,7 @@ $TCA['tx_hisodat_mm_src_key'] = Array (
 			'config' => Array (
 				'type' => 'select',
 				'foreign_table' => 'tx_hisodat_sources',
+				# REMEMBER: This TSConfig marker has to be set for the parent table to be filled in the context of the inline MM table here (TCEFORM.tx_hisodat_sources.keywords_uids)
 				'foreign_table_where' => 'AND tx_hisodat_sources.pid IN (###PAGE_TSCONFIG_IDLIST###) ORDER BY tx_hisodat_sources.signature',
 				'size' => 1,
 				'maxitems' => 1,
@@ -43,6 +44,11 @@ $TCA['tx_hisodat_mm_src_key'] = Array (
 				'type' => 'passthrough',
 			)
 		),
+		'srcsort' => Array (
+			'config' => Array (
+				'type' => 'passthrough',
+			)
+		),
 	),
 	'types' => Array (
 		'0' => Array('showitem' => 'hidden,uid_src,uid_key')
@@ -56,7 +62,7 @@ $TCA['tx_hisodat_mm_src_key'] = Array (
 $TCA['tx_hisodat_mm_src_pers'] = Array (
 	'ctrl' => $TCA['tx_hisodat_mm_src_pers']['ctrl'],
 	'interface' => Array (
-		'showRecordFieldList' => 'hidden,uid_src,uid_pers,issuer,description'
+		'showRecordFieldList' => 'hidden,uid_src,uid_pers,issuer,description,parenttable'
 	),
 	'feInterface' => $TCA['tx_hisodat_mm_src_pers']['feInterface'],
 	'columns' => Array (
@@ -82,10 +88,29 @@ $TCA['tx_hisodat_mm_src_pers'] = Array (
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.xml:tx_hisodat_mm_src_pers.uid_pers',
 			'config' => Array (
 				'type' => 'select',
+				'items' => Array (
+					Array('',0),
+				),
 				'foreign_table' => 'tx_hisodat_persons',
-				'foreign_table_where' => 'AND tx_hisodat_persons.pid IN (###PAGE_TSCONFIG_IDLIST###) ORDER BY tx_hisodat_persons.lastname',
+				'foreign_table_where' => 'AND tx_hisodat_persons.pid IN (###PAGE_TSCONFIG_IDLIST###) ORDER BY tx_hisodat_persons.name',
 				'size' => 1,
 				'maxitems' => 1,
+				'wizards' => Array(
+					'_PADDING' => 2,
+					'_VERTICAL' => 1,
+					'add' => Array(
+						'type' => 'script',
+						'notNewRecords' => 1,
+						'title' => 'Neue Person anlegen',
+						'icon' => 'add.gif',
+						'params' => Array(
+							'table'=>'tx_hisodat_persons',
+							'pid' => '###CURRENT_PID###',
+							'setValue' => 'prepend'
+						),
+						'script' => 'wizard_add.php',
+					),
+				),
 			)
 		),
 		'issuer' => Array (
@@ -107,7 +132,7 @@ $TCA['tx_hisodat_mm_src_pers'] = Array (
 		),
 		'parenttable' => Array (
 			'config' => Array (
-				'type' => 'passthrough',
+				'type' => 'none',
 			)
 		),
 		'perssort' => Array (
@@ -117,7 +142,7 @@ $TCA['tx_hisodat_mm_src_pers'] = Array (
 		),
 	),
 	'types' => Array (
-		'0' => Array('showitem' => 'hidden,uid_src,uid_pers,issuer,description')
+		'0' => Array('showitem' => 'hidden,uid_src,uid_pers,issuer,description,parenttable')
 	),
 	'palettes' => Array (
 		'1' => Array('showitem' => '')
@@ -154,10 +179,29 @@ $TCA['tx_hisodat_mm_src_loc'] = Array (
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.xml:tx_hisodat_mm_src_loc.uid_loc',
 			'config' => Array (
 				'type' => 'select',
+				'items' => Array (
+					Array('',0),
+				),
 				'foreign_table' => 'tx_hisodat_localities',
 				'foreign_table_where' => 'AND tx_hisodat_localities.pid IN (###PAGE_TSCONFIG_IDLIST###) ORDER BY tx_hisodat_localities.title',
 				'size' => 1,
 				'maxitems' => 1,
+				'wizards' => Array(
+					'_PADDING' => 2,
+					'_VERTICAL' => 1,
+					'add' => Array(
+						'type' => 'script',
+						'notNewRecords' => 1,
+						'title' => 'Neue Lokalität anlegen',
+						'icon' => 'add.gif',
+						'params' => Array(
+							'table'=>'tx_hisodat_localities',
+							'pid' => '###CURRENT_PID###',
+							'setValue' => 'prepend'
+						),
+						'script' => 'wizard_add.php',
+					),
+				),
 			)
 		),
 		'issuer' => Array (
@@ -226,10 +270,29 @@ $TCA['tx_hisodat_mm_src_ent'] = Array (
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.xml:tx_hisodat_mm_src_ent.uid_ent',
 			'config' => Array (
 				'type' => 'select',
+				'items' => Array (
+					Array('',0),
+				),
 				'foreign_table' => 'tx_hisodat_entities',
 				'foreign_table_where' => 'AND tx_hisodat_entities.pid IN (###PAGE_TSCONFIG_IDLIST###) ORDER BY tx_hisodat_entities.title',
 				'size' => 1,
 				'maxitems' => 1,
+				'wizards' => Array(
+					'_PADDING' => 2,
+					'_VERTICAL' => 1,
+					'add' => Array(
+						'type' => 'script',
+						'notNewRecords' => 1,
+						'title' => 'Neue Entität anlegen',
+						'icon' => 'add.gif',
+						'params' => Array(
+							'table'=>'tx_hisodat_entities',
+							'pid' => '###CURRENT_PID###',
+							'setValue' => 'prepend'
+						),
+						'script' => 'wizard_add.php',
+					),
+				),
 			)
 		),
 		'issuer' => Array (
@@ -295,10 +358,29 @@ $TCA['tx_hisodat_mm_lit'] = Array (
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.xml:tx_hisodat_mm_lit.uid_foreign',
 			'config' => Array (
 				'type' => 'select',
+				'items' => Array (
+					Array('',0),
+				),
 				'foreign_table' => 'tx_hisodat_literature',
-				'foreign_table_where' => 'AND tx_hisodat_literature.pid IN (###PAGE_TSCONFIG_IDLIST###) ORDER BY tx_hisodat_literature.short',
+				'foreign_table_where' => 'AND tx_hisodat_literature.pid IN (7) ORDER BY tx_hisodat_literature.short',
 				'size' => 1,
 				'maxitems' => 1,
+				'wizards' => Array(
+					'_PADDING' => 2,
+					'_VERTICAL' => 1,
+					'add' => Array(
+						'type' => 'script',
+						'notNewRecords' => 1,
+						'title' => 'Neue Literatur anlegen',
+						'icon' => 'add.gif',
+						'params' => Array(
+							'table'=>'tx_hisodat_literature',
+							'pid' => '###CURRENT_PID###',
+							'setValue' => 'prepend'
+						),
+						'script' => 'wizard_add.php',
+					),
+				),
 			)
 		),
 		'notation' => Array (
@@ -331,7 +413,7 @@ $TCA['tx_hisodat_mm_lit'] = Array (
 	)
 );
 
-
+/*
 $TCA['tx_hisodat_mm_pers_pers'] = Array (
 	'ctrl' => $TCA['tx_hisodat_mm_pers_pers']['ctrl'],
 	'interface' => Array (
@@ -876,4 +958,5 @@ $TCA['tx_hisodat_mm_ent_ent'] = Array (
 		'1' => Array('showitem' => '')
 	)
 );
+*/
 ?>

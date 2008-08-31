@@ -52,6 +52,7 @@ CREATE TABLE tx_hisodat_keywords (
 
 	title varchar(255) DEFAULT '' NOT NULL,
 	description text NOT NULL,
+	sources_uids int(11) unsigned DEFAULT '0' NOT NULL,
 
 	PRIMARY KEY (uid),
 	KEY parent (pid)
@@ -126,9 +127,7 @@ CREATE TABLE tx_hisodat_persons (
 	hidden tinyint(4) DEFAULT '0' NOT NULL,
 
 	gender tinyint(4) DEFAULT '0' NOT NULL,
-	firstname varchar(255) DEFAULT '' NOT NULL,
-	lastname varchar(255) DEFAULT '' NOT NULL,
-	nameaddons varchar(255) DEFAULT '' NOT NULL,
+	name varchar(255) DEFAULT '' NOT NULL,
 	namevariants varchar(255) DEFAULT '' NOT NULL,
 	titles varchar(255) DEFAULT '' NOT NULL,
 	date_comment varchar(255) DEFAULT '' NOT NULL,
@@ -280,6 +279,7 @@ CREATE TABLE tx_hisodat_mm_src_key (
     uid_src int(11) unsigned DEFAULT '0' NOT NULL,
     uid_key int(11) unsigned DEFAULT '0' NOT NULL,
     keysort int(11) unsigned DEFAULT '0' NOT NULL,
+    srcsort int(11) unsigned DEFAULT '0' NOT NULL,
 
     PRIMARY KEY (uid),
     KEY parent (pid)

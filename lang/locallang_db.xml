@@ -250,7 +250,7 @@
             <label index="tx_hisodat_sources">Quellen</label>
 			<label index="tx_hisodat_sources.div1">Quelle</label>
 			<label index="tx_hisodat_sources.div2">Metadaten</label>
-			<label index="tx_hisodat_sources.div3">Relationen</label>
+			<label index="tx_hisodat_sources.div3">Beziehungen</label>
 			<label index="tx_hisodat_sources.div4">Medien</label>
 			<label index="tx_hisodat_sources.div5">Bearbeitung</label>
             <label index="tx_hisodat_sources.signature">Signatur</label>
@@ -263,9 +263,9 @@
             <label index="tx_hisodat_sources.keywords_uids">Schlagworte</label>
             <label index="tx_hisodat_sources.categories_uids">Kategorien</label>
             <label index="tx_hisodat_sources.issuers_uid">Aussteller</label>
-            <label index="tx_hisodat_sources.localities_uids">Lokalitäten</label>
+            <label index="tx_hisodat_sources.localities_uids">Zugeordnete Lokalitäten</label>
             <label index="tx_hisodat_sources.entities_uids">Zugeordnete Entitäten</label>
-            <label index="tx_hisodat_sources.persons_uids">Personen</label>
+            <label index="tx_hisodat_sources.persons_uids">Zugeordnete Personen</label>
             <label index="tx_hisodat_sources.short">Quellenzusammenfassung</label>
             <label index="tx_hisodat_sources.sourcetext">Quellentext</label>
             <label index="tx_hisodat_sources.description">Quellenbeschreibung</label>
@@ -280,7 +280,7 @@
             <label index="tx_hisodat_mm_src_loc.uid_loc">Lokalität</label>
             <label index="tx_hisodat_mm_src_loc.issuer">Ist Austellungsort</label>
             <label index="tx_hisodat_mm_src_loc.description">Weitere Informationen</label>
-            <label index="tx_hisodat_mm_src_pers">Quelle &lt;-&gt; Personen</label>
+            <label index="tx_hisodat_mm_src_pers">Quellen &lt;-&gt; Personen</label>
             <label index="tx_hisodat_mm_src_pers.uid_src">Zugeordnete Quelle</label>
             <label index="tx_hisodat_mm_src_pers.uid_pers">Zugeordnete Person</label>
             <label index="tx_hisodat_mm_src_pers.issuer">Ist Austeller</label>

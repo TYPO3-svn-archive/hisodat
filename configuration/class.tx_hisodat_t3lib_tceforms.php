@@ -33,11 +33,25 @@ class tx_hisodat_t3lib_tceforms {
 
 	function getSingleField_preProcess($table, $field, &$row, $altName, $palette, $extra, $pal, $pObj) {
 
+#		$hisodatTables = '';
+# insert a check to extend the whitelist only for the hisodat tables
+
 		// extend the whitelist of TCA properties that can be overriden from PageTSConfig
 		$pObj->allowOverrideMatrix['select'][] = 'wizards';
 		$pObj->allowOverrideMatrix['select'][] = 'foreign_table';
 		$pObj->allowOverrideMatrix['select'][] = 'foreign_table_where';
 
+		// editor feature: only execute if the current field is 'editor' and if this field has no value yet
+		if ($field == 'editor_id' && $table == 'tx_hisodat_sources' && !$row['editor']) {
+
+			// get TSconfig-settings for the field
+			$fieldTSconfig = $pObj->setTSconfig($table, $row, $field);
+
+			// check if the current user is in the configured editor list and if yes preset the value
+			if (t3lib_div::inList($fieldTSconfig['PAGE_TSCONFIG_IDLIST'], $GLOBALS['BE_USER']->user['usergroup'])) {
+				$row[$field] = $GLOBALS['BE_USER']->user['uid'];
+			}
+		}
 	}
 
 /*

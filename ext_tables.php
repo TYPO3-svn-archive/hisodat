@@ -127,13 +127,11 @@ t3lib_extMgm::addLLrefForTCAdescr('tx_hisodat_persons','EXT:hisodat/lang/localla
 $TCA['tx_hisodat_persons'] = Array (
 	'ctrl' => Array (
 		'title' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons',
-		'label' => 'lastname',
-		'label_alt' => 'firstname,nameaddons,namevariants',
-		'label_alt_force' => 1,
+		'label' => 'name',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
-		'default_sortby' => 'ORDER BY lastname',
+		'default_sortby' => 'ORDER BY name',
 		'delete' => 'deleted',
 		'enablecolumns' => Array (
 			'disabled' => 'hidden',
@@ -188,6 +186,7 @@ $TCA['tx_hisodat_entities'] = Array (
 );
 
 // relations table: relations between persons, institutions, localities
+/*
 t3lib_extMgm::allowTableOnStandardPages('tx_hisodat_relations');
 t3lib_extMgm::addLLrefForTCAdescr('tx_hisodat_relations','EXT:hisodat/lang/locallang_csh_relations.php');
 $TCA['tx_hisodat_relations'] = Array (
@@ -207,6 +206,7 @@ $TCA['tx_hisodat_relations'] = Array (
 		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_hisodat_relations.gif',
 	),
 );
+*/
 
 // sources table: the hisodat source records
 t3lib_extMgm::allowTableOnStandardPages('tx_hisodat_sources');
@@ -232,11 +232,14 @@ $TCA['tx_hisodat_sources'] = Array (
 
 
 ### MM TABLES ###
-/*
+
+/* classic TYPO3 MM tables that are not directly edited and therefore need no table configuration
 $TCA['tx_hisodat_mm_src_cat'] = Array ();
 $TCA['tx_hisodat_mm_src_src'] = Array ();
-=> classic TYPO3 MM table that is not edited directly
 */
+
+/* IRRE MM tables that include additional information like is_issuer */
+
 t3lib_extMgm::allowTableOnStandardPages('tx_hisodat_mm_src_key');
 $TCA['tx_hisodat_mm_src_key'] = Array (
 	'ctrl' => Array (
@@ -326,7 +329,7 @@ $TCA['tx_hisodat_mm_lit'] = Array (
 		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_hisodat_records.gif',
 	),
 );
-
+/*
 t3lib_extMgm::allowTableOnStandardPages('tx_hisodat_mm_loc_loc');
 $TCA['tx_hisodat_mm_loc_loc'] = Array (
 	'ctrl' => Array (
@@ -434,4 +437,5 @@ $TCA['tx_hisodat_mm_ent_pers'] = Array (
 		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_hisodat_records.gif',
 	),
 );
+*/
 ?>
