@@ -120,16 +120,19 @@
             <label index="tx_hisodat_mm_src_loc.uid_src">Source</label>
             <label index="tx_hisodat_mm_src_loc.uid_loc">Locality</label>
             <label index="tx_hisodat_mm_src_loc.issuer">Was created at this locality</label>
+            <label index="tx_hisodat_mm_src_loc.receiver">Is received at this locality</label>
             <label index="tx_hisodat_mm_src_loc.description">Additional Information</label>
             <label index="tx_hisodat_mm_src_pers">Sources &lt;-&gt; Persons</label>
             <label index="tx_hisodat_mm_src_pers.uid_src">Related Source</label>
             <label index="tx_hisodat_mm_src_pers.uid_pers">Related Person</label>
             <label index="tx_hisodat_mm_src_pers.issuer">Is Issuer</label>
+            <label index="tx_hisodat_mm_src_pers.receiver">Is Receiver</label>
             <label index="tx_hisodat_mm_src_pers.description">Additional information</label>
             <label index="tx_hisodat_mm_src_ent">Sources &lt;-&gt; Entities</label>
             <label index="tx_hisodat_mm_src_ent.uid_src">Related Source</label>
             <label index="tx_hisodat_mm_src_ent.uid_ent">Related Entity</label>
             <label index="tx_hisodat_mm_src_ent.issuer">Is Issuer</label>
+            <label index="tx_hisodat_mm_src_pers.receiver">Is Receiver</label>
             <label index="tx_hisodat_mm_src_ent.description">Additional information</label>
             <label index="tx_hisodat_mm_lit">Sources / Persons / Localities &lt;-&gt; Literature</label>
             <label index="tx_hisodat_mm_lit.createnew">New literature record</label>
@@ -169,9 +172,11 @@
         </languageKey>
         <languageKey index="de" type="array">
             <label index="tt_content.list_type_pi1">Onlinedatenbank für historische Quellen</label>
+
             <label index="tx_hisodat_archives">Archive</label>
             <label index="tx_hisodat_archives.title">Archivname</label>
             <label index="tx_hisodat_archives.description">Archivinformationen</label>
+
             <label index="tx_hisodat_literature">Literatur</label>
             <label index="tx_hisodat_literature.title">Titel</label>
             <label index="tx_hisodat_literature.author">Autor</label>
@@ -180,16 +185,21 @@
             <label index="tx_hisodat_literature.published">Erschienen (Ort, Jahr)</label>
             <label index="tx_hisodat_literature.series">Reihe</label>
             <label index="tx_hisodat_literature.short">Kurzform</label>
+
             <label index="tx_hisodat_categories">Kategorien</label>
             <label index="tx_hisodat_categories.title">Kategoriename</label>
             <label index="tx_hisodat_categories.parent_category">Übergeordnete Kategorie</label>
             <label index="tx_hisodat_categories.description">Beschreibung</label>
+
             <label index="tx_hisodat_keywords">Schlagworte</label>
             <label index="tx_hisodat_keywords.title">Schlagwort</label>
             <label index="tx_hisodat_keywords.description">Beschreibung</label>
+
             <label index="tx_hisodat_persons">Personen</label>
-            <label index="tx_hisodat_persons.div1">Personen</label>
-            <label index="tx_hisodat_persons.div2">Beziehungen</label>
+            <label index="tx_hisodat_persons.div1">Person</label>
+            <label index="tx_hisodat_persons.div2">Lebensdaten</label>
+            <label index="tx_hisodat_persons.div3">Beschreibung</label>
+            <label index="tx_hisodat_persons.div4">Media</label>
             <label index="tx_hisodat_persons.namevariants">Namensvarianten</label>
             <label index="tx_hisodat_persons.gender">Geschlecht</label>
             <label index="tx_hisodat_persons.gender.I.0">männlich</label>
@@ -206,9 +216,12 @@
             <label index="tx_hisodat_persons.entities_uids">Zugeordnete Entitäten</label>
             <label index="tx_hisodat_persons.localities_uids">Zugeordnete Lokalitäten</label>
             <label index="tx_hisodat_persons.literature_uids">Literaturhinweise</label>
+
             <label index="tx_hisodat_entities">Entitäten</label>
             <label index="tx_hisodat_entities.div1">Entität</label>
-            <label index="tx_hisodat_entities.div2">Beziehungen</label>
+            <label index="tx_hisodat_entities.div2">Datierung</label>
+            <label index="tx_hisodat_entities.div3">Beschreibung</label>
+            <label index="tx_hisodat_entities.div4">Media</label>
             <label index="tx_hisodat_entities.title">Name</label>
             <label index="tx_hisodat_entities.namevariants">Namensvarianten</label>
             <label index="tx_hisodat_entities.date_comment">Zeitraum der Existenz</label>
@@ -219,9 +232,13 @@
             <label index="tx_hisodat_entities.localities_uids">Zugeordnete Lokalitäten</label>
             <label index="tx_hisodat_entities.entities_uids">Zugeordnete Entitäten</label>
             <label index="tx_hisodat_entities.literature_uids">Literaturhinweise</label>
+
             <label index="tx_hisodat_localities">Lokalitäten</label>
             <label index="tx_hisodat_localities.div1">Lokalität</label>
-            <label index="tx_hisodat_localities.div2">Beziehungen</label>
+            <label index="tx_hisodat_localities.div2">Geographie</label>
+            <label index="tx_hisodat_localities.div3">Datierung</label>
+            <label index="tx_hisodat_localities.div4">Beschreibung</label>
+            <label index="tx_hisodat_localities.div5">Media</label>
             <label index="tx_hisodat_localities.title">Lokalität</label>
             <label index="tx_hisodat_localities.namevariants">Namensvarianten</label>
             <label index="tx_hisodat_localities.municipality">Heutige Gemeinde</label>
@@ -236,6 +253,7 @@
             <label index="tx_hisodat_localities.localities_uids">Zugeordnete Lokalitäten</label>
             <label index="tx_hisodat_localities.entities_uids">Zugeordnete Entitäten</label>
             <label index="tx_hisodat_localities.literature_uids">Literaturhinweise</label>
+
             <label index="tx_hisodat_relations">Relationsarten</label>
             <label index="tx_hisodat_relations.title">Name der Beziehung</label>
             <label index="tx_hisodat_relations.parent_relation">Übergeordnete Beziehungsart</label>
@@ -247,6 +265,7 @@
             <label index="tx_hisodat_relations.relationtype.I.4">Entität = Lokalität</label>
             <label index="tx_hisodat_relations.relationtype.I.5">Entität = Entität</label>
             <label index="tx_hisodat_relations.description">Relationshinweise</label>
+
             <label index="tx_hisodat_sources">Quellen</label>
 			<label index="tx_hisodat_sources.div1">Quelle</label>
 			<label index="tx_hisodat_sources.div2">Metadaten</label>
@@ -272,54 +291,68 @@
             <label index="tx_hisodat_sources.sources_uids">In Verbindung stehende Quellen</label>
             <label index="tx_hisodat_sources.editor_id">Bearbeiter/in</label>
             <label index="tx_hisodat_sources.editor_comment">Bearbeitungshinweise</label>
+
             <label index="tx_hisodat_mm_src_key">Quellen &lt;-&gt; Schlagworte</label>
             <label index="tx_hisodat_mm_src_key.uid_src">Quelle</label>
             <label index="tx_hisodat_mm_src_key.uid_key">Schlagwort</label>
+
             <label index="tx_hisodat_mm_src_loc">Quellen &lt;-&gt; Lokalitäten</label>
             <label index="tx_hisodat_mm_src_loc.uid_src">Quelle</label>
             <label index="tx_hisodat_mm_src_loc.uid_loc">Lokalität</label>
             <label index="tx_hisodat_mm_src_loc.issuer">Ist Austellungsort</label>
+            <label index="tx_hisodat_mm_src_loc.receiver">Ist Empfangsort</label>
             <label index="tx_hisodat_mm_src_loc.description">Weitere Informationen</label>
+
             <label index="tx_hisodat_mm_src_pers">Quellen &lt;-&gt; Personen</label>
             <label index="tx_hisodat_mm_src_pers.uid_src">Zugeordnete Quelle</label>
             <label index="tx_hisodat_mm_src_pers.uid_pers">Zugeordnete Person</label>
             <label index="tx_hisodat_mm_src_pers.issuer">Ist Austeller</label>
+            <label index="tx_hisodat_mm_src_pers.receiver">Ist Empfänger</label>
             <label index="tx_hisodat_mm_src_pers.description">Weitere Informationen</label>
+
             <label index="tx_hisodat_mm_src_ent">Quellen &lt;-&gt; Entitäten</label>
             <label index="tx_hisodat_mm_src_ent.uid_src">Zugeordnete Quelle</label>
             <label index="tx_hisodat_mm_src_ent.uid_ent">Zugeordnete Entität</label>
             <label index="tx_hisodat_mm_src_ent.issuer">Ist Aussteller</label>
+            <label index="tx_hisodat_mm_src_ent.receiver">Ist Empfänger</label>
             <label index="tx_hisodat_mm_src_ent.description">Weitere Informationen</label>
+
             <label index="tx_hisodat_mm_lit">Quellen / Personen / Lokalitäten / Entitäten &lt;-&gt; Literaturhinweise</label>
             <label index="tx_hisodat_mm_lit.createnew">Einen neuen Literaturdatensatz anglegen</label>
             <label index="tx_hisodat_mm_lit.uid_local">Dieser Datensatz</label>
             <label index="tx_hisodat_mm_lit.uid_foreign">Literaturhinweis</label>
             <label index="tx_hisodat_mm_lit.notation">Band / Seite</label>
+
             <label index="tx_hisodat_mm_pers_loc">Personen &lt;-&gt; Lokalitäten</label>
             <label index="tx_hisodat_mm_pers_loc.relations_uids">Beziehungen</label>
             <label index="tx_hisodat_mm_pers_loc.uid_pers">Zugeordnete Person</label>
             <label index="tx_hisodat_mm_pers_loc.uid_loc">Zugeordnete Lokalität</label>
             <label index="tx_hisodat_mm_pers_loc.description">Weitere Informationen</label>
+
             <label index="tx_hisodat_mm_pers_pers">Personen &lt;-&gt; Personen</label>
             <label index="tx_hisodat_mm_pers_pers.relations_uids">Beziehungen</label>
             <label index="tx_hisodat_mm_pers_pers.uid_local">Zugeordnete Person</label>
             <label index="tx_hisodat_mm_pers_pers.uid_foreign">Zugeordnete Person</label>
             <label index="tx_hisodat_mm_pers_pers.description">Weitere Informationen</label>
+
             <label index="tx_hisodat_mm_loc_loc">Lokalitäten &lt;-&gt; Lokalitäten</label>
             <label index="tx_hisodat_mm_loc_loc.relations_uids">Beziehungen</label>
             <label index="tx_hisodat_mm_loc_loc.uid_local">Zugeordnete Lokalität</label>
             <label index="tx_hisodat_mm_loc_loc.uid_foreign">Zugeordnete Lokalität</label>
             <label index="tx_hisodat_mm_loc_loc.description">Weitere Informationen</label>
+
             <label index="tx_hisodat_mm_ent_loc">Entitäten &lt;-&gt; Lokalitäten</label>
             <label index="tx_hisodat_mm_ent_loc.relations_uids">Beziehungen</label>
             <label index="tx_hisodat_mm_ent_loc.uid_ent">Zugeordnete Entität</label>
             <label index="tx_hisodat_mm_ent_loc.uid_loc">Zugeordnete Lokalität</label>
             <label index="tx_hisodat_mm_ent_loc.description">Weitere Informationen</label>
+
             <label index="tx_hisodat_mm_ent_pers">Personen &lt;-&gt; Lokalitäten</label>
             <label index="tx_hisodat_mm_ent_pers.relations_uids">Beziehungen</label>
             <label index="tx_hisodat_mm_ent_pers.uid_pers">Zugeordnete Person</label>
             <label index="tx_hisodat_mm_ent_pers.uid_ent">Zugeordnete Entität</label>
             <label index="tx_hisodat_mm_ent_pers.description">Weitere Informationen</label>
+
             <label index="tx_hisodat_mm_ent_ent">Entitäten &lt;-&gt; Entitäten</label>
             <label index="tx_hisodat_mm_ent_ent.relations_uids">Beziehungen</label>
             <label index="tx_hisodat_mm_ent_ent.uid_local">Zugeordnete Entität</label>

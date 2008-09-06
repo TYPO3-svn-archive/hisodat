@@ -62,7 +62,7 @@ $TCA['tx_hisodat_mm_src_key'] = Array (
 $TCA['tx_hisodat_mm_src_pers'] = Array (
 	'ctrl' => $TCA['tx_hisodat_mm_src_pers']['ctrl'],
 	'interface' => Array (
-		'showRecordFieldList' => 'hidden,uid_src,uid_pers,issuer,description,parenttable'
+		'showRecordFieldList' => 'hidden,uid_src,uid_pers,issuer,receiver,description,parenttable'
 	),
 	'feInterface' => $TCA['tx_hisodat_mm_src_pers']['feInterface'],
 	'columns' => Array (
@@ -88,14 +88,14 @@ $TCA['tx_hisodat_mm_src_pers'] = Array (
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.xml:tx_hisodat_mm_src_pers.uid_pers',
 			'config' => Array (
 				'type' => 'select',
-				'items' => Array (
+/*				'items' => Array (
 					Array('',0),
-				),
+				),*/
 				'foreign_table' => 'tx_hisodat_persons',
 				'foreign_table_where' => 'AND tx_hisodat_persons.pid IN (###PAGE_TSCONFIG_IDLIST###) ORDER BY tx_hisodat_persons.name',
 				'size' => 1,
 				'maxitems' => 1,
-				'wizards' => Array(
+/*				'wizards' => Array(
 					'_PADDING' => 2,
 					'_VERTICAL' => 1,
 					'add' => Array(
@@ -110,12 +110,20 @@ $TCA['tx_hisodat_mm_src_pers'] = Array (
 						),
 						'script' => 'wizard_add.php',
 					),
-				),
+				),*/
 			)
 		),
 		'issuer' => Array (
 			'exclude' => 1,
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.xml:tx_hisodat_mm_src_pers.issuer',
+			'config' => Array (
+				'type' => 'check',
+				'default' => '0',
+			)
+		),
+		'receiver' => Array (
+			'exclude' => 1,
+			'label' => 'LLL:EXT:hisodat/lang/locallang_db.xml:tx_hisodat_mm_src_pers.receiver',
 			'config' => Array (
 				'type' => 'check',
 				'default' => '0',
@@ -142,7 +150,7 @@ $TCA['tx_hisodat_mm_src_pers'] = Array (
 		),
 	),
 	'types' => Array (
-		'0' => Array('showitem' => 'hidden,uid_src,uid_pers,issuer,description,parenttable')
+		'0' => Array('showitem' => 'hidden,uid_src,uid_pers,issuer,receiver,description,parenttable')
 	),
 	'palettes' => Array (
 		'1' => Array('showitem' => '')
@@ -153,7 +161,7 @@ $TCA['tx_hisodat_mm_src_pers'] = Array (
 $TCA['tx_hisodat_mm_src_loc'] = Array (
 	'ctrl' => $TCA['tx_hisodat_mm_src_loc']['ctrl'],
 	'interface' => Array (
-		'showRecordFieldList' => 'hidden,uid_src,uid_loc,issuer,description'
+		'showRecordFieldList' => 'hidden,uid_src,uid_loc,issuer,receiver,description'
 	),
 	'feInterface' => $TCA['tx_hisodat_mm_src_loc']['feInterface'],
 	'columns' => Array (
@@ -179,13 +187,16 @@ $TCA['tx_hisodat_mm_src_loc'] = Array (
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.xml:tx_hisodat_mm_src_loc.uid_loc',
 			'config' => Array (
 				'type' => 'select',
+/*
 				'items' => Array (
 					Array('',0),
 				),
+*/
 				'foreign_table' => 'tx_hisodat_localities',
 				'foreign_table_where' => 'AND tx_hisodat_localities.pid IN (###PAGE_TSCONFIG_IDLIST###) ORDER BY tx_hisodat_localities.title',
 				'size' => 1,
 				'maxitems' => 1,
+/*
 				'wizards' => Array(
 					'_PADDING' => 2,
 					'_VERTICAL' => 1,
@@ -202,11 +213,20 @@ $TCA['tx_hisodat_mm_src_loc'] = Array (
 						'script' => 'wizard_add.php',
 					),
 				),
+*/
 			)
 		),
 		'issuer' => Array (
 			'exclude' => 1,
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.xml:tx_hisodat_mm_src_loc.issuer',
+			'config' => Array (
+				'type' => 'check',
+				'default' => '0',
+			)
+		),
+		'receiver' => Array (
+			'exclude' => 1,
+			'label' => 'LLL:EXT:hisodat/lang/locallang_db.xml:tx_hisodat_mm_src_loc.receiver',
 			'config' => Array (
 				'type' => 'check',
 				'default' => '0',
@@ -233,7 +253,7 @@ $TCA['tx_hisodat_mm_src_loc'] = Array (
 		),
 	),
 	'types' => Array (
-		'0' => Array('showitem' => 'hidden,uid_src,uid_loc,issuer,description')
+		'0' => Array('showitem' => 'hidden,uid_src,uid_loc,issuer,receiver,description')
 	),
 	'palettes' => Array (
 		'1' => Array('showitem' => '')
@@ -244,7 +264,7 @@ $TCA['tx_hisodat_mm_src_loc'] = Array (
 $TCA['tx_hisodat_mm_src_ent'] = Array (
 	'ctrl' => $TCA['tx_hisodat_mm_src_ent']['ctrl'],
 	'interface' => Array (
-		'showRecordFieldList' => 'hidden,uid_src,uid_ent,issuer,description'
+		'showRecordFieldList' => 'hidden,uid_src,uid_ent,issuer,receiver,description'
 	),
 	'feInterface' => $TCA['tx_hisodat_mm_src_ent']['feInterface'],
 	'columns' => Array (
@@ -270,14 +290,14 @@ $TCA['tx_hisodat_mm_src_ent'] = Array (
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.xml:tx_hisodat_mm_src_ent.uid_ent',
 			'config' => Array (
 				'type' => 'select',
-				'items' => Array (
+/*				'items' => Array (
 					Array('',0),
-				),
+				),*/
 				'foreign_table' => 'tx_hisodat_entities',
 				'foreign_table_where' => 'AND tx_hisodat_entities.pid IN (###PAGE_TSCONFIG_IDLIST###) ORDER BY tx_hisodat_entities.title',
 				'size' => 1,
 				'maxitems' => 1,
-				'wizards' => Array(
+/*				'wizards' => Array(
 					'_PADDING' => 2,
 					'_VERTICAL' => 1,
 					'add' => Array(
@@ -292,12 +312,20 @@ $TCA['tx_hisodat_mm_src_ent'] = Array (
 						),
 						'script' => 'wizard_add.php',
 					),
-				),
+				),*/
 			)
 		),
 		'issuer' => Array (
 			'exclude' => 1,
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.xml:tx_hisodat_mm_src_ent.issuer',
+			'config' => Array (
+				'type' => 'check',
+				'default' => '0',
+			)
+		),
+		'receiver' => Array (
+			'exclude' => 1,
+			'label' => 'LLL:EXT:hisodat/lang/locallang_db.xml:tx_hisodat_mm_src_ent.receiver',
 			'config' => Array (
 				'type' => 'check',
 				'default' => '0',
@@ -324,7 +352,7 @@ $TCA['tx_hisodat_mm_src_ent'] = Array (
 		),
 	),
 	'types' => Array (
-		'0' => Array('showitem' => 'hidden,uid_src,uid_ent,issuer,description')
+		'0' => Array('showitem' => 'hidden,uid_src,uid_ent,issuer,receiver,description')
 	),
 	'palettes' => Array (
 		'1' => Array('showitem' => '')

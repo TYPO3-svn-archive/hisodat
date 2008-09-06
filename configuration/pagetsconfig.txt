@@ -1,20 +1,26 @@
 # configuration file with default PageTSConfig settings for the extension tx_hisodat
 TCEFORM {
+	# this sets the page from where to select the parent categories
 	tx_hisodat_categories {
 		parent_category.PAGE_TSCONFIG_IDLIST < tx_hisodat.CATEGORIES_PIDLIST
 	}
 
-#	tx_hisodat_relations {
-#		parent_relation.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
-#	}
-
+	# remember: this TSconfig sets the markers for the foreign_table_where queries in the IRRE mm tables
 	tx_hisodat_sources {
+
+			# these two are for the conventional select fields
 		archive_uid.PAGE_TSCONFIG_IDLIST < tx_hisodat.ARCHIVES_PIDLIST
 		categories_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.CATEGORIES_PIDLIST
+
+			# these are for the IRRE foreign selectors
 		keywords_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.KEYWORDS_PIDLIST
 		literature_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.LITERATURE_PIDLIST
+		localities_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.LOCALITIES_PIDLIST
+		persons_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.PERSONS_PIDLIST
+		entities_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.ENTITIES_PIDLIST
 	}
 
+	# this sets the marker from the keyword side - is this really needed?
 	tx_hisodat_keywords {
 		sources_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.SOURCES_PIDLIST
 	}
@@ -39,45 +45,49 @@ TCEFORM {
 		uid_foreign.PAGE_TSCONFIG_IDLIST < tx_hisodat.LITERATURE_PIDLIST
 	}
 
-	tx_hisodat_mm_pers_pers {
-		uid_local.PAGE_TSCONFIG_IDLIST < tx_hisodat.PERSONS_PIDLIST
-		uid_foreign.PAGE_TSCONFIG_IDLIST < tx_hisodat.PERSONS_PIDLIST
-		relations_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
-	}
+#	tx_hisodat_relations {
+#		parent_relation.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
+#	}
+#
+#	tx_hisodat_mm_pers_pers {
+#		uid_local.PAGE_TSCONFIG_IDLIST < tx_hisodat.PERSONS_PIDLIST
+#		uid_foreign.PAGE_TSCONFIG_IDLIST < tx_hisodat.PERSONS_PIDLIST
+#		relations_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
+#	}
 
-	tx_hisodat_mm_pers_loc {
-		uid_pers.PAGE_TSCONFIG_IDLIST < tx_hisodat.PERSONS_PIDLIST
-		uid_loc.PAGE_TSCONFIG_IDLIST < tx_hisodat.LOCALITIES_PIDLIST
-		relations_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
-	}
+#	tx_hisodat_mm_pers_loc {
+#		uid_pers.PAGE_TSCONFIG_IDLIST < tx_hisodat.PERSONS_PIDLIST
+#		uid_loc.PAGE_TSCONFIG_IDLIST < tx_hisodat.LOCALITIES_PIDLIST
+#		relations_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
+#	}
 
-	tx_hisodat_mm_loc_loc {
-		uid_local.PAGE_TSCONFIG_IDLIST < tx_hisodat.LOCALITIES_PIDLIST
-		uid_foreign.PAGE_TSCONFIG_IDLIST < tx_hisodat.LOCALITIES_PIDLIST
-		relations_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
-	}
+#	tx_hisodat_mm_loc_loc {
+#		uid_local.PAGE_TSCONFIG_IDLIST < tx_hisodat.LOCALITIES_PIDLIST
+#		uid_foreign.PAGE_TSCONFIG_IDLIST < tx_hisodat.LOCALITIES_PIDLIST
+#		relations_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
+#	}
 
-	tx_hisodat_mm_ent_ent {
-		uid_local.PAGE_TSCONFIG_IDLIST < tx_hisodat.ENTITIES_PIDLIST
-		uid_foreign.PAGE_TSCONFIG_IDLIST < tx_hisodat.ENTITIES_PIDLIST
-		relations_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
-	}
+#	tx_hisodat_mm_ent_ent {
+#		uid_local.PAGE_TSCONFIG_IDLIST < tx_hisodat.ENTITIES_PIDLIST
+#		uid_foreign.PAGE_TSCONFIG_IDLIST < tx_hisodat.ENTITIES_PIDLIST
+#		relations_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
+#	}
 
-	tx_hisodat_mm_ent_pers {
-		uid_pers.PAGE_TSCONFIG_IDLIST < tx_hisodat.PERSONS_PIDLIST
-		uid_ent.PAGE_TSCONFIG_IDLIST < tx_hisodat.ENTITIES_PIDLIST
-		relations_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
-	}
+#	tx_hisodat_mm_ent_pers {
+#		uid_pers.PAGE_TSCONFIG_IDLIST < tx_hisodat.PERSONS_PIDLIST
+#		uid_ent.PAGE_TSCONFIG_IDLIST < tx_hisodat.ENTITIES_PIDLIST
+#		relations_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
+#	}
 
-	tx_hisodat_mm_ent_loc {
-		uid_ent.PAGE_TSCONFIG_IDLIST < tx_hisodat.ENTITIES_PIDLIST
-		uid_loc.PAGE_TSCONFIG_IDLIST < tx_hisodat.LOCALITIES_PIDLIST
-		relations_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
-	}
+#	tx_hisodat_mm_ent_loc {
+#		uid_ent.PAGE_TSCONFIG_IDLIST < tx_hisodat.ENTITIES_PIDLIST
+#		uid_loc.PAGE_TSCONFIG_IDLIST < tx_hisodat.LOCALITIES_PIDLIST
+#		relations_uids.PAGE_TSCONFIG_IDLIST < tx_hisodat.RELATIONS_PIDLIST
+#	}
 }
 
 # the ff_ and mm_ tables are unnecessary in list view (has to be in one line)
-#mod.web_list.hideTables := addToList(tx_hisodat_mm_src_key,tx_hisodat_mm_src_pers,tx_hisodat_mm_src_loc,tx_hisodat_mm_src_ent,tx_hisodat_mm_lit,tx_hisodat_mm_pers_pers,tx_hisodat_mm_pers_loc,tx_hisodat_mm_loc_loc,tx_hisodat_mm_ent_pers,tx_hisodat_mm_ent_loc,tx_hisodat_mm_ent_ent)
+# mod.web_list.hideTables := addToList(tx_hisodat_mm_src_key,tx_hisodat_mm_src_pers,tx_hisodat_mm_src_loc,tx_hisodat_mm_src_ent,tx_hisodat_mm_lit,tx_hisodat_mm_pers_pers,tx_hisodat_mm_pers_loc,tx_hisodat_mm_loc_loc,tx_hisodat_mm_ent_pers,tx_hisodat_mm_ent_loc,tx_hisodat_mm_ent_ent)
 
 # RTE configuration
 RTE.config.tx_hisodat_sources.description.proc.overruleMode=ts_css

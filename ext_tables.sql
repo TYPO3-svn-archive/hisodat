@@ -20,23 +20,23 @@ CREATE TABLE tx_hisodat_archives (
 #
 # Table structure for table 'tx_hisodat_categories'
 #
-CREATE TABLE tx_hisodat_categories (
-	uid int(11) NOT NULL auto_increment,
-	pid int(11) DEFAULT '0' NOT NULL,
-	tstamp int(11) DEFAULT '0' NOT NULL,
-	crdate int(11) DEFAULT '0' NOT NULL,
-	cruser_id int(11) DEFAULT '0' NOT NULL,
-	sorting int(10) DEFAULT '0' NOT NULL,
-	deleted tinyint(4) DEFAULT '0' NOT NULL,
-	hidden tinyint(4) DEFAULT '0' NOT NULL,
+#CREATE TABLE tx_hisodat_categories (
+#	uid int(11) NOT NULL auto_increment,
+#	pid int(11) DEFAULT '0' NOT NULL,
+#	tstamp int(11) DEFAULT '0' NOT NULL,
+#	crdate int(11) DEFAULT '0' NOT NULL,
+#	cruser_id int(11) DEFAULT '0' NOT NULL,
+#	sorting int(10) DEFAULT '0' NOT NULL,
+#	deleted tinyint(4) DEFAULT '0' NOT NULL,
+#	hidden tinyint(4) DEFAULT '0' NOT NULL,
 
-	title tinytext NOT NULL,
-	parent_category int(11) DEFAULT '0' NOT NULL,
-	description text NOT NULL,
+#	title tinytext NOT NULL,
+#	parent_category int(11) DEFAULT '0' NOT NULL,
+#	description text NOT NULL,
 
-	PRIMARY KEY (uid),
-	KEY parent (pid)
-);
+#	PRIMARY KEY (uid),
+#	KEY parent (pid)
+#);
 
 #
 # Table structure for table 'tx_hisodat_keywords'
@@ -52,7 +52,6 @@ CREATE TABLE tx_hisodat_keywords (
 
 	title varchar(255) DEFAULT '' NOT NULL,
 	description text NOT NULL,
-	sources_uids int(11) unsigned DEFAULT '0' NOT NULL,
 
 	PRIMARY KEY (uid),
 	KEY parent (pid)
@@ -175,23 +174,23 @@ CREATE TABLE tx_hisodat_entities (
 #
 # Table structure for table 'tx_hisodat_relations'
 #
-CREATE TABLE tx_hisodat_relations (
-	uid int(11) NOT NULL auto_increment,
-	pid int(11) DEFAULT '0' NOT NULL,
-	tstamp int(11) DEFAULT '0' NOT NULL,
-	crdate int(11) DEFAULT '0' NOT NULL,
-	cruser_id int(11) DEFAULT '0' NOT NULL,
-	deleted tinyint(4) DEFAULT '0' NOT NULL,
-	hidden tinyint(4) DEFAULT '0' NOT NULL,
-
-	title varchar(255) DEFAULT '' NOT NULL,
-	parent_relation int(11) DEFAULT '0' NOT NULL,
-	relationtype tinyint(4) DEFAULT '0' NOT NULL,
-	description varchar(255) DEFAULT '' NOT NULL,
-
-	PRIMARY KEY (uid),
-	KEY parent (pid)
-);
+#CREATE TABLE tx_hisodat_relations (
+#	uid int(11) NOT NULL auto_increment,
+#	pid int(11) DEFAULT '0' NOT NULL,
+#	tstamp int(11) DEFAULT '0' NOT NULL,
+#	crdate int(11) DEFAULT '0' NOT NULL,
+#	cruser_id int(11) DEFAULT '0' NOT NULL,
+#	deleted tinyint(4) DEFAULT '0' NOT NULL,
+#	hidden tinyint(4) DEFAULT '0' NOT NULL,
+#
+#	title varchar(255) DEFAULT '' NOT NULL,
+#	parent_relation int(11) DEFAULT '0' NOT NULL,
+#	relationtype tinyint(4) DEFAULT '0' NOT NULL,
+#	description varchar(255) DEFAULT '' NOT NULL,
+#
+#	PRIMARY KEY (uid),
+#	KEY parent (pid)
+#);
 
 #
 # Table structure for table 'tx_hisodat_sources'
@@ -254,15 +253,15 @@ CREATE TABLE tx_hisodat_mm_src_src (
 #
 # Table structure for table 'tx_hisodat_mm_src_cat'
 #
-CREATE TABLE tx_hisodat_mm_src_cat (
-	uid_local int(11) DEFAULT '0' NOT NULL,
-	uid_foreign int(11) DEFAULT '0' NOT NULL,
-	tablenames varchar(30) DEFAULT '' NOT NULL,
-	sorting int(11) DEFAULT '0' NOT NULL,
+#CREATE TABLE tx_hisodat_mm_src_cat (
+#	uid_local int(11) DEFAULT '0' NOT NULL,
+#	uid_foreign int(11) DEFAULT '0' NOT NULL,
+#	tablenames varchar(30) DEFAULT '' NOT NULL,
+#	sorting int(11) DEFAULT '0' NOT NULL,
 
-	KEY uid_src (uid_local),
-	KEY uid_cat (uid_foreign)
-);
+#	KEY uid_src (uid_local),
+#	KEY uid_cat (uid_foreign)
+#);
 
 #
 # Table structure for table 'tx_hisodat_mm_src_key'
@@ -300,6 +299,7 @@ CREATE TABLE tx_hisodat_mm_src_pers (
     uid_src int(11) unsigned DEFAULT '0' NOT NULL,
     uid_pers int(11) unsigned DEFAULT '0' NOT NULL,
     issuer tinyint(4) DEFAULT '0' NOT NULL,
+    receiver tinyint(4) DEFAULT '0' NOT NULL,
     description text NOT NULL,
 	parenttable varchar(255) DEFAULT '' NOT NULL,
     perssort int(11) unsigned DEFAULT '0' NOT NULL,
@@ -323,6 +323,7 @@ CREATE TABLE tx_hisodat_mm_src_ent (
     uid_src int(11) unsigned DEFAULT '0' NOT NULL,
     uid_ent int(11) unsigned DEFAULT '0' NOT NULL,
     issuer tinyint(4) DEFAULT '0' NOT NULL,
+    receiver tinyint(4) DEFAULT '0' NOT NULL,
     description text NOT NULL,
 	parenttable varchar(255) DEFAULT '' NOT NULL,
     entsort int(11) unsigned DEFAULT '0' NOT NULL,
@@ -346,6 +347,7 @@ CREATE TABLE tx_hisodat_mm_src_loc (
     uid_src int(11) unsigned DEFAULT '0' NOT NULL,
     uid_loc int(11) unsigned DEFAULT '0' NOT NULL,
 	issuer tinyint(4) DEFAULT '0' NOT NULL,
+    receiver tinyint(4) DEFAULT '0' NOT NULL,
     description text NOT NULL,
 	parenttable varchar(255) DEFAULT '' NOT NULL,
     locsort int(11) unsigned DEFAULT '0' NOT NULL,
@@ -379,143 +381,143 @@ CREATE TABLE tx_hisodat_mm_lit (
 #
 # Table structure for table 'tx_hisodat_mm_loc_loc'
 #
-CREATE TABLE tx_hisodat_mm_loc_loc (
-	uid int(11) NOT NULL auto_increment,
-	pid int(11) DEFAULT '0' NOT NULL,
-	tstamp int(11) DEFAULT '0' NOT NULL,
-	crdate int(11) DEFAULT '0' NOT NULL,
-	cruser_id int(11) DEFAULT '0' NOT NULL,
-	deleted tinyint(4) DEFAULT '0' NOT NULL,
-	hidden tinyint(4) DEFAULT '0' NOT NULL,
+#CREATE TABLE tx_hisodat_mm_loc_loc (
+#	uid int(11) NOT NULL auto_increment,
+#	pid int(11) DEFAULT '0' NOT NULL,
+#	tstamp int(11) DEFAULT '0' NOT NULL,
+#	crdate int(11) DEFAULT '0' NOT NULL,
+#	cruser_id int(11) DEFAULT '0' NOT NULL,
+#	deleted tinyint(4) DEFAULT '0' NOT NULL,
+#	hidden tinyint(4) DEFAULT '0' NOT NULL,
 
-	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
-	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
-    description text NOT NULL,
-    relations_uids varchar(255) DEFAULT '' NOT NULL,
-	parenttable varchar(255) DEFAULT '' NOT NULL,
-    localsort int(11) unsigned DEFAULT '0' NOT NULL,
-    foreignsort int(11) unsigned DEFAULT '0' NOT NULL,
+#	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
+#	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+#    description text NOT NULL,
+#    relations_uids varchar(255) DEFAULT '' NOT NULL,
+#	parenttable varchar(255) DEFAULT '' NOT NULL,
+#    localsort int(11) unsigned DEFAULT '0' NOT NULL,
+#    foreignsort int(11) unsigned DEFAULT '0' NOT NULL,
 
-    PRIMARY KEY (uid),
-    KEY parent (pid)
-);
+#    PRIMARY KEY (uid),
+#    KEY parent (pid)
+#);
 
 #
 # Table structure for table 'tx_hisodat_mm_pers_loc'
 #
-CREATE TABLE tx_hisodat_mm_pers_loc (
-	uid int(11) NOT NULL auto_increment,
-	pid int(11) DEFAULT '0' NOT NULL,
-	tstamp int(11) DEFAULT '0' NOT NULL,
-	crdate int(11) DEFAULT '0' NOT NULL,
-	cruser_id int(11) DEFAULT '0' NOT NULL,
-	deleted tinyint(4) DEFAULT '0' NOT NULL,
-	hidden tinyint(4) DEFAULT '0' NOT NULL,
+#CREATE TABLE tx_hisodat_mm_pers_loc (
+#	uid int(11) NOT NULL auto_increment,
+#	pid int(11) DEFAULT '0' NOT NULL,
+#	tstamp int(11) DEFAULT '0' NOT NULL,
+#	crdate int(11) DEFAULT '0' NOT NULL,
+#	cruser_id int(11) DEFAULT '0' NOT NULL,
+#	deleted tinyint(4) DEFAULT '0' NOT NULL,
+#	hidden tinyint(4) DEFAULT '0' NOT NULL,
 
-    uid_pers int(11) unsigned DEFAULT '0' NOT NULL,
-    uid_loc int(11) unsigned DEFAULT '0' NOT NULL,
-    relations_uids varchar(255) DEFAULT '' NOT NULL,
-    description text NOT NULL,
-	parenttable varchar(255) DEFAULT '' NOT NULL,
-    locsort int(11) unsigned DEFAULT '0' NOT NULL,
-    perssort int(11) unsigned DEFAULT '0' NOT NULL,
+#    uid_pers int(11) unsigned DEFAULT '0' NOT NULL,
+#    uid_loc int(11) unsigned DEFAULT '0' NOT NULL,
+#    relations_uids varchar(255) DEFAULT '' NOT NULL,
+#    description text NOT NULL,
+#	parenttable varchar(255) DEFAULT '' NOT NULL,
+#    locsort int(11) unsigned DEFAULT '0' NOT NULL,
+#    perssort int(11) unsigned DEFAULT '0' NOT NULL,
 
-    PRIMARY KEY (uid),
-    KEY parent (pid)
-);
+#    PRIMARY KEY (uid),
+#    KEY parent (pid)
+#);
 
 #
 # Table structure for table 'tx_hisodat_mm_pers_pers'
 #
-CREATE TABLE tx_hisodat_mm_pers_pers (
-	uid int(11) NOT NULL auto_increment,
-	pid int(11) DEFAULT '0' NOT NULL,
-	tstamp int(11) DEFAULT '0' NOT NULL,
-	crdate int(11) DEFAULT '0' NOT NULL,
-	cruser_id int(11) DEFAULT '0' NOT NULL,
-	deleted tinyint(4) DEFAULT '0' NOT NULL,
-	hidden tinyint(4) DEFAULT '0' NOT NULL,
+#CREATE TABLE tx_hisodat_mm_pers_pers (
+#	uid int(11) NOT NULL auto_increment,
+#	pid int(11) DEFAULT '0' NOT NULL,
+#	tstamp int(11) DEFAULT '0' NOT NULL,
+#	crdate int(11) DEFAULT '0' NOT NULL,
+#	cruser_id int(11) DEFAULT '0' NOT NULL,
+#	deleted tinyint(4) DEFAULT '0' NOT NULL,
+#	hidden tinyint(4) DEFAULT '0' NOT NULL,
 
-    uid_local int(11) unsigned DEFAULT '0' NOT NULL,
-    uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
-    relations_uids varchar(255) DEFAULT '' NOT NULL,
-    description text NOT NULL,
-	parenttable varchar(255) DEFAULT '' NOT NULL,
-    localsort int(11) unsigned DEFAULT '0' NOT NULL,
-    foreignsort int(11) unsigned DEFAULT '0' NOT NULL,
+#    uid_local int(11) unsigned DEFAULT '0' NOT NULL,
+#    uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+#    relations_uids varchar(255) DEFAULT '' NOT NULL,
+#    description text NOT NULL,
+#	parenttable varchar(255) DEFAULT '' NOT NULL,
+#    localsort int(11) unsigned DEFAULT '0' NOT NULL,
+#    foreignsort int(11) unsigned DEFAULT '0' NOT NULL,
 
-    PRIMARY KEY (uid),
-    KEY parent (pid)
-);
+#    PRIMARY KEY (uid),
+#    KEY parent (pid)
+#);
 
 #
 # Table structure for table 'tx_hisodat_mm_ent_pers'
 #
-CREATE TABLE tx_hisodat_mm_ent_pers (
-	uid int(11) NOT NULL auto_increment,
-	pid int(11) DEFAULT '0' NOT NULL,
-	tstamp int(11) DEFAULT '0' NOT NULL,
-	crdate int(11) DEFAULT '0' NOT NULL,
-	cruser_id int(11) DEFAULT '0' NOT NULL,
-	deleted tinyint(4) DEFAULT '0' NOT NULL,
-	hidden tinyint(4) DEFAULT '0' NOT NULL,
+#CREATE TABLE tx_hisodat_mm_ent_pers (
+#	uid int(11) NOT NULL auto_increment,
+#	pid int(11) DEFAULT '0' NOT NULL,
+#	tstamp int(11) DEFAULT '0' NOT NULL,
+#	crdate int(11) DEFAULT '0' NOT NULL,
+#	cruser_id int(11) DEFAULT '0' NOT NULL,
+#	deleted tinyint(4) DEFAULT '0' NOT NULL,
+#	hidden tinyint(4) DEFAULT '0' NOT NULL,
 
-    uid_ent int(11) unsigned DEFAULT '0' NOT NULL,
-    uid_pers int(11) unsigned DEFAULT '0' NOT NULL,
-    relations_uids varchar(255) DEFAULT '' NOT NULL,
-    description text NOT NULL,
-	parenttable varchar(255) DEFAULT '' NOT NULL,
-    entsort int(11) unsigned DEFAULT '0' NOT NULL,
-    perssort int(11) unsigned DEFAULT '0' NOT NULL,
+#    uid_ent int(11) unsigned DEFAULT '0' NOT NULL,
+#    uid_pers int(11) unsigned DEFAULT '0' NOT NULL,
+#    relations_uids varchar(255) DEFAULT '' NOT NULL,
+#    description text NOT NULL,
+#	parenttable varchar(255) DEFAULT '' NOT NULL,
+#    entsort int(11) unsigned DEFAULT '0' NOT NULL,
+#    perssort int(11) unsigned DEFAULT '0' NOT NULL,
 
-    PRIMARY KEY (uid),
-    KEY parent (pid)
-);
+#    PRIMARY KEY (uid),
+#    KEY parent (pid)
+#);
 
 #
 # Table structure for table 'tx_hisodat_mm_ent_loc'
 #
-CREATE TABLE tx_hisodat_mm_ent_loc (
-	uid int(11) NOT NULL auto_increment,
-	pid int(11) DEFAULT '0' NOT NULL,
-	tstamp int(11) DEFAULT '0' NOT NULL,
-	crdate int(11) DEFAULT '0' NOT NULL,
-	cruser_id int(11) DEFAULT '0' NOT NULL,
-	deleted tinyint(4) DEFAULT '0' NOT NULL,
-	hidden tinyint(4) DEFAULT '0' NOT NULL,
+#CREATE TABLE tx_hisodat_mm_ent_loc (
+#	uid int(11) NOT NULL auto_increment,
+#	pid int(11) DEFAULT '0' NOT NULL,
+#	tstamp int(11) DEFAULT '0' NOT NULL,
+#	crdate int(11) DEFAULT '0' NOT NULL,
+#	cruser_id int(11) DEFAULT '0' NOT NULL,
+#	deleted tinyint(4) DEFAULT '0' NOT NULL,
+#	hidden tinyint(4) DEFAULT '0' NOT NULL,
 
-    uid_ent int(11) unsigned DEFAULT '0' NOT NULL,
-    uid_loc int(11) unsigned DEFAULT '0' NOT NULL,
-    relations_uids varchar(255) DEFAULT '' NOT NULL,
-    description text NOT NULL,
-	parenttable varchar(255) DEFAULT '' NOT NULL,
-    entsort int(11) unsigned DEFAULT '0' NOT NULL,
-    locsort int(11) unsigned DEFAULT '0' NOT NULL,
+#    uid_ent int(11) unsigned DEFAULT '0' NOT NULL,
+#    uid_loc int(11) unsigned DEFAULT '0' NOT NULL,
+#    relations_uids varchar(255) DEFAULT '' NOT NULL,
+#    description text NOT NULL,
+#	parenttable varchar(255) DEFAULT '' NOT NULL,
+#    entsort int(11) unsigned DEFAULT '0' NOT NULL,
+#    locsort int(11) unsigned DEFAULT '0' NOT NULL,
 
-    PRIMARY KEY (uid),
-    KEY parent (pid)
-);
+#    PRIMARY KEY (uid),
+#    KEY parent (pid)
+#);
 
 #
 # Table structure for table 'tx_hisodat_mm_ent_ent'
 #
-CREATE TABLE tx_hisodat_mm_ent_ent (
-	uid int(11) NOT NULL auto_increment,
-	pid int(11) DEFAULT '0' NOT NULL,
-	tstamp int(11) DEFAULT '0' NOT NULL,
-	crdate int(11) DEFAULT '0' NOT NULL,
-	cruser_id int(11) DEFAULT '0' NOT NULL,
-	deleted tinyint(4) DEFAULT '0' NOT NULL,
-	hidden tinyint(4) DEFAULT '0' NOT NULL,
+#CREATE TABLE tx_hisodat_mm_ent_ent (
+#	uid int(11) NOT NULL auto_increment,
+#	pid int(11) DEFAULT '0' NOT NULL,
+#	tstamp int(11) DEFAULT '0' NOT NULL,
+#	crdate int(11) DEFAULT '0' NOT NULL,
+#	cruser_id int(11) DEFAULT '0' NOT NULL,
+#	deleted tinyint(4) DEFAULT '0' NOT NULL,
+#	hidden tinyint(4) DEFAULT '0' NOT NULL,
 
-    uid_local int(11) unsigned DEFAULT '0' NOT NULL,
-    uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
-    relations_uids varchar(255) DEFAULT '' NOT NULL,
-    description text NOT NULL,
-	parenttable varchar(255) DEFAULT '' NOT NULL,
-    localsort int(11) unsigned DEFAULT '0' NOT NULL,
-    foreignsort int(11) unsigned DEFAULT '0' NOT NULL,
+#    uid_local int(11) unsigned DEFAULT '0' NOT NULL,
+#    uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+#    relations_uids varchar(255) DEFAULT '' NOT NULL,
+#    description text NOT NULL,
+#	parenttable varchar(255) DEFAULT '' NOT NULL,
+#    localsort int(11) unsigned DEFAULT '0' NOT NULL,
+#    foreignsort int(11) unsigned DEFAULT '0' NOT NULL,
 
-    PRIMARY KEY (uid),
-    KEY parent (pid)
-);
+#    PRIMARY KEY (uid),
+#    KEY parent (pid)
+#);

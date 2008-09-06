@@ -46,7 +46,7 @@ $TCA['tx_hisodat_archives'] = Array (
 	)
 );
 
-
+/*
 $TCA['tx_hisodat_categories'] = Array (
 	'ctrl' => $TCA['tx_hisodat_categories']['ctrl'],
 	'interface' => Array (
@@ -104,12 +104,12 @@ $TCA['tx_hisodat_categories'] = Array (
 		'1' => Array('showitem' => 'fe_group')
 	)
 );
-
+*/
 
 $TCA['tx_hisodat_keywords'] = Array (
 	'ctrl' => $TCA['tx_hisodat_keywords']['ctrl'],
 	'interface' => Array (
-		'showRecordFieldList' => 'hidden,title,description,sources_uids'
+		'showRecordFieldList' => 'hidden,title,description'
 	),
 	'feInterface' => $TCA['tx_hisodat_keywords']['feInterface'],
 	'columns' => Array (
@@ -140,31 +140,9 @@ $TCA['tx_hisodat_keywords'] = Array (
 				'rows' => '5',
 			)
 		),
-		'sources_uids' => Array (
-			'exclude' => 1,
-			'l10n_mode' => 'exclude',
-			'label' => 'Zugeordnete Quellen',
-			'config' => Array (
-				'type' => 'inline',
-				'foreign_table' => 'tx_hisodat_mm_src_key',
-				'foreign_field' => 'uid_key',
-				'foreign_sortby' => 'srcsort',
-				'foreign_label' => 'uid_src',
-				'foreign_unique' => 'uid_src',
-				'size' => 5,
-				'minitems' => 0,
-				'maxitems' => 50,
-				'appearance' => Array (
-					'collapseAll' => 1,
-					'expandSingle' =>1,
-					#'useCombination' => 1,
-					#'newRecordLinkPosition' => 'bottom',
-				),
-			)
-		),
 	),
 	'types' => Array (
-		'0' => Array('showitem' => 'hidden,title,description,sources_uids')
+		'0' => Array('showitem' => 'hidden,title,description')
 	),
 	'palettes' => Array (
 		'1' => Array('showitem' => '')
@@ -270,7 +248,7 @@ $TCA['tx_hisodat_literature'] = Array (
 $TCA['tx_hisodat_persons'] = Array (
 	'ctrl' => $TCA['tx_hisodat_persons']['ctrl'],
 	'interface' => Array (
-		'showRecordFieldList' => 'hidden,gender,name,namevariants,title,date_comment,date_start,date_end,image,description,persons_uids,entities_uids,localities_uids,literature_uids'
+		'showRecordFieldList' => 'hidden,gender,name,namevariants,titles,date_comment,date_start,date_end,image,description,persons_uids,entities_uids,localities_uids,literature_uids'
 	),
 	'feInterface' => $TCA['tx_hisodat_persons']['feInterface'],
 	'columns' => Array (
@@ -477,9 +455,11 @@ $TCA['tx_hisodat_persons'] = Array (
 #						--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.div2,persons_uids,localities_uids,entities_uids,literature_uids'
 #		),
 		'0' => Array('showitem' => '
-						--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.div1,hidden,gender,name,namevariants,title,date_comment,date_start,date_end,image,description,
-						--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.div2,literature_uids'
-		),
+						--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.div1,hidden,gender,name,namevariants,titles,
+						--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.div2,date_comment,date_start,date_end,
+						--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.div3,description,literature_uids,
+						--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.div4,image
+		'),
 	),
 	'palettes' => Array (
 		'1' => Array('showitem' => '')
@@ -703,9 +683,12 @@ $TCA['tx_hisodat_localities'] = Array (
 #				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.div2,persons_uids,localities_uids,entities_uids,literature_uids
 #				')
 		'0' => Array('showitem' => '
-				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.div1,hidden,title,namevariants,municipality,field_name,latitude,longitude,date_comment,date_start,date_end,image,description,
-				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.div2,literature_uids
-				')
+				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.div1,hidden,title,namevariants,
+				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.div2,municipality,field_name,latitude,longitude,
+				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.div3,date_comment,date_start,date_end,
+				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.div4,description,literature_uids,
+				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.div5,image
+		')
 	),
 	'palettes' => Array (
 		'1' => Array('showitem' => '')
@@ -899,95 +882,21 @@ $TCA['tx_hisodat_entities'] = Array (
 #				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_entities.div1,hidden,title,namevariants,date_comment,date_start,date_end,image,description,
 #				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_entities.div2,persons_uids,localities_uids,entities_uids,literature_uids'),
 		'0' => Array('showitem' => '
-				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_entities.div1,hidden,title,namevariants,date_comment,date_start,date_end,image,description,
-				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_entities.div2,literature_uids'),
+				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_entities.div1,hidden,title,namevariants,
+				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_entities.div2,date_comment,date_start,date_end,
+				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_entities.div3,description,literature_uids,
+				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_entities.div4,image
+		'),
 	),
 	'palettes' => Array (
 		'1' => Array('showitem' => '')
 	)
 );
-
-/*
-$TCA['tx_hisodat_relations'] = Array (
-	'ctrl' => $TCA['tx_hisodat_relations']['ctrl'],
-	'interface' => Array (
-		'showRecordFieldList' => 'hidden,title,relationtype,parent_relation,description'
-	),
-	'feInterface' => $TCA['tx_hisodat_persrelations']['feInterface'],
-	'columns' => Array (
-		'hidden' => Array (
-			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/locallang_general.php:LGL.hidden',
-			'config' => Array (
-				'type' => 'check',
-				'default' => '0'
-			)
-		),
-		'parent_relation' => Array (
-			'exclude' => 1,
-			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_relations.parent_relation',
-			'config' => Array (
-				'type' => 'select',
-				'form_type' => 'user',
-				'userFunc' => 'tx_hisodat_treeview->displayCategoryTree',
-				'treeView' => 1,
-				'size' => 1,
-				'autoSizeMax' => 10,
-				'minitems' => 0,
-				'maxitems' => 2,
-				'foreign_table' => 'tx_hisodat_relations',
-				'foreign_table_where' => 'AND tx_hisodat_relations.pid IN (###PAGE_TSCONFIG_IDLIST###)',
-			)
-		),
-		'relationtype' => Array (
-			'exclude' => 1,
-			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_relations.relationtype',
-			'config' => Array (
-				'type' => 'select',
-				'items' => Array (
-					Array('LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_relations.relationtype.I.0', '1'),
-					Array('LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_relations.relationtype.I.1', '2'),
-					Array('LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_relations.relationtype.I.2', '3'),
-					Array('LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_relations.relationtype.I.3', '4'),
-					Array('LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_relations.relationtype.I.4', '5'),
-					Array('LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_relations.relationtype.I.5', '6'),
-				),
-				'default' => '1',
-			)
-		),
-		'title' => Array (
-			'exclude' => 1,
-			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_relations.title',
-			'config' => Array (
-				'type' => 'input',
-				'size' => '30',
-				'max' => '255',
-				'eval' => 'required,trim',
-			)
-		),
-		'description' => Array (
-			'exclude' => 1,
-			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_relations.description',
-			'config' => Array(
-				'type' => 'text',
-				'cols' => '30',
-				'rows' => '5',
-			)
-		),
-	),
-	'types' => Array (
-		'0' => Array('showitem' => 'hidden,title,relationtype,parent_relation,description')
-	),
-	'palettes' => Array (
-		'1' => Array('showitem' => '')
-	)
-);
-*/
 
 $TCA['tx_hisodat_sources'] = Array (
 	'ctrl' => $TCA['tx_hisodat_sources']['ctrl'],
 	'interface' => Array (
-		'showRecordFieldList' => 'hidden,signature,signature_add,archive_uid,date_comment,date_start,date_end,short,sourcetext,description;;;;3-3-3,persons_uids,localities_uids,entities_uids;;;;3-3-3,categories_uids,keywords_uids,literature_uids,sources_uids;;;;3-3-3,image,imagecaption,;;;;3-3-3,editor_id,editor_comment'
+		'showRecordFieldList' => 'hidden,signature,signature_add,archive_uid,date_comment,date_start,date_end,short,sourcetext,description;;;;3-3-3,persons_uids,localities_uids,entities_uids;;;;3-3-3,keywords_uids,literature_uids,sources_uids;;;;3-3-3,image,imagecaption,;;;;3-3-3,editor_id,editor_comment'
 	),
 	'feInterface' => $TCA['tx_hisodat_sources']['feInterface'],
 	'columns' => Array (
@@ -1126,6 +1035,7 @@ $TCA['tx_hisodat_sources'] = Array (
 				),
 			)
 		),
+/*
 		'categories_uids' => Array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_sources.categories_uids',
@@ -1158,6 +1068,7 @@ $TCA['tx_hisodat_sources'] = Array (
 				),
 			)
 		),
+*/
 		'keywords_uids' => Array (
 			'exclude' => 1,
 			'l10n_mode' => 'exclude',
@@ -1168,9 +1079,9 @@ $TCA['tx_hisodat_sources'] = Array (
 				'foreign_field' => 'uid_src', # write the uid of the source into this field
 				'foreign_sortby' => 'keysort', # sorting of keywords within the source record
 				'foreign_label' => 'uid_key', # label of the keyword retrieved by it's uid'
-				'foreign_selector' => 'uid_key', # choose existing keywords from - SEE BUG
+				'foreign_selector' => 'uid_key', # choose the existing keywords from - SEE BUG
 				'foreign_unique' => 'uid_key', # keywords have to be unique for each source - SEE BUG
-				'size' => 5,
+				'size' => 1,
 				'minitems' => 0,
 				'maxitems' => 50,
 				'appearance' => Array (
@@ -1190,12 +1101,16 @@ $TCA['tx_hisodat_sources'] = Array (
 				'foreign_field' => 'uid_src',
 				'foreign_sortby' => 'locsort',
 				'foreign_label' => 'uid_loc',
+				'foreign_selector' => 'uid_loc',
+				'foreign_unique' => 'uid_loc',
 				'size' => 1,
 				'minitems' => 0,
 				'maxitems' => 50,
 				'appearance' => Array (
 					'collapseAll' => 1,
 					'expandSingle' =>1,
+					'useCombination' => 1,
+					'newRecordLinkPosition' => 'bottom',
 				),
 			)
 		),
@@ -1208,12 +1123,16 @@ $TCA['tx_hisodat_sources'] = Array (
 				'foreign_field' => 'uid_src',
 				'foreign_sortby' => 'entsort',
 				'foreign_label' => 'uid_ent',
+				'foreign_selector' => 'uid_ent',
+				'foreign_unique' => 'uid_ent',
 				'size' => 1,
 				'minitems' => 0,
 				'maxitems' => 50,
 				'appearance' => Array (
 					'collapseAll' => 1,
 					'expandSingle' =>1,
+					'useCombination' => 1,
+					'newRecordLinkPosition' => 'bottom',
 				),
 			)
 		),
@@ -1227,12 +1146,16 @@ $TCA['tx_hisodat_sources'] = Array (
 				'foreign_table_field' => 'parenttable',
 				'foreign_sortby' => 'perssort',
 				'foreign_label' => 'uid_pers',
+				'foreign_selector' => 'uid_pers',
+				'foreign_unique' => 'uid_pers',
 				'size' => 1,
 				'minitems' => 0,
 				'maxitems' => 50,
 				'appearance' => Array (
 					'collapseAll' => 1,
 					'expandSingle' =>1,
+					'useCombination' => 1,
+					'newRecordLinkPosition' => 'bottom',
 				),
 			)
 		),
@@ -1326,7 +1249,7 @@ $TCA['tx_hisodat_sources'] = Array (
 	'types' => Array (
 		'0' => Array('showitem' => '
 				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_sources.div1,hidden,signature,signature_add,archive_uid,date_comment,date_start,date_end,short,sourcetext,description,
-				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_sources.div2,categories_uids,keywords_uids,literature_uids,
+				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_sources.div2,keywords_uids,literature_uids,
 				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_sources.div3,persons_uids,localities_uids,entities_uids,sources_uids,
 				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_sources.div4,image,imagecaption,
 				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_sources.div5,editor_id,editor_comment
@@ -1336,4 +1259,81 @@ $TCA['tx_hisodat_sources'] = Array (
 		'1' => Array('showitem' => '')
 	)
 );
+
+/*
+$TCA['tx_hisodat_relations'] = Array (
+	'ctrl' => $TCA['tx_hisodat_relations']['ctrl'],
+	'interface' => Array (
+		'showRecordFieldList' => 'hidden,title,relationtype,parent_relation,description'
+	),
+	'feInterface' => $TCA['tx_hisodat_persrelations']['feInterface'],
+	'columns' => Array (
+		'hidden' => Array (
+			'exclude' => 1,
+			'label' => 'LLL:EXT:lang/locallang_general.php:LGL.hidden',
+			'config' => Array (
+				'type' => 'check',
+				'default' => '0'
+			)
+		),
+		'parent_relation' => Array (
+			'exclude' => 1,
+			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_relations.parent_relation',
+			'config' => Array (
+				'type' => 'select',
+				'form_type' => 'user',
+				'userFunc' => 'tx_hisodat_treeview->displayCategoryTree',
+				'treeView' => 1,
+				'size' => 1,
+				'autoSizeMax' => 10,
+				'minitems' => 0,
+				'maxitems' => 2,
+				'foreign_table' => 'tx_hisodat_relations',
+				'foreign_table_where' => 'AND tx_hisodat_relations.pid IN (###PAGE_TSCONFIG_IDLIST###)',
+			)
+		),
+		'relationtype' => Array (
+			'exclude' => 1,
+			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_relations.relationtype',
+			'config' => Array (
+				'type' => 'select',
+				'items' => Array (
+					Array('LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_relations.relationtype.I.0', '1'),
+					Array('LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_relations.relationtype.I.1', '2'),
+					Array('LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_relations.relationtype.I.2', '3'),
+					Array('LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_relations.relationtype.I.3', '4'),
+					Array('LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_relations.relationtype.I.4', '5'),
+					Array('LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_relations.relationtype.I.5', '6'),
+				),
+				'default' => '1',
+			)
+		),
+		'title' => Array (
+			'exclude' => 1,
+			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_relations.title',
+			'config' => Array (
+				'type' => 'input',
+				'size' => '30',
+				'max' => '255',
+				'eval' => 'required,trim',
+			)
+		),
+		'description' => Array (
+			'exclude' => 1,
+			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_relations.description',
+			'config' => Array(
+				'type' => 'text',
+				'cols' => '30',
+				'rows' => '5',
+			)
+		),
+	),
+	'types' => Array (
+		'0' => Array('showitem' => 'hidden,title,relationtype,parent_relation,description')
+	),
+	'palettes' => Array (
+		'1' => Array('showitem' => '')
+	)
+);
+*/
 ?>

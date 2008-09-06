@@ -41,3 +41,8 @@ BUGS OF IMPORTANCE
 ------------------
 0005772: Combination mode doesn't save new child records correctly (closed)
 0005242: Storage page for child records (closed)
+
+MY BUGS
+-------
+- Combination mode doesn't retrieve the field values (only for field description) - only after the first save
+- not possible to delete child records in FF3
