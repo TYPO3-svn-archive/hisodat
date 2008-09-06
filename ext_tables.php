@@ -21,8 +21,6 @@ t3lib_extMgm::addStaticFile($_EXTKEY, './configuration', 'HISODAT: Base');
 
 // BACKEND RELATED
 if (TYPO3_MODE=='BE') {
-	//class for category tree
-#	include_once(t3lib_extMgm::extPath($_EXTKEY).'configuration/class.tx_hisodat_treeview.php');
 
 	// wizard icon
 	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['tx_hisodat_wizicon'] = t3lib_extMgm::extPath($_EXTKEY).'configuration/class.tx_hisodat_wizicon.php';
@@ -58,31 +56,6 @@ $TCA['tx_hisodat_archives'] = Array (
 		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_hisodat_archives.gif',
 	),
 );
-
-// category table: each historical source can belong to different categories
-// drop: will use tx_categories in the future
-/*
-t3lib_extMgm::allowTableOnStandardPages('tx_hisodat_categories');
-t3lib_extMgm::addLLrefForTCAdescr('tx_hisodat_categories','EXT:hisodat/lang/locallang_csh_categories.php');
-$TCA['tx_hisodat_categories'] = Array (
-	'ctrl' => Array (
-		'title' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_categories',
-		'label' => 'title',
-		'tstamp' => 'tstamp',
-		'delete' => 'deleted',
-		'default_sortby' => 'ORDER BY title',
-		'treeParentField' => 'parent_category',
-		'enablecolumns' => Array (
-			'disabled' => 'hidden',
-		),
-		'prependAtCopy' => 'LLL:EXT:lang/locallang_general.php:LGL.prependAtCopy',
-		'mainpalette' => '2,10',
-		'crdate' => 'crdate',
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca_main.php',
-		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_hisodat_categories.gif',
-	)
-);
-*/
 
 // keyword table: each source can have multiple keywords - keywords can have descriptions and explanations;
 t3lib_extMgm::allowTableOnStandardPages('tx_hisodat_keywords');
@@ -169,7 +142,7 @@ $TCA['tx_hisodat_localities'] = Array (
 
 // entities table
 t3lib_extMgm::allowTableOnStandardPages('tx_hisodat_entities');
-#t3lib_extMgm::addLLrefForTCAdescr('tx_hisodat_entities','EXT:hisodat/lang/locallang_csh_entities.php');
+t3lib_extMgm::addLLrefForTCAdescr('tx_hisodat_entities','EXT:hisodat/lang/locallang_csh_entities.php');
 $TCA['tx_hisodat_entities'] = Array (
 	'ctrl' => Array (
 		'title' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_entities',
@@ -184,7 +157,7 @@ $TCA['tx_hisodat_entities'] = Array (
 		),
 		'dividers2tabs' => '1',
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca_main.php',
-		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_hisodat_records.gif',
+		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_hisodat_entities.gif',
 	),
 );
 

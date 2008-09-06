@@ -18,27 +18,6 @@ CREATE TABLE tx_hisodat_archives (
 );
 
 #
-# Table structure for table 'tx_hisodat_categories'
-#
-#CREATE TABLE tx_hisodat_categories (
-#	uid int(11) NOT NULL auto_increment,
-#	pid int(11) DEFAULT '0' NOT NULL,
-#	tstamp int(11) DEFAULT '0' NOT NULL,
-#	crdate int(11) DEFAULT '0' NOT NULL,
-#	cruser_id int(11) DEFAULT '0' NOT NULL,
-#	sorting int(10) DEFAULT '0' NOT NULL,
-#	deleted tinyint(4) DEFAULT '0' NOT NULL,
-#	hidden tinyint(4) DEFAULT '0' NOT NULL,
-
-#	title tinytext NOT NULL,
-#	parent_category int(11) DEFAULT '0' NOT NULL,
-#	description text NOT NULL,
-
-#	PRIMARY KEY (uid),
-#	KEY parent (pid)
-#);
-
-#
 # Table structure for table 'tx_hisodat_keywords'
 #
 CREATE TABLE tx_hisodat_keywords (
@@ -249,19 +228,6 @@ CREATE TABLE tx_hisodat_mm_src_src (
 	KEY uid_local (uid_local),
 	KEY uid_foreign (uid_foreign)
 );
-
-#
-# Table structure for table 'tx_hisodat_mm_src_cat'
-#
-#CREATE TABLE tx_hisodat_mm_src_cat (
-#	uid_local int(11) DEFAULT '0' NOT NULL,
-#	uid_foreign int(11) DEFAULT '0' NOT NULL,
-#	tablenames varchar(30) DEFAULT '' NOT NULL,
-#	sorting int(11) DEFAULT '0' NOT NULL,
-
-#	KEY uid_src (uid_local),
-#	KEY uid_cat (uid_foreign)
-#);
 
 #
 # Table structure for table 'tx_hisodat_mm_src_key'

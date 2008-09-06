@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <T3locallang>
     <meta type="array">
-        <description>Language file for HISODAT persons table</description>
+        <description>Language file for HISODAT entities table</description>
         <type>CSH</type>
-        <csh_table>tx_hisodat_persons</csh_table>
+        <csh_table>tx_hisodat_entities</csh_table>
         <labelContext type="array">
         </labelContext>
     </meta>
     <data type="array">
         <languageKey index="default" type="array">
             <label index="hidden.description">Check this box and the person record will be hidden.</label>
-            <label index="pers_inst.description">Is it a person or an institution? Depending on the type different fields have to be filled in.</label>
-            <label index="gender.description">Define the gender for persons.</label>
-            <label index="firstname.description">Enter the firstname (e.g. &quot;John&quot;).</label>
-            <label index="lastname.description">Enter the lastname or main name (e.g. for kings) into this field (&quot;Lackland&quot;).</label>
-            <label index="nameaddons.description">Enter additional name attributes.</label>
-            <label index="titles.description">If the person bears a title you can enter it here.</label>
+            <label index="namevariants.description">Enter additional name attributes.</label>
+            <label index="title.description">If the person bears a title you can enter it here.</label>
             <label index="date_comment.description">Associated life dates for display on the website. For a historically precise dating use the two fields below. You can separate the dates for birth and death with the &quot;|&quot; character.</label>
             <label index="date_start.description">Date of birth for the database search. Use YYYY-MM-DD as format. Always enter an end date in the next field as well. If a date is uncertain, make an educated guess and use the first day of a month.</label>
             <label index="date_end.description">Date of death for the database search. Use YYYY-MM-DD as format. Always enter a start date in the field above as well. If a date is uncertain, make an educated guess and use the first day of a month..</label>
@@ -25,21 +21,18 @@
             <label index="localities_uids.description">Here you can associate localities with the person.</label>
         </languageKey>
         <languageKey index="de" type="array">
-            <label index="hidden.description">Wenn Sie diese Checkbox aktivieren, wird der Personendatensatz verborgen.</label>
-            <label index="pers_inst.description">Geben Sie an, ob es sich um eine natürliche Person oder eine juristische Person bzw. eine Institution handelt. Je nach Typ werden unterschiedliche Felder ausgefüllt.</label>
-            <label index="gender.description">Geben Sie das Geschlecht der Person an.</label>
-            <label index="lastname.description">Tragen Sie den Hauptnamen der Person in dieses Feld ein.</label>
+            <label index="hidden.description">Wenn Sie diese Checkbox aktivieren, wird der Entitätendatensatz verborgen.</label>
+            <label index="title.description">Tragen Sie eine Bezeichnung für die Entität in dieses Feld ein.</label>
             <label index="namevariants.description">In dieses Feld können Sie Namenszusätze oder Varianten eintragen.</label>
-            <label index="titles.description">Falls die Person einen Titel oder ein Amt innehat, können Sie dies hier vermerken.</label>
             <label index="date_comment.description">Datumsangaben für die Online-Anzeige. Diese Angaben dienen nur der Anzeige und können in einem beliebigen Format ausgefüllt werden.</label>
-            <label index="date_start.description">Datierungsfeld für die Datenbanksuche (z.B. für das Geburtsdatum der Person). Datieren Sie die Lokalität im Format TT-MM-JJJJ. Geben Sie unbedingt im nächsten Feld auch ein Enddatum ein. Falls Start/Ende nicht genau bekannt sind, schätzen Sie einen ungefähren Wert, indem Sie auf ein ungefähres Jahr oder einen ungefähren Monat datieren und den 1. des Monats als Stichtag benutzen.</label>
-            <label index="date_end.description">Datierungsfeld für die Datenbanksuche (z.B. für das Todesdatum der Person). Datieren Sie die Lokalität im Format TT-MM-JJJJ. Geben Sie unbedingt im vorherigen Feld auch ein Anfangsdatum ein. Falls Start/Ende nicht genau bekannt sind, schätzen Sie einen ungefähren Wert, indem Sie auf ein ungefähres Jahr oder einen ungefähren Monat datieren und den letzten Tag des Monats als Stichtag benutzen.</label>
-            <label index="image.description">Geben Sie hier Bilder von der Person oder Institution an. Bilder müssen auf den Server hochgeladen werden.</label>
-            <label index="description.description">In dieses Freitext-Feld können Sie genauere Informationen zur Person wie z.B. eine Kurzbiographie eintragen.</label>
-            <label index="literature_uids.description">Hier können Sie Literturhinweise zur Person angeben.</label>
-            <label index="persons_uids.description">Sie können eine Person anderen Personen zuordnen und dabei genauer angeben, welches Beziehung zwischen beiden Personen besteht.</label>
-            <label index="entities_uids.description">Verknüpfen Sie andere Entitäten mit dieser Person.</label>
-            <label index="localities_uids.description">Sie können eine Person verschiedenen Lokalitäten zuordnen und angeben, in welcher Beziehung die Person zur jeweiligen Lokalität steht.</label>
+            <label index="date_start.description">Datierungsfeld für die Datenbanksuche. Datieren Sie die Entität im Format TT-MM-JJJJ. Geben Sie unbedingt im nächsten Feld auch ein Enddatum ein. Falls Start/Ende nicht genau bekannt sind, schätzen Sie einen ungefähren Wert, indem Sie auf ein ungefähres Jahr oder einen ungefähren Monat datieren und den 1. des Monats als Stichtag benutzen.</label>
+            <label index="date_end.description">Datierungsfeld für die Datenbanksuche. Datieren Sie die Entität im Format TT-MM-JJJJ. Geben Sie unbedingt im vorherigen Feld auch ein Anfangsdatum ein. Falls Start/Ende nicht genau bekannt sind, schätzen Sie einen ungefähren Wert, indem Sie auf ein ungefähres Jahr oder einen ungefähren Monat datieren und den letzten Tag des Monats als Stichtag benutzen.</label>
+            <label index="image.description">Geben Sie hier Bilder an. Bilder müssen auf den Server hochgeladen werden.</label>
+            <label index="description.description">In dieses Freitext-Feld können Sie genauere Informationen zur Entität eintragen.</label>
+            <label index="literature_uids.description">Hier können Sie Literturhinweise zur Entität angeben.</label>
+            <label index="persons_uids.description">Sie können eine Entität anderen Personen zuordnen und dabei genauer angeben, welches Beziehung zwischen beiden besteht.</label>
+            <label index="entities_uids.description">Verknüpfen Sie andere Entitäten mit dieser Entität.</label>
+            <label index="localities_uids.description">Sie können eine Entität verschiedenen Lokalitäten zuordnen und angeben, in welcher Beziehung die Entität zur jeweiligen Lokalität steht.</label>
         </languageKey>
     </data>
     <orig_hash type="array">

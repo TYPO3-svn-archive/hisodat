@@ -150,7 +150,7 @@ $TCA['tx_hisodat_mm_src_pers'] = Array (
 		),
 	),
 	'types' => Array (
-		'0' => Array('showitem' => 'hidden,uid_src,uid_pers,issuer,receiver,description,parenttable')
+		'0' => Array('showitem' => 'hidden,uid_src,uid_pers,issuer,receiver,description')
 	),
 	'palettes' => Array (
 		'1' => Array('showitem' => '')
