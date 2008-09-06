@@ -281,7 +281,7 @@
 			<label index="tx_hisodat_sources.div2">Beschreibung</label>
 			<label index="tx_hisodat_sources.div3">Metadaten</label>
 			<label index="tx_hisodat_sources.div4">Beziehungen</label>
-			<label index="tx_hisodat_sources.div6">Medien</label>
+			<label index="tx_hisodat_sources.div5">Medien</label>
 			<label index="tx_hisodat_sources.div6">Bearbeitung</label>
             <label index="tx_hisodat_sources.signature">Signatur</label>
             <label index="tx_hisodat_sources.signature_add">Signaturzusatz</label>
@@ -310,6 +310,9 @@
             <label index="tx_hisodat_mm_src_loc">Quellen &lt;-&gt; Lokalitäten</label>
             <label index="tx_hisodat_mm_src_loc.uid_src">Quelle</label>
             <label index="tx_hisodat_mm_src_loc.uid_loc">Lokalität</label>
+			<label index="tx_hisodat_mm_src_loc.uid_loc.I.0">Lokalität ergänzen:</label>
+			<label index="tx_hisodat_mm_src_loc.uid_loc.wizard_add">Neue Lokalität anlegen</label>
+			<label index="tx_hisodat_mm_src_loc.uid_loc.wizard_edit">Ausgewählte Lokalität bearbeiten</label>
             <label index="tx_hisodat_mm_src_loc.issuer">Ist Austellungsort</label>
             <label index="tx_hisodat_mm_src_loc.receiver">Ist Empfangsort</label>
             <label index="tx_hisodat_mm_src_loc.description">Weitere Informationen</label>
@@ -317,6 +320,9 @@
             <label index="tx_hisodat_mm_src_pers">Quellen &lt;-&gt; Personen</label>
             <label index="tx_hisodat_mm_src_pers.uid_src">Zugeordnete Quelle</label>
             <label index="tx_hisodat_mm_src_pers.uid_pers">Zugeordnete Person</label>
+			<label index="tx_hisodat_mm_src_pers.uid_pers.I.0">Person ergänzen:</label>
+			<label index="tx_hisodat_mm_src_pers.uid_pers.wizard_add">Neue Person anlegen</label>
+			<label index="tx_hisodat_mm_src_pers.uid_pers.wizard_edit">Ausgewählte Person bearbeiten</label>
             <label index="tx_hisodat_mm_src_pers.issuer">Ist Austeller</label>
             <label index="tx_hisodat_mm_src_pers.receiver">Ist Empfänger</label>
             <label index="tx_hisodat_mm_src_pers.description">Weitere Informationen</label>
@@ -324,6 +330,9 @@
             <label index="tx_hisodat_mm_src_ent">Quellen &lt;-&gt; Entitäten</label>
             <label index="tx_hisodat_mm_src_ent.uid_src">Zugeordnete Quelle</label>
             <label index="tx_hisodat_mm_src_ent.uid_ent">Zugeordnete Entität</label>
+			<label index="tx_hisodat_mm_src_ent.uid_ent.I.0">Entität ergänzen:</label>
+			<label index="tx_hisodat_mm_src_ent.uid_ent.wizard_add">Neue Entität anlegen</label>
+			<label index="tx_hisodat_mm_src_ent.uid_ent.wizard_edit">Ausgewählte Entität bearbeiten</label>
             <label index="tx_hisodat_mm_src_ent.issuer">Ist Aussteller</label>
             <label index="tx_hisodat_mm_src_ent.receiver">Ist Empfänger</label>
             <label index="tx_hisodat_mm_src_ent.description">Weitere Informationen</label>
@@ -332,6 +341,9 @@
             <label index="tx_hisodat_mm_lit.createnew">Einen neuen Literaturdatensatz anglegen</label>
             <label index="tx_hisodat_mm_lit.uid_local">Dieser Datensatz</label>
             <label index="tx_hisodat_mm_lit.uid_foreign">Literaturhinweis</label>
+			<label index="tx_hisodat_mm_lit.uid_foreign.I.0">Neuen Literaturhinweis ergänzen:</label>
+			<label index="tx_hisodat_mm_lit.uid_foreign.wizard_add">Neuen Literaturdatensatz anlegen</label>
+			<label index="tx_hisodat_mm_lit.uid_foreign.wizard_edit">Ausgewählten Literaturdatensatz bearbeiten</label>
             <label index="tx_hisodat_mm_lit.notation">Band / Seite</label>
 
             <label index="tx_hisodat_mm_pers_loc">Personen &lt;-&gt; Lokalitäten</label>

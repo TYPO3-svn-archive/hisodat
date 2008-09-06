@@ -308,6 +308,7 @@ $TCA['tx_hisodat_persons'] = Array (
 				),
 			)
 		),
+/*
 		'persons_uids' => Array (
 			'exclude' => 1,
 			'l10n_mode' => 'exclude',
@@ -370,6 +371,7 @@ $TCA['tx_hisodat_persons'] = Array (
 				),
 			)
 		),
+*/
 		'literature_uids' => Array (
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.literature_uids',
 			'config' => Array (
@@ -429,7 +431,7 @@ $TCA['tx_hisodat_localities'] = Array (
 				'type' => 'input',
 				'size' => '30',
 				'max' => '255',
-				'eval' => 'trim',
+				'eval' => 'required,trim',
 			)
 		),
 		'namevariants' => Array (
@@ -548,6 +550,7 @@ $TCA['tx_hisodat_localities'] = Array (
 				),
 			)
 		),
+/*
 		'persons_uids' => Array (
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.persons_uids',
 			'config' => Array (
@@ -609,6 +612,7 @@ $TCA['tx_hisodat_localities'] = Array (
 				),
 			)
 		),
+*/
 		'literature_uids' => Array (
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.literature_uids',
 			'config' => Array (
@@ -669,7 +673,7 @@ $TCA['tx_hisodat_entities'] = Array (
 				'type' => 'input',
 				'size' => '30',
 				'max' => '255',
-				'eval' => 'trim',
+				'eval' => 'required,trim',
 			)
 		),
 		'namevariants' => Array (
@@ -747,6 +751,7 @@ $TCA['tx_hisodat_entities'] = Array (
 				),
 			)
 		),
+/*
 		'entities_uids' => Array (
 			'exclude' => 1,
 			'l10n_mode' => 'exclude',
@@ -809,6 +814,7 @@ $TCA['tx_hisodat_entities'] = Array (
 				),
 			)
 		),
+*/
 		'literature_uids' => Array (
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_entities.literature_uids',
 			'config' => Array (
@@ -986,40 +992,6 @@ $TCA['tx_hisodat_sources'] = Array (
 				),
 			)
 		),
-/*
-		'categories_uids' => Array(
-			'exclude' => 1,
-			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_sources.categories_uids',
-			'config' => Array(
-				'type' => 'select',
-				'form_type' => 'user',
-				'userFunc' => 'tx_hisodat_treeview->displaycategoryTree',
-				'treeView' => 1,
-				'foreign_table' => 'tx_hisodat_categories',
-				'foreign_table_where' => 'AND tx_hisodat_categories.pid IN (###PAGE_TSCONFIG_IDLIST###)',
-				'size' => 5,
-				'autoSizeMax' => 25,
-				'minitems' => 0,
-				'maxitems' => 50,
-				'MM' => 'tx_hisodat_mm_src_cat',
-				'wizards' => Array(
-					'_PADDING' => 2,
-					'_VERTICAL' => 1,
-					'add' => Array(
-						'type' => 'script',
-						'title' => 'Neue Kategorie anlegen',
-						'icon' => 'add.gif',
-						'params' => Array(
-							'table'=>'tx_hisodat_categories',
-							'pid' => '###CURRENT_PID###',
-							'setValue' => 'prepend'
-						),
-						'script' => 'wizard_add.php',
-					),
-				),
-			)
-		),
-*/
 		'keywords_uids' => Array (
 			'exclude' => 1,
 			'l10n_mode' => 'exclude',
@@ -1052,7 +1024,7 @@ $TCA['tx_hisodat_sources'] = Array (
 				'foreign_field' => 'uid_src',
 				'foreign_sortby' => 'locsort',
 				'foreign_label' => 'uid_loc',
-				'foreign_selector' => 'uid_loc',
+#				'foreign_selector' => 'uid_loc',
 				'foreign_unique' => 'uid_loc',
 				'size' => 1,
 				'minitems' => 0,
@@ -1060,7 +1032,7 @@ $TCA['tx_hisodat_sources'] = Array (
 				'appearance' => Array (
 					'collapseAll' => 1,
 					'expandSingle' =>1,
-					'useCombination' => 1,
+#					'useCombination' => 1,
 					'newRecordLinkPosition' => 'bottom',
 				),
 			)
@@ -1074,7 +1046,7 @@ $TCA['tx_hisodat_sources'] = Array (
 				'foreign_field' => 'uid_src',
 				'foreign_sortby' => 'entsort',
 				'foreign_label' => 'uid_ent',
-				'foreign_selector' => 'uid_ent',
+#				'foreign_selector' => 'uid_ent',
 				'foreign_unique' => 'uid_ent',
 				'size' => 1,
 				'minitems' => 0,
@@ -1082,7 +1054,7 @@ $TCA['tx_hisodat_sources'] = Array (
 				'appearance' => Array (
 					'collapseAll' => 1,
 					'expandSingle' =>1,
-					'useCombination' => 1,
+#					'useCombination' => 1,
 					'newRecordLinkPosition' => 'bottom',
 				),
 			)
@@ -1097,7 +1069,7 @@ $TCA['tx_hisodat_sources'] = Array (
 				'foreign_table_field' => 'parenttable',
 				'foreign_sortby' => 'perssort',
 				'foreign_label' => 'uid_pers',
-				'foreign_selector' => 'uid_pers',
+#				'foreign_selector' => 'uid_pers',
 				'foreign_unique' => 'uid_pers',
 				'size' => 1,
 				'minitems' => 0,
@@ -1105,7 +1077,7 @@ $TCA['tx_hisodat_sources'] = Array (
 				'appearance' => Array (
 					'collapseAll' => 1,
 					'expandSingle' =>1,
-					'useCombination' => 1,
+#					'useCombination' => 1,
 					'newRecordLinkPosition' => 'bottom',
 				),
 			)
@@ -1119,9 +1091,7 @@ $TCA['tx_hisodat_sources'] = Array (
 				'foreign_table_field' => 'parenttable',
 				'foreign_sortby' => 'litsort',
 				'foreign_label' => 'uid_foreign',
-				#'foreign_selector' => 'uid_foreign', # BUG: if a relation with useCombination to an alread existing record is created, the combination table stays empty
-				#'foreign_unique' => 'uid_foreign',
-				// therefore a small configuration hack is employed - the select of the intermediate table get's a wizard_add that only appears if the record was saved;
+#				'foreign_selector' => 'uid_foreign', # BUG: if a relation with useCombination to an alread existing record is created, the combination table stays empty
 				'size' => 1,
 				'minitems' => 0,
 				'maxitems' => 50,

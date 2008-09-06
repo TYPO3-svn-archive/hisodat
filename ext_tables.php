@@ -220,7 +220,9 @@ t3lib_extMgm::allowTableOnStandardPages('tx_hisodat_mm_src_key');
 $TCA['tx_hisodat_mm_src_key'] = Array (
 	'ctrl' => Array (
 		'title' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_mm_src_key',
-		'label' => 'uid',
+		'label' => 'uid_src',
+		'label_alt' => ',uid_key',
+		'label_alt_force' => 1,
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
@@ -239,7 +241,9 @@ t3lib_extMgm::allowTableOnStandardPages('tx_hisodat_mm_src_pers');
 $TCA['tx_hisodat_mm_src_pers'] = Array (
 	'ctrl' => Array (
 		'title' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_mm_src_pers',
-		'label' => 'uid',
+		'label' => 'uid_src',
+		'label_alt' => ',uid_pers',
+		'label_alt_force' => 1,
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
@@ -258,7 +262,9 @@ t3lib_extMgm::allowTableOnStandardPages('tx_hisodat_mm_src_loc');
 $TCA['tx_hisodat_mm_src_loc'] = Array (
 	'ctrl' => Array (
 		'title' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_mm_src_loc',
-		'label' => 'uid',
+		'label' => 'uid_src',
+		'label_alt' => ',uid_loc',
+		'label_alt_force' => 1,
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
@@ -277,7 +283,9 @@ t3lib_extMgm::allowTableOnStandardPages('tx_hisodat_mm_src_ent');
 $TCA['tx_hisodat_mm_src_ent'] = Array (
 	'ctrl' => Array (
 		'title' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_mm_src_ent',
-		'label' => 'uid',
+		'label' => 'uid_src',
+		'label_alt' => ',uid_ent',
+		'label_alt_force' => 1,
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
@@ -295,7 +303,9 @@ t3lib_extMgm::allowTableOnStandardPages('tx_hisodat_mm_lit');
 $TCA['tx_hisodat_mm_lit'] = Array (
 	'ctrl' => Array (
 		'title' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_mm_lit',
-		'label' => 'uid',
+		'label' => 'uid_local',
+		'label_alt' => ',uid_foreign',
+		'label_alt_force' => 1,
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',

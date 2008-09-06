@@ -16,7 +16,7 @@ t3lib_extMgm::addPageTSConfig('
 	tx_hisodat.PERSONS_PIDLIST = '.$EXTCONF['PERSONS_PIDLIST'].'
 	tx_hisodat.LOCALITIES_PIDLIST = '.$EXTCONF['LOCALITIES_PIDLIST'].'
 	tx_hisodat.SOURCES_PIDLIST = '.$EXTCONF['SOURCES_PIDLIST'].'
-	tx_hisodat.RELATIONS_PIDLIST = '.$EXTCONF['RELATIONS_PIDLIST'].'
+#	tx_hisodat.RELATIONS_PIDLIST = '.$EXTCONF['RELATIONS_PIDLIST'].'
 	tx_hisodat.ENTITIES_PIDLIST = '.$EXTCONF['ENTITIES_PIDLIST'].'
 	tx_hisodat.MM_PID = '.$EXTCONF['MM_PID'].'
 	<INCLUDE_TYPOSCRIPT: source="FILE:EXT:hisodat/configuration/pagetsconfig.txt">

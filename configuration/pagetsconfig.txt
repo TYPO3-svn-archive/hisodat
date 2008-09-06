@@ -19,21 +19,25 @@ TCEFORM {
 	tx_hisodat_mm_src_pers {
 		uid_src.PAGE_TSCONFIG_IDLIST < tx_hisodat.SOURCES_PIDLIST
 		uid_pers.PAGE_TSCONFIG_IDLIST < tx_hisodat.PERSONS_PIDLIST
+		uid_pers.config.wizards.add.params.pid < tx_hisodat.PERSONS_PIDLIST
 	}
 
 	tx_hisodat_mm_src_loc {
 		uid_src.PAGE_TSCONFIG_IDLIST < tx_hisodat.SOURCES_PIDLIST
 		uid_loc.PAGE_TSCONFIG_IDLIST < tx_hisodat.LOCALITIES_PIDLIST
+		uid_loc.config.wizards.add.params.pid < tx_hisodat.LOCALITIES_PIDLIST
 	}
 
 	tx_hisodat_mm_src_ent {
 		uid_src.PAGE_TSCONFIG_IDLIST < tx_hisodat.SOURCES_PIDLIST
 		uid_ent.PAGE_TSCONFIG_IDLIST < tx_hisodat.ENTITIES_PIDLIST
+		uid_ent.config.wizards.add.params.pid < tx_hisodat.ENTITIES_PIDLIST
 	}
 
 	tx_hisodat_mm_lit {
 		uid_local.PAGE_TSCONFIG_IDLIST < tx_hisodat.SOURCES_PIDLIST
 		uid_foreign.PAGE_TSCONFIG_IDLIST < tx_hisodat.LITERATURE_PIDLIST
+		uid_foreign.config.wizards.add.params.pid < tx_hisodat.LITERATURE_PIDLIST
 	}
 
 #	tx_hisodat_relations {
@@ -88,10 +92,10 @@ TCAdefaults {
 
 	# MM Tables
 	tx_hisodat_mm_src_key.pid < tx_hisodat.MM_PID
-	tx_hisodat_mm_src_pers.pid = < tx_hisodat.MM_PID
-	tx_hisodat_mm_src_loc.pid = < tx_hisodat.MM_PID
-	tx_hisodat_mm_src_ent.pid = < tx_hisodat.MM_PID
-	tx_hisodat_mm_lit.pid = < tx_hisodat.MM_PID
+	tx_hisodat_mm_src_pers.pid < tx_hisodat.MM_PID
+	tx_hisodat_mm_src_loc.pid < tx_hisodat.MM_PID
+	tx_hisodat_mm_src_ent.pid < tx_hisodat.MM_PID
+	tx_hisodat_mm_lit.pid < tx_hisodat.MM_PID
 
 #	tx_hisodat_mm_pers_pers.pid = < tx_hisodat.MM_PID
 #	tx_hisodat_mm_pers_loc.pid = < tx_hisodat.MM_PID
