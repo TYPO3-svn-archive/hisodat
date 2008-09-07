@@ -1,7 +1,5 @@
 BACKEND
 -------
-* integrate extension tx_categories
-* insert a configuration PID for the MM-Tables
 
 
 OLDER

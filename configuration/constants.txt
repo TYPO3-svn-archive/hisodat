@@ -29,8 +29,11 @@ plugin.tx_hisodat.searchForms.expertSearchForm.templateFile = expertSearchForm.t
 
 ## RESULT LISTS ##
 
-#cat=plugin.tx_hisodat.searchResultList/enable/10; type=string; label= Template file: Smarty template for a list of records from the sources table
-plugin.tx_hisodat.searchResultList.quickSearchResult.templateFile = quickSearchResult.tpl
+#cat=plugin.tx_hisodat.searchResultList/enable/10; type=string; label= Template file: Smarty template for a list of records from the sources table for quicksearch
+plugin.tx_hisodat.searchResultList.quickSearchResult.templateFile = searchResultList.tpl
+
+#cat=plugin.tx_hisodat.searchResultList/enable/20; type=string; label= Template file: Smarty template for a list of records from the sources table for standard search
+plugin.tx_hisodat.searchResultList.standardSearchResult.templateFile = searchResultList.tpl
 
 ## DETAILS VIEW ##
 

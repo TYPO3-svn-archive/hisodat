@@ -61,7 +61,7 @@ plugin.tx_hisodat.controllerSwitch {
 				fullTextFields = signature, signature_add, date_comment, short, sourcetext, description, imagecaption
 				templateFile = {$plugin.tx_hisodat.searchResultList.quickSearchResult.templateFile}
 			}
-			standardSearchResult.templateFile =
+			standardSearchResult.templateFile = {$plugin.tx_hisodat.searchResultList.standardSearchResult.templateFile}
 			expertSearchResult.templateFile =
 			personsSearchResult.templateFile =
 			localitiesSearchResult.templateFile =

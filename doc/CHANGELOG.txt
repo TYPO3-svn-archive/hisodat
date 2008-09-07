@@ -1,3 +1,8 @@
+2008-09-07 - 0.0.17 <schradt@uni-mainz.de>
+	* INFO: Review of backend interface and table structure
+	* INFO: Successful test to use tx_categories for categorization
+	* INFO: Successfully tested very basic FE output
+
 2008-08-30 - 0.0.16 <schradt@uni-mainz.de>
 	* NEW: added TCEforms hook to extend the whitelist of config options that can be overriden from PageTSConfig. Now it's possible to override the wizard_add pid, foreign_table, foreign_table_where clauses
 

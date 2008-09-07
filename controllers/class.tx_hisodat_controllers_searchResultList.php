@@ -82,6 +82,9 @@ class tx_hisodat_controllers_searchResultList extends tx_lib_controller {
 		$model = new $modelClassName($this);
 		$model->load();
 
+#		debug($model);
+#		die();
+
 		//question: why do I have to call the action and not just "build" ??
 		$resultBrowser = $this->makeInstance('tx_hisodat_controllers_resultBrowser', $model);
 		$resultBrowser->buildListBrowserAction('listBrowser');

@@ -44,5 +44,5 @@ BUGS OF IMPORTANCE
 
 MY BUGS
 -------
-- Combination mode doesn't retrieve the field values (only for field description) - only after the first save
-- not possible to delete child records in FF3
+- Combination mode doesn't retrieve the field values (only for field description) - only after the first save => use wizard_add
+- not possible to delete child records in FF3 => PATCH

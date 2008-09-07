@@ -17,4 +17,15 @@ parameters				array		current parameters
 
 *}
 
-<h3>QUICKSEARCH FORM</h3>
+<h3>HISODAT QUICKSEARCH FORM</h3>
+
+<form action="{$destinationPid}" method="post" id="hisodat-quicksearch">
+	<fieldset>
+		<legend>Volltextsuche</legend>
+		<label for="hisodat-quicksearch-field">Suchbegriff eingeben</label>
+		<input id="hisodat-quicksearch-field" type="text" name="hisodat[searchstring]" />
+		<label for="hisodat-quicksearch-button">Suche abschicken</label>
+		<input id="hisodat-quicksearch-button" type="submit" value="Los" />
+		<input id="hisodat-quicksearch-action" type="hidden" name="hisodat[action]" value="quickSearch" />
+	</fieldset>
+</form>

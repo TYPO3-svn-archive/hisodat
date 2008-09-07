@@ -3,11 +3,11 @@
 	<div class="browse">
 		<ul class="resultBrowser">
 			<?php if($this->get('previousViewIsVisible')): ?>
-				<li class="prev"><a href="<?php print $this->get('previousViewUrl'); ?>#content">Vorherige Ergebnisse</a></li>
+				<li class="prev"><a href="<?php print $this->get('previousViewUrl'); ?>">Vorherige Ergebnisse</a></li>
 			<?php endif; ?>
 
 			<?php if($this->get('firstViewIsVisible')): ?>
-				<li class="first"><a href="<?php print $this->get('firstViewUrl'); ?>#content"><?php print $this->get('firstViewNumber'); ?></a></li>
+				<li class="first"><a href="<?php print $this->get('firstViewUrl'); ?>"><?php print $this->get('firstViewNumber'); ?></a></li>
 			<?php endif; ?>
 
 			<?php if($this->get('precedingDotsAreVisible')): ?>
@@ -18,7 +18,7 @@
 
 			<?php if($this->get('precedingViewsAreVisible')): ?>
 				<?php foreach($this->get('precedingViews') as $view): ?>
-					<li class="preceding"><a href="<?php print $view['url']; ?>#content"><?php print $view['number']; ?></a></li>
+					<li class="preceding"><a href="<?php print $view['url']; ?>"><?php print $view['number']; ?></a></li>
 				<?php endforeach; ?>
 			<?php endif; ?>
 
@@ -28,7 +28,7 @@
 
 			<?php if($this->get('succeedingViewsAreVisible')): ?>
 				<?php foreach($this->get('succeedingViews') as $view): ?>
-					<li class="succeeding"><a href="<?php print $view['url']; ?>#content"><?php print $view['number']; ?></a></li>
+					<li class="succeeding"><a href="<?php print $view['url']; ?>"><?php print $view['number']; ?></a></li>
 				<?php endforeach; ?>
 			<?php endif; ?>
 
@@ -37,11 +37,11 @@
 			<?php endif; ?>
 
 			<?php if($this->get('lastViewIsVisible')): ?>
-				<li class="last"><a href="<?php print $this->get('lastViewUrl'); ?>#content"><?php print $this->get('lastViewNumber'); ?></a></li>
+				<li class="last"><a href="<?php print $this->get('lastViewUrl'); ?>"><?php print $this->get('lastViewNumber'); ?></a></li>
 			<?php endif; ?>
 
 			<?php if($this->get('nextViewIsVisble')): ?>
-				<li class="next"><a href="<?php print $this->get('nextViewUrl'); ?>#content">Nächste Ergebnisse</a></li>
+				<li class="next"><a href="<?php print $this->get('nextViewUrl'); ?>">Nächste Ergebnisse</a></li>
 			<?php endif; ?>
 		</ul>
 	</div>
@@ -50,15 +50,15 @@
 	<div class="browse">
 		<ul class="resultBrowser">
 			<?php if($this->get('linkToPrevious')): ?>
-				<li class="prev"><a href="<?php print $this->get('linkToPrevious'); ?>#content">Vorheriger Treffer</a></li>
+				<li class="prev"><a href="<?php print $this->get('linkToPrevious'); ?>">Vorheriger Treffer</a></li>
 			<?php endif; ?>
 
 			<?php if($this->get('backToList')): ?>
-				<li class="backToList"><a href="<?php print $this->get('backToList'); ?>#content">Zurück zur Ergebnisliste</a></li>
+				<li class="backToList"><a href="<?php print $this->get('backToList'); ?>">Zurück zur Ergebnisliste</a></li>
 			<?php endif; ?>
 
 			<?php if($this->get('linkToNext')): ?>
-				<li class="next"><a href="<?php print $this->get('linkToNext'); ?>#content">Nächster Treffer</a></li>
+				<li class="next"><a href="<?php print $this->get('linkToNext'); ?>">Nächster Treffer</a></li>
 			<?php endif; ?>
 		</ul>
 	</div>

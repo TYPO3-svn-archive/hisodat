@@ -48,7 +48,7 @@ class tx_hisodat_models_sources extends tx_lib_object {
 	 */
 	public function load() {
 
-#		$GLOBALS['TYPO3_DB']->store_lastBuiltQuery = TRUE;
+		$GLOBALS['TYPO3_DB']->store_lastBuiltQuery = TRUE;
 
 		// find out which action is calling the model
 		$action = $this->controller->parameters->get('action');
@@ -221,6 +221,7 @@ class tx_hisodat_models_sources extends tx_lib_object {
 		$where .= ' AND tx_hisodat_sources.pid IN ('.$this->_getPidList().')';
 		$where .= ' AND uid=' . (int) $uid;
 		$queryResult = $GLOBALS['TYPO3_DB']->exec_SELECTquery('*', $this->tableName, $where, null, null, null);
+#		debug($GLOBALS['TYPO3_DB']->debug_lastBuiltQuery);
 		if ($queryResult) {
 			return $row = $this->_makeRow($queryResult);
 		}
