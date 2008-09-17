@@ -48,7 +48,7 @@ class tx_hisodat_t3lib_tceforms {
 			$fieldTSconfig = $pObj->setTSconfig($table, $row, $field);
 
 			// check if the current user is in the configured editor list and if yes preset the value
-			if (t3lib_div::inList($fieldTSconfig['PAGE_TSCONFIG_IDLIST'], $GLOBALS['BE_USER']->user['usergroup'])) {
+			if (t3lib_div::inList($GLOBALS['BE_USER']->user['usergroup'],$fieldTSconfig['PAGE_TSCONFIG_IDLIST'])) {
 				$row[$field] = $GLOBALS['BE_USER']->user['uid'];
 			}
 		}

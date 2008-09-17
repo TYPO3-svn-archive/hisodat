@@ -373,6 +373,7 @@ $TCA['tx_hisodat_persons'] = Array (
 		),
 */
 		'literature_uids' => Array (
+			'exclude' => 1,
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.literature_uids',
 			'config' => Array (
 				'type' => 'inline',
@@ -614,6 +615,7 @@ $TCA['tx_hisodat_localities'] = Array (
 		),
 */
 		'literature_uids' => Array (
+			'exclude' => 1,
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.literature_uids',
 			'config' => Array (
 				'type' => 'inline',
@@ -816,6 +818,7 @@ $TCA['tx_hisodat_entities'] = Array (
 		),
 */
 		'literature_uids' => Array (
+			'exclude' => 1,
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_entities.literature_uids',
 			'config' => Array (
 				'type' => 'inline',
@@ -1083,6 +1086,7 @@ $TCA['tx_hisodat_sources'] = Array (
 			)
 		),
 		'literature_uids' => Array (
+			'exclude' => 1,
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_sources.literature_uids',
 			'config' => Array (
 				'type' => 'inline',

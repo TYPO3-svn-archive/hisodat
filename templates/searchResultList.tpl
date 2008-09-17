@@ -38,7 +38,7 @@ result					object 		The list with results from the db query
 
 {foreach from=$result item=source}
 
-<h4 class="hisodat-resulttitle">{link parameter="`$configurations.singlePid`" additionalParams="&hisodat[uid]=`$source.uid`&hisodat[action]=showSource`$offset`" title="Inschrift im Detail anzeigen"}{$source.rowcount}) {$source.signature}: {$source.short} {/link}</h4>
+<h4 class="hisodat-resulttitle">{link parameter="`$configurations.singlePid`" additionalParams="&hisodat[uid]=`$source.uid`&hisodat[action]=showSource`$offset`" title="Im Detail anzeigen"}{$source.rowcount}) {$source.signature}: {$source.short} {/link}</h4>
 <p class="hisodat-resultshort">{$source.short|truncate:200:"..."} {link parameter="`$configurations.singlePid`" additionalParams="&hisodat[uid]=`$source.uid`&hisodat[action]=showSource`$offset`" title="Im Detail anzeigen"}[Details]{/link}</p>
 
 {/foreach}
