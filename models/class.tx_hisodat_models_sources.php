@@ -48,7 +48,7 @@ class tx_hisodat_models_sources extends tx_lib_object {
 	 */
 	public function load() {
 
-		$GLOBALS['TYPO3_DB']->store_lastBuiltQuery = TRUE;
+#		$GLOBALS['TYPO3_DB']->store_lastBuiltQuery = TRUE;
 
 		// find out which action is calling the model
 		$action = $this->controller->parameters->get('action');
@@ -286,6 +286,13 @@ class tx_hisodat_models_sources extends tx_lib_object {
 			$i = 1;
 			while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($result)) {
 				$row['rowcount'] = $i;
+
+				// calls the function that fetches given relations to the source record if this is set from selectFields in TS
+				if ($row['archive_uid'] || $row['categories_uids']  || $row['keywords_uids']  || $row['localities_uids']  || $row['persons_uids'] || $row['entities_uids'] || $row['literature_uids'] || $row['sources_uids']) {
+					$row = $this->_fetchRelations($row);
+				}
+
+				// transform the result list to a list of objects
 				$resultList->append(new tx_lib_object($row));
 				$i++;
 			}
@@ -331,6 +338,10 @@ class tx_hisodat_models_sources extends tx_lib_object {
 
 	private function _makeRow($result) {
 		if ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($result)) {
+			// calls the function that fetches given relations to the source record if this is set from selectFields in TS
+			if ($row['archive_uid'] || $row['categories_uids']  || $row['keywords_uids']  || $row['localities_uids']  || $row['persons_uids'] || $row['entities_uids'] || $row['literature_uids'] || $row['sources_uids']) {
+				$row = $this->_fetchRelations($row);
+			}
 			return new tx_lib_object($row);
 		}
 	}
@@ -355,6 +366,28 @@ class tx_hisodat_models_sources extends tx_lib_object {
 			}
 		}
 		return implode(',', $pid_list);
+	}
+
+	/**
+	 * Takes a result row array, fetches its relations and passes back the $row with with its relations
+	 *
+	 * @param	array		the $row from the query result
+	 * @return	array		the $row with relations
+	 */
+	private function _fetchRelations($row) {
+
+		// archive_uid
+		if ($row['archive_uid'] > 0) {
+			$res = '';
+			$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('title','tx_hisodat_archives','uid='.$row['archive_uid'].'','','','');
+			$relation = $GLOBALS['TYPO3_DB']->sql_fetch_row($res);
+			$row['archive'] = $relation[0];
+		}
+
+		/*
+		 * ... here follow the other relations
+		 */
+		return $row;
 	}
 
 }

@@ -1,5 +1,5 @@
-2008-09-17 - 0.0.17 <schradt@uni-mainz.de>
-	* BUGFIX: Autofilling of editor_id did not work correctly due to wrong parameter sequenz in class.tx_hisodat_t3lib_tceforms.php
+2008-09-07 - 0.0.18 <schradt@uni-mainz.de>
+	* NEW: Function to display archives with the source records in list and singleview
 
 2008-09-07 - 0.0.17 <schradt@uni-mainz.de>
 	* INFO: Review of backend interface and table structure
