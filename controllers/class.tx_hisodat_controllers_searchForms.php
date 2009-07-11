@@ -46,8 +46,12 @@ class tx_hisodat_controllers_searchForms extends tx_lib_controller {
 		$this->storeToSession('searchResultList');
 
 		// set class names and instantiate
+		$modelClassName = tx_div::makeInstanceClassName('tx_hisodat_models_searchForms');
+		$model = new $modelClassName($this);
+
 		$viewClassName = tx_div::makeInstanceClassName('tx_hisodat_views_searchForms');
 		$view = new $viewClassName($this);
+
 		// Set template path
 		$view->initSmartyTemplate($this->configurations->get('pathToTemplateDirectory'));
 		// Set target page of the form
@@ -56,15 +60,22 @@ class tx_hisodat_controllers_searchForms extends tx_lib_controller {
 		$searchType = $this->configurations->get('searchType');
 
 		switch ($searchType) {
+			
 			case 'quickSearchForm':
 				return $view->renderTemplate($this->configurations->get('quickSearchForm.templateFile'));
 			break;
+			
 			case 'standardSearchForm':
+				// assign data for display in the form
+				$view->assignTemplateData('distinctPersons',$model->getDistinctPersons());
+				
 				return $view->renderTemplate($this->configurations->get('standardSearchForm.templateFile'));
 			break;
+			
 			case 'expertSearchForm':
 				return $view->renderTemplate($this->configurations->get('expertSearchForm.templateFile'));
 			break;
+			
 			default:
 				return $view->renderTemplate($this->configurations->get('quickSearchForm.templateFile'));
 		}
