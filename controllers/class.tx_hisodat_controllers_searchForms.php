@@ -46,9 +46,6 @@ class tx_hisodat_controllers_searchForms extends tx_lib_controller {
 		$this->storeToSession('searchResultList');
 
 		// set class names and instantiate
-		$modelClassName = tx_div::makeInstanceClassName('tx_hisodat_models_searchForms');
-		$model = new $modelClassName($this);
-
 		$viewClassName = tx_div::makeInstanceClassName('tx_hisodat_views_searchForms');
 		$view = new $viewClassName($this);
 
@@ -67,7 +64,9 @@ class tx_hisodat_controllers_searchForms extends tx_lib_controller {
 			
 			case 'standardSearchForm':
 				// assign data for display in the form
-				$view->assignTemplateData('distinctPersons',$model->getDistinctPersons());
+				$view->assignTemplateData('oldestDate', tx_hisodat_models_sources::getOldestYoungestDate('date_start'));
+				$view->assignTemplateData('youngestDate', tx_hisodat_models_sources::getOldestYoungestDate('date_end'));
+				$view->assignTemplateData('distinctPersons', tx_hisodat_models_persons::getDistinctPersons());			
 				
 				return $view->renderTemplate($this->configurations->get('standardSearchForm.templateFile'));
 			break;

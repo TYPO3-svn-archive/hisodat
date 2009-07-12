@@ -33,7 +33,7 @@ result					object 		The list with results from the db query
 {/if}
 </h3>
 
-{if ($configurations.totalResultCount > 1)}<p class="hisodat-resultinfo">Die Treffer sind absteigend sortiert gemäß der Häufigkeit, mit der Ihre Suchbegriffe im Volltext aufgetaucht sind.</p>{/if}
+{if ($configurations.totalResultCount > 1)}<p class="hisodat-resultinfo">Die Treffer sind aufsteigend nach Jahr datiert.</p>{/if}
 {$configurations.listBrowser}
 
 {foreach from=$result item=source}
