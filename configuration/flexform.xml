@@ -31,6 +31,10 @@
 										<numIndex index="0">LLL:EXT:hisodat/lang/locallang_flexform.xml:controllerSelection.detailsView</numIndex>
 										<numIndex index="1">detailsView</numIndex>
 									</numIndex>
+									<numIndex index="4" type="array">
+										<numIndex index="0">LLL:EXT:hisodat/lang/locallang_flexform.xml:controllerSelection.persons</numIndex>
+										<numIndex index="1">persons</numIndex>
+									</numIndex>
 								</items>
  							</config>
 						</TCEforms>

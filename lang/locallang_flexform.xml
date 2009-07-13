@@ -11,6 +11,7 @@
 			<label index="controllerSelection.searchForms">Search</label>
 			<label index="controllerSelection.searchResultList">Searchresults</label>
 			<label index="controllerSelection.detailsView">Record details</label>
+			<label index="controllerSelection.detailsView">Persons view</label>
 			<label index="storageFolderSelection">Storage folder</label>
 			<label index="recursive">Levels</label>
 			<label index="searchSheetTitle">Search Configuration</label>
@@ -30,6 +31,7 @@
 			<label index="controllerSelection.searchForms">Suche</label>
 			<label index="controllerSelection.searchResultList">Suchergebnisse</label>
 			<label index="controllerSelection.detailsView">Detailansicht</label>
+			<label index="controllerSelection.persons">Personenanzeige</label>			
 			<label index="storageFolderSelection">Startpunkt</label>
 			<label index="recursive">Ebenentiefe</label>
 			<label index="searchSheetTitle">Suche</label>

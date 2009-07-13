@@ -83,6 +83,40 @@ class tx_hisodat_models_persons extends tx_lib_object {
 		}
 		return $relatedSources;	
 	}
+
+	/**
+	 * Gets all persons that are related to a specific uid
+	 * @param	int			The uid for which to find the related persons
+	 * @param	string		The tablename of the calling table
+	 * @param	string		The tablename of the MM table to use
+	 * 
+	 * @return	array		Array with the names of the related persons and their uids as keys
+	 */
+	public function getRelatedPersons($uid, $calling_table, $mm_table) {
+				
+		// initialize
+		$relatedPersons = array();
+		
+		// execute query
+		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
+			'tx_hisodat_persons.uid, tx_hisodat_persons.name',
+			'tx_hisodat_persons,'.$mm_table.','.$calling_table,
+			$calling_table.'.uid = '.(int) $uid.' AND '.$calling_table.'.uid = '.$mm_table.'.uid_src AND tx_hisodat_persons.uid = '.$mm_table.'.uid_pers',
+			'',
+			$calling_table.'.uid',
+			''
+		);
+		// write the related uids into an array
+		if ($GLOBALS['TYPO3_DB']->sql_num_rows($res) > 0) {			
+			while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
+				$relatedPersons[$row['uid']] = $row['name'];
+			}	
+		}
+		// free memory
+		$GLOBALS['TYPO3_DB']->sql_free_result($res);
+		
+		return $relatedPersons;	
+	}	
 	
 	/* Description
 	 * 

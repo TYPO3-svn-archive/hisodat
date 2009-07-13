@@ -43,6 +43,7 @@
 			<?php if($this->get('nextViewIsVisble')): ?>
 				<li class="next"><a href="<?php print $this->get('nextViewUrl'); ?>">Nächste Ergebnisse</a></li>
 			<?php endif; ?>
+				<li class="search"><a href="index.php?id=496">Neue Suche</a></li>
 		</ul>
 	</div>
 <?php endif; ?>

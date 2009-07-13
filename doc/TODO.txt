@@ -15,7 +15,7 @@ OLDER
 QUERIES
 -------
 
-Select sources according to related persons
+- Select sources according to related persons name
 
 SELECT tx_hisodat_sources.uid,tx_hisodat_sources.pid,tx_hisodat_sources.signature
 FROM tx_hisodat_persons, tx_hisodat_mm_src_pers, tx_hisodat_sources
@@ -23,3 +23,11 @@ WHERE tx_hisodat_persons.name LIKE 'Johann Ulrich Zasius'
 AND tx_hisodat_sources.uid = tx_hisodat_mm_src_pers.uid_src
 AND tx_hisodat_persons.uid = tx_hisodat_mm_src_pers.uid_pers
 ORDER BY tx_hisodat_sources.uid
+
+- Select persons related to a specific source uid
+
+SELECT tx_hisodat_persons.uid,tx_hisodat_persons.name
+FROM tx_hisodat_persons, tx_hisodat_mm_src_pers, tx_hisodat_sources
+WHERE tx_hisodat_sources.uid = 1096
+AND tx_hisodat_sources.uid = tx_hisodat_mm_src_pers.uid_src
+AND tx_hisodat_persons.uid = tx_hisodat_mm_src_pers.uid_pers

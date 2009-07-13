@@ -9,6 +9,7 @@ t3lib_div::loadTCA('tt_content');
 // FLEXFORMS
 $TCA['tt_content']['types']['list']['subtypes_excludelist']['tx_hisodat']='layout,select_key,pages,recursive';
 $TCA['tt_content']['types']['list']['subtypes_addlist']['tx_hisodat']='pi_flexform';
+
 t3lib_extMgm::addPiFlexFormValue('tx_hisodat', 'FILE:EXT:hisodat/configuration/flexform.xml');
 t3lib_extMgm::addPlugin(array('HISODAT', 'tx_hisodat'));
 

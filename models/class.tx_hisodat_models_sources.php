@@ -269,15 +269,19 @@ class tx_hisodat_models_sources extends tx_lib_object {
 	 * @return	object	The result of the DB query
 	 */
 	public function getByUid($uid) {
+		
+		// query settings
 		$where = 'hidden = 0 AND deleted = 0';
-		// Pages with records
 		$where .= ' AND tx_hisodat_sources.pid IN ('.$this->_getPidList().')';
 		$where .= ' AND uid=' . (int) $uid;
-		$queryResult = $GLOBALS['TYPO3_DB']->exec_SELECTquery('*', $this->tableName, $where, null, null, null);
-		if ($queryResult) {
-			$row = $this->_makeRow($queryResult);
+		
+		// execute query
+		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('*', $this->tableName, $where, null, null, null);
+		
+		if ($res) {		
+			$row = $this->_makeRow($res);
 			// free memory
-			$GLOBALS['TYPO3_DB']->sql_free_result($queryResult);
+			$GLOBALS['TYPO3_DB']->sql_free_result($res);
 			return $row;
 		}
 	}
@@ -473,6 +477,12 @@ class tx_hisodat_models_sources extends tx_lib_object {
 			// free memory
 			$GLOBALS['TYPO3_DB']->sql_free_result($res);
 		}
+		
+		if ($row['persons_uids'] > 0) {
+			$row['persons'] = tx_hisodat_models_persons::getRelatedPersons($row['uid'], $this->tableName, 'tx_hisodat_mm_src_pers');
+		}
+		
+		#debug($row);
 
 		/*
 		 * ... here follow other relations
