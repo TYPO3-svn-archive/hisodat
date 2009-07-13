@@ -28,8 +28,8 @@ temp.tx_hisodat.configurations {
 		pagerIndexMode =
 		useCacheHash =
 		resultsPerView = 10
-		precedingViewsCount = 3
-		succeedingViewsCount = 3
+		precedingViewsCount = 2
+		succeedingViewsCount = 2
 		offsetName = offset
 		alwaysShowBrowser = 0
 	}

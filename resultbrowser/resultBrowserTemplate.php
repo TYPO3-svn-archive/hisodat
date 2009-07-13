@@ -3,7 +3,7 @@
 	<div class="browse">
 		<ul class="resultBrowser">
 			<?php if($this->get('previousViewIsVisible')): ?>
-				<li class="prev"><a href="<?php print $this->get('previousViewUrl'); ?>">Vorherige Ergebnisse</a></li>
+				<li class="prev"><a href="<?php print $this->get('previousViewUrl'); ?>">&laquo;</a></li>
 			<?php endif; ?>
 
 			<?php if($this->get('firstViewIsVisible')): ?>
@@ -41,7 +41,7 @@
 			<?php endif; ?>
 
 			<?php if($this->get('nextViewIsVisble')): ?>
-				<li class="next"><a href="<?php print $this->get('nextViewUrl'); ?>">Nächste Ergebnisse</a></li>
+				<li class="next"><a href="<?php print $this->get('nextViewUrl'); ?>">&raquo;</a></li>
 			<?php endif; ?>
 				<li class="search"><a href="index.php?id=496">Neue Suche</a></li>
 		</ul>
