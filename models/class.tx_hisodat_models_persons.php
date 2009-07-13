@@ -67,7 +67,7 @@ class tx_hisodat_models_persons extends tx_lib_object {
 					''
 				);
 				
-				if ( $GLOBALS['TYPO3_DB']->sql_num_rows($res) > 0) {
+				if ($GLOBALS['TYPO3_DB']->sql_num_rows($res) > 0) {
 					
 					// write the related uids into a csv list				
 					while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {

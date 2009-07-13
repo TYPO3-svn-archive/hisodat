@@ -105,12 +105,11 @@ class tx_hisodat_models_sources extends tx_lib_object {
 	public function fullTextSearch() {
 
 		// query settings
-		$selectFields = $this->controller->configurations->get('selectFields');
+		($this->controller->action == 'quickSearchAction') ? $selectFields = $this->controller->configurations->get('selectFields') : $selectFields = 'uid';	
 		$matchFields = $this->controller->configurations->get('quickSearchResult.fullTextFields');
 		$orderBy = 'mtch2 DESC';
 		$where = 'hidden = 0 AND deleted = 0';
 		$limit = null;
-
 		// Pages with records
 		$where .= ' AND tx_hisodat_sources.pid IN ('.$this->_getPidList().')';
 
@@ -139,19 +138,29 @@ class tx_hisodat_models_sources extends tx_lib_object {
 		}
 
 #		debug($againstString);
+
 		$matchAgainst = ', MATCH('.$matchFields.') AGAINST('.$againstString.' IN BOOLEAN MODE) AS mtch1, ';
 		$matchAgainst .= 'MATCH('.$matchFields.') AGAINST('.preg_replace('/[+*]+/', '',$againstString).') AS mtch2';
 		$where .= ' HAVING mtch1 > 0';
 
 		// perform the search query and generate the result list
 		$queryResult = $GLOBALS['TYPO3_DB']->exec_SELECTquery($selectFields.$matchAgainst, $this->tableName, $where, null, $orderBy, $limit);
+
 #		debug($GLOBALS['TYPO3_DB']->debug_lastBuiltQuery);
 	
 		if ($queryResult) {
-			// store the result
-			$this->_storeResultList($queryResult);
-			// free memory
-			$GLOBALS['TYPO3_DB']->sql_free_result($queryResult);
+			// for quickSearch, store the result
+			if ($this->controller->action == 'quickSearchAction') {
+				$this->_storeResultList($queryResult);
+				// free memory
+				$GLOBALS['TYPO3_DB']->sql_free_result($queryResult);
+			// else return a list of uids
+			} else {
+				while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($queryResult)) {
+					$resultUids .= $row['uid'].',';
+				}
+				$this->set('resultUids', substr($resultUids, 0, -1));
+			}
 		}
 	}
 
@@ -165,6 +174,9 @@ class tx_hisodat_models_sources extends tx_lib_object {
 		 // REMEMBER: must not be named $this->parameters since that is used in lib/div resultBrowser
 		$this->searchParameters = array();
 		
+		// fulltext search
+		if ($this->controller->parameters->get('searchstring')) $this->fullTextSearch();		
+		
 		// date start / end / exlude fuzzy
 		if ($this->controller->parameters->get('date_start')) $this->searchParameters['date_start'] = (int) $this->controller->parameters->get('date_start');
 		if ($this->controller->parameters->get('date_end')) $this->searchParameters['date_end'] = (int) $this->controller->parameters->get('date_end');
@@ -172,75 +184,73 @@ class tx_hisodat_models_sources extends tx_lib_object {
 				
 		// related persons
 		if (is_array($this->controller->parameters->get('person_select'))) {
-			$this->searchParameters['mm_src_pers'] = tx_hisodat_models_persons::getRelatedSources($this->controller->parameters->get('person_select'));
-			// combine the source uids to one list
-			if (count($this->searchParameters['mm_src_pers']) > 0) $this->searchParameters['mm_src_pers'] = implode(',', $this->searchParameters['mm_src_pers']);
-		}
-		
-		// if there is a fulltext search string do this first
-		if ($this->controller->parameters->get('searchstring')) $this->fullTextSearch();
-
-		// if there was a result from fulltext and there are more parameters, filter the result
-		if (is_object($this->get('searchResultList')) && count($this->searchParameters) > 0) {
-
-			// hand over to the filter method
-			$filteredResult = $this->_filterResultList($this->get('fullResult'));
-			$this->_storeResultList($filteredResult);
-
-		// if there are just parameters do a DB query based on them
-		} elseif (count($this->searchParameters) > 0) {
-
-			// general query settings
-			$selectFields = $this->controller->configurations->get('selectFields');
-			$orderBy = 'date_start';
-			$where = 'hidden = 0 AND deleted = 0';
-			$limit = null;
-			$where .= ' AND tx_hisodat_sources.pid IN ('.$this->_getPidList().')';
-					
-			// dates
-			if ($this->searchParameters['date_start'] && $this->searchParameters['date_end']) {
-				
-				if (!$exclude_fuzzy_dates) {
-					// startdate within the given period
-					$where .= ' AND ((SUBSTR(tx_hisodat_sources.date_start,-4) >= '.$this->searchParameters['date_start'].' AND SUBSTR(tx_hisodat_sources.date_start,-4) <= '.$this->searchParameters['date_end'].')';
-					// enddate within given period
-					$where .= ' OR (SUBSTR(tx_hisodat_sources.date_end,-4) <= '.$this->searchParameters['date_end'].' AND SUBSTR(tx_hisodat_sources.date_end,-4) >= '.$this->searchParameters['date_start'].')';
-					// both dates within the given period
-                	$where .= ' OR (SUBSTR(tx_hisodat_sources.date_start,-4) < '.$this->searchParameters['date_start'].' AND SUBSTR(tx_hisodat_sources.date_end,-4) > '.$this->searchParameters['date_end'].'))';
-				} else {
-					// exact match within given period
-					$where .= ' AND ((SUBSTR(tx_hisodat_sources.date_start,-4) >= '.$this->searchParameters['date_start'].' AND SUBSTR(tx_hisodat_sources.date_end,-4) <= '.$this->searchParameters['date_end'].'))';
+			// call the persons model statically and receive an array of uids of related sources for all persons
+			// TODO / question: this means an OR combo since all uids are simply concatenated...
+			$uidList = implode(',', tx_hisodat_models_persons::getRelatedSources($this->controller->parameters->get('person_select')));
+			
+			// if there was a result
+			if (count($uidList) > 0) {
+				// check if we already have some uids in store
+				if ($this->get('resultUids')) {
+					// OR combo: takes all source uids that either matched the fulltext string OR the person and fuses them into one list; 
+					// $uidList .= $uidList.','.$this->get('resultUids');
+					// $uidList = implode(',', array_unique(t3lib_div::trimExplode(',', $uidList)));
+					// AND combo: extracts all uids from fulltext AND persons search that are equal
+					$uidList = array_intersect(t3lib_div::trimExplode(',', $uidList), t3lib_div::trimExplode(',', $this->get('resultUids')));
+					$uidList = implode(',', $uidList);
 				}
-			
-			// only start date given
-			} elseif ($this->searchParameters['date_start'] && !$this->searchParameters['date_end']) {
-				
-				$where .= ' AND (SUBSTR(tx_hisodat_sources.date_start,-4) >= '.$this->searchParameters['date_start'];
-				(!$exclude_fuzzy_dates) ? $where .= ' OR (SUBSTR(tx_hisodat_sources.date_end,-4) >= '.$this->searchParameters['date_start'].'))' : $where .= ')';
+				// store the list
+				$this->set('resultUids', $uidList);
+			}
+		}
 
-			// only end date given
-			} elseif ($this->searchParameters['date_end'] && !$this->searchParameters['date_start']) {
+		// general query settings
+		$selectFields = $this->controller->configurations->get('selectFields');
+		$orderBy = 'date_start';
+		$where = 'hidden = 0 AND deleted = 0';
+		$limit = null;
+		$where .= ' AND tx_hisodat_sources.pid IN ('.$this->_getPidList().')';
+					
+		// dates
+		if ($this->searchParameters['date_start'] && $this->searchParameters['date_end']) {
 				
-				$where .= ' AND (SUBSTR(tx_hisodat_sources.date_end,-4) <= '.$this->searchParameters['date_end'];
-				(!$exclude_fuzzy_dates) ? $where .= ' OR (SUBSTR(tx_hisodat_sources.date_start,-4) <= '.$this->searchParameters['date_end'].'))' : $where .= ')';
-				
+			if (!$exclude_fuzzy_dates) {
+				// startdate within the given period
+				$where .= ' AND ((SUBSTR(tx_hisodat_sources.date_start,-4) >= '.$this->searchParameters['date_start'].' AND SUBSTR(tx_hisodat_sources.date_start,-4) <= '.$this->searchParameters['date_end'].')';
+				// enddate within given period
+				$where .= ' OR (SUBSTR(tx_hisodat_sources.date_end,-4) <= '.$this->searchParameters['date_end'].' AND SUBSTR(tx_hisodat_sources.date_end,-4) >= '.$this->searchParameters['date_start'].')';
+				// both dates within the given period
+                $where .= ' OR (SUBSTR(tx_hisodat_sources.date_start,-4) < '.$this->searchParameters['date_start'].' AND SUBSTR(tx_hisodat_sources.date_end,-4) > '.$this->searchParameters['date_end'].'))';
+			} else {
+				// exact match within given period
+				$where .= ' AND ((SUBSTR(tx_hisodat_sources.date_start,-4) >= '.$this->searchParameters['date_start'].' AND SUBSTR(tx_hisodat_sources.date_end,-4) <= '.$this->searchParameters['date_end'].'))';
 			}
 			
-			// persons
-			if ($this->searchParameters['mm_src_pers']) $where .= ' AND tx_hisodat_sources.uid IN ('.$this->searchParameters['mm_src_pers'].')';
+		// only start date given
+		} elseif ($this->searchParameters['date_start'] && !$this->searchParameters['date_end']) {				
+			$where .= ' AND (SUBSTR(tx_hisodat_sources.date_start,-4) >= '.$this->searchParameters['date_start'];
+			(!$exclude_fuzzy_dates) ? $where .= ' OR (SUBSTR(tx_hisodat_sources.date_end,-4) >= '.$this->searchParameters['date_start'].'))' : $where .= ')';
+				
+		// only end date given
+		} elseif ($this->searchParameters['date_end'] && !$this->searchParameters['date_start']) {
+			$where .= ' AND (SUBSTR(tx_hisodat_sources.date_end,-4) <= '.$this->searchParameters['date_end'];
+			(!$exclude_fuzzy_dates) ? $where .= ' OR (SUBSTR(tx_hisodat_sources.date_start,-4) <= '.$this->searchParameters['date_end'].'))' : $where .= ')';	
+		}
+
+		// list of uids (resulting from fulltext / persons search)
+		($this->get('resultUids')) ? $where .= ' AND tx_hisodat_sources.uid IN ('.$this->get('resultUids').')' : $where .= ' AND tx_hisodat_sources.uid IN (0)';
 			
-			// perform the search query and generate the result list
-			$queryResult = $GLOBALS['TYPO3_DB']->exec_SELECTquery($selectFields, $this->tableName, $where, null, $orderBy, $limit);
-#			debug($GLOBALS['TYPO3_DB']->debug_lastBuiltQuery);
+		// perform the search query and generate the result list
+		$queryResult = $GLOBALS['TYPO3_DB']->exec_SELECTquery($selectFields, $this->tableName, $where, null, $orderBy, $limit);
+		
+		debug($GLOBALS['TYPO3_DB']->debug_lastBuiltQuery);
 	
-			if ($queryResult) {
-				// store the result
-				$this->_storeResultList($queryResult);
-				// free memory
-				$GLOBALS['TYPO3_DB']->sql_free_result($queryResult);
-			}
-
-		} // else: nothing must be stored since if there was a fulltext result it is already stored and if not, there was no result at all
+		if ($queryResult) {
+			// store the result
+			$this->_storeResultList($queryResult);
+			// free memory
+			$GLOBALS['TYPO3_DB']->sql_free_result($queryResult);
+		}
 	}
 
 	public function expertSearch() {
@@ -302,38 +312,6 @@ class tx_hisodat_models_sources extends tx_lib_object {
 	// Private functions
 	// -------------------------------------------------------------------------------------
 
-	private function _filterResultList($resultToFilter) {
-
-		$filteredResultlist = new tx_lib_object(array());
-
-		for ($resultToFilter->rewind(); $resultToFilter->valid(); $resultToFilter->next()) {
-
-			// set the current row and afterwards use the filters
-			$row = $resultToFilter->current();
-
-			// date check
-			if ($this->searchParameters['date_start'] || $this->searchParameters['date_end']) {
-
-				$startdate = (int) substr($row->get('date_start'),-4);
-				$enddate =  (int) substr($row->get('date_end'),-4);
-
-				if (($startdate >= $this->searchParameters['date_start'] && $startdate <= $this->searchParameters['date_end']) // startdate within period
-					||
-				($enddate <= $this->searchParameters['date_end'] && $enddate >= $this->searchParameters['date_start']) // enddate within period
-					||
-				($startdate < $this->searchParameters['date_start'] && $enddate > $this->searchParameters['date_end'])  // record valid for the whole period
-					||
-				($startdate >= $this->searchParameters['date_start'] && !$this->searchParameters['date_end']) // startdate in period but no end date given
-					||
-				($enddate <= $this->searchParameters['date_end'] && !$this->searchParameters['date_start'])) { // endate in period but no start date given
-					// append to the filteres list
-					$filteredResultlist->append(new tx_lib_object($row));
-				}
-			}
-		}
-		return $filteredResultlist;
-	}
-
 	private function _storeResultList ($result) {
 		$resultList = new tx_lib_object(array());
 		// check if this is a query result or a list of objects
@@ -363,6 +341,8 @@ class tx_hisodat_models_sources extends tx_lib_object {
 			die('Result given is neither a query result nor a list of objects!');
 		}
 
+		// TODO: work on the storage method to only save the offset in question
+		
 		// store the total result count to the controllers register
 		$this->controller->configurations->set('totalResultCount', $resultList->count());
 
