@@ -53,7 +53,7 @@ class tx_hisodat_models_persons extends tx_lib_object {
 		if (count($persons) > 0) {
 			
 			// walk through the array and collect all related source uids
-			foreach ($persons as $key => $person) {
+			foreach ($persons as $person) {
 				
 				// join query on the MM table
 				$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
@@ -67,25 +67,26 @@ class tx_hisodat_models_persons extends tx_lib_object {
 					''
 				);
 				
-				if ($GLOBALS['TYPO3_DB']->sql_num_rows($res) > 0) {
-					
+				if ($GLOBALS['TYPO3_DB']->sql_num_rows($res) > 0) {				
 					// write the related uids into a csv list				
 					while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
-						$relatedSources[$key] .= $row['uid'].',';
+						$relatedSources[$person] .= $row['uid'].',';
 					}
 					// trim last comma
-					$relatedSources[$key] = substr($relatedSources[$key], 0, -1);
+					$relatedSources[$person] = substr($relatedSources[$person], 0, -1);
 					// free memory			
 					$GLOBALS['TYPO3_DB']->sql_free_result($res);
-					
 				} else {
-					$relatedSources[$key] = '';
+					$relatedSources[$person] = '';
 				}
 			}
 		}
 		return $relatedSources;	
 	}
-
+	
+	/* Description
+	 * 
+	 */
 	public function getDistinctPersons() {
 		
 		$res = '';
