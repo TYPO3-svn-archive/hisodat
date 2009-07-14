@@ -2,6 +2,7 @@
 <?php if($this->get('browserKey') == 'listBrowser'): ?>
 	<div class="browse">
 		<ul class="resultBrowser">
+				<li class="search"><a href="index.php?id=496">Neue Suche</a></li>		
 			<?php if($this->get('previousViewIsVisible')): ?>
 				<li class="prev"><a href="<?php print $this->get('previousViewUrl'); ?>">&laquo;</a></li>
 			<?php endif; ?>
@@ -43,23 +44,24 @@
 			<?php if($this->get('nextViewIsVisble')): ?>
 				<li class="next"><a href="<?php print $this->get('nextViewUrl'); ?>">&raquo;</a></li>
 			<?php endif; ?>
-				<li class="search"><a href="index.php?id=496">Neue Suche</a></li>
 		</ul>
 	</div>
 <?php endif; ?>
 <?php if ($this->get('browserKey') == 'singleBrowser'): ?>
 	<div class="browse">
 		<ul class="resultBrowser">
-			<?php if($this->get('linkToPrevious')): ?>
-				<li class="prev"><a href="<?php print $this->get('linkToPrevious'); ?>">Vorheriger Treffer</a></li>
-			<?php endif; ?>
-
+				<li class="search"><a href="index.php?id=496">Neue Suche</a></li>
+				
 			<?php if($this->get('backToList')): ?>
-				<li class="backToList"><a href="<?php print $this->get('backToList'); ?>">Zurück zur Ergebnisliste</a></li>
+				<li class="backToList"><a href="<?php print $this->get('backToList'); ?>">Trefferliste</a></li>
+			<?php endif; ?>
+								
+			<?php if($this->get('linkToPrevious')): ?>
+				<li class="prev"><a href="<?php print $this->get('linkToPrevious'); ?>">&laquo;</a></li>
 			<?php endif; ?>
 
 			<?php if($this->get('linkToNext')): ?>
-				<li class="next"><a href="<?php print $this->get('linkToNext'); ?>">Nächster Treffer</a></li>
+				<li class="next"><a href="<?php print $this->get('linkToNext'); ?>">&raquo;</a></li>
 			<?php endif; ?>
 		</ul>
 	</div>
