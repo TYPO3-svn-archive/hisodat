@@ -188,7 +188,7 @@ $TCA['tx_hisodat_literature'] = Array (
 $TCA['tx_hisodat_persons'] = Array (
 	'ctrl' => $TCA['tx_hisodat_persons']['ctrl'],
 	'interface' => Array (
-		'showRecordFieldList' => 'hidden,gender,name,namevariants,titles,date_comment,date_start,date_end,image,description,persons_uids,entities_uids,localities_uids,literature_uids'
+		'showRecordFieldList' => 'hidden,gender,name,namevariants,pnd,titles,date_comment,date_start,date_end,image,description,persons_uids,entities_uids,localities_uids,literature_uids'
 	),
 	'feInterface' => $TCA['tx_hisodat_persons']['feInterface'],
 	'columns' => Array (
@@ -233,6 +233,16 @@ $TCA['tx_hisodat_persons'] = Array (
 				'eval' => 'trim',
 			)
 		),
+		'name' => Array (
+			'exclude' => 1,
+			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.pnd',
+			'config' => Array (
+				'type' => 'input',
+				'size' => '30',
+				'max' => '255',
+				'eval' => 'trim',
+			)
+		),		
 		'titles' => Array (
 			'exclude' => 1,
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.titles',
@@ -398,7 +408,7 @@ $TCA['tx_hisodat_persons'] = Array (
 #						--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.div2,persons_uids,localities_uids,entities_uids,literature_uids'
 #		),
 		'0' => Array('showitem' => '
-						--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.div1,hidden,gender,name,namevariants,titles,
+						--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.div1,hidden,gender,name,namevariants,pnd,titles,
 						--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.div2,date_comment,date_start,date_end,
 						--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.div3,description;;;richtext[cut|copy|paste|formatblock|textcolor|bold|italic|underline|left|center|right|orderedlist|unorderedlist|outdent|indent|link|table|image|line|chMode]:rte_transform[mode=ts_css|imgpath=uploads/pics/],literature_uids,
 						--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.div4,image
@@ -856,7 +866,7 @@ $TCA['tx_hisodat_entities'] = Array (
 $TCA['tx_hisodat_sources'] = Array (
 	'ctrl' => $TCA['tx_hisodat_sources']['ctrl'],
 	'interface' => Array (
-		'showRecordFieldList' => 'hidden,signature,signature_add,archive_uid,date_comment,date_start,date_end,short,sourcetext,description;;;;3-3-3,persons_uids,localities_uids,entities_uids;;;;3-3-3,keywords_uids,literature_uids,sources_uids;;;;3-3-3,image,imagecaption,;;;;3-3-3,editor_id,editor_comment'
+		'showRecordFieldList' => 'hidden,signature,signature_add,urn,archive_uid,date_comment,date_start,date_end,short,sourcetext,description;;;;3-3-3,persons_uids,localities_uids,entities_uids;;;;3-3-3,keywords_uids,literature_uids,sources_uids;;;;3-3-3,image,imagecaption,;;;;3-3-3,editor_id,editor_comment'
 	),
 	'feInterface' => $TCA['tx_hisodat_sources']['feInterface'],
 	'columns' => Array (
@@ -888,6 +898,16 @@ $TCA['tx_hisodat_sources'] = Array (
 				'eval' => 'trim',
 			)
 		),
+		'urn' => Array (
+			'exclude' => 1,
+			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_sources.urn',
+			'config' => Array (
+				'type' => 'input',
+				'size' => '40',
+				'max' => '255',
+				'eval' => 'trim',
+			)
+		),		
 		'archive_uid' => Array (
 			'exclude' => 1,
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_sources.archive_uid',
@@ -1173,7 +1193,7 @@ $TCA['tx_hisodat_sources'] = Array (
 	),
 	'types' => Array (
 		'0' => Array('showitem' => '
-				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_sources.div1,hidden,signature,signature_add,archive_uid,date_comment,date_start,date_end,
+				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_sources.div1,hidden,signature,signature_add,urn,archive_uid,date_comment,date_start,date_end,
 				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_sources.div2,short,sourcetext,description;;;richtext[cut|copy|paste|formatblock|textcolor|bold|italic|underline|left|center|right|orderedlist|unorderedlist|outdent|indent|link|table|image|line|chMode]:rte_transform[mode=ts_css|imgpath=uploads/pics/],
 				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_sources.div3,keywords_uids,literature_uids,
 				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_sources.div4,persons_uids,localities_uids,entities_uids,sources_uids,

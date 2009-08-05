@@ -107,6 +107,7 @@ CREATE TABLE tx_hisodat_persons (
 	gender tinyint(4) DEFAULT '0' NOT NULL,
 	name varchar(255) DEFAULT '' NOT NULL,
 	namevariants varchar(255) DEFAULT '' NOT NULL,
+	pnd varchar(255) DEFAULT '' NOT NULL,
 	titles varchar(255) DEFAULT '' NOT NULL,
 	date_comment varchar(255) DEFAULT '' NOT NULL,
 	date_start char(10) DEFAULT '' NOT NULL,
@@ -185,6 +186,7 @@ CREATE TABLE tx_hisodat_sources (
 
 	signature varchar(255) DEFAULT '' NOT NULL,
 	signature_add varchar(255) DEFAULT '' NOT NULL,
+	urn varchar(255) DEFAULT '' NOT NULL,
 	archive_uid int(11) unsigned DEFAULT '0' NOT NULL,
 	date_start char(10) DEFAULT '' NOT NULL,
 	date_end char(10) DEFAULT '' NOT NULL,
@@ -456,7 +458,7 @@ CREATE TABLE tx_hisodat_mm_lit (
 #    uid_loc int(11) unsigned DEFAULT '0' NOT NULL,
 #    relations_uids varchar(255) DEFAULT '' NOT NULL,
 #    description text NOT NULL,
-#	parenttable varchar(255) DEFAULT '' NOT NULL,
+#	 parenttable varchar(255) DEFAULT '' NOT NULL,
 #    entsort int(11) unsigned DEFAULT '0' NOT NULL,
 #    locsort int(11) unsigned DEFAULT '0' NOT NULL,
 
@@ -480,7 +482,7 @@ CREATE TABLE tx_hisodat_mm_lit (
 #    uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
 #    relations_uids varchar(255) DEFAULT '' NOT NULL,
 #    description text NOT NULL,
-#	parenttable varchar(255) DEFAULT '' NOT NULL,
+#	 parenttable varchar(255) DEFAULT '' NOT NULL,
 #    localsort int(11) unsigned DEFAULT '0' NOT NULL,
 #    foreignsort int(11) unsigned DEFAULT '0' NOT NULL,
 

@@ -39,6 +39,7 @@
             <label index="tx_hisodat_persons.lastname">Lastname</label>
             <label index="tx_hisodat_persons.nameaddons">Additonal name attributes</label>
             <label index="tx_hisodat_persons.namevariants">Variants of the Name</label>
+            <label index="tx_hisodat_persons.pnd">Person Identifier</label>            
             <label index="tx_hisodat_persons.title">Title</label>
             <label index="tx_hisodat_persons.date_comment">Life dates</label>
             <label index="tx_hisodat_persons.date_start">Date of birth</label>
@@ -101,6 +102,7 @@
 			<label index="tx_hisodat_sources.div5">Editor</label>
             <label index="tx_hisodat_sources.signature">Signature</label>
             <label index="tx_hisodat_sources.signature_add">Additional signature information</label>
+            <label index="tx_hisodat_sources.urn">Persistent Identifier</label>
             <label index="tx_hisodat_sources.archive_uid">Archive</label>
             <label index="tx_hisodat_sources.literature_uids">Literature</label>
             <label index="tx_hisodat_sources.date_start">Start date</label>
@@ -211,6 +213,7 @@
             <label index="tx_hisodat_persons.div3">Beschreibung</label>
             <label index="tx_hisodat_persons.div4">Media</label>
             <label index="tx_hisodat_persons.namevariants">Namensvarianten</label>
+            <label index="tx_hisodat_persons.pnd">PND-Nummer</label>            
             <label index="tx_hisodat_persons.gender">Geschlecht</label>
             <label index="tx_hisodat_persons.gender.I.0">männlich</label>
             <label index="tx_hisodat_persons.gender.I.1">weiblich</label>
@@ -250,7 +253,7 @@
             <label index="tx_hisodat_localities.div4">Beschreibung</label>
             <label index="tx_hisodat_localities.div5">Media</label>
             <label index="tx_hisodat_localities.title">Lokalität</label>
-            <label index="tx_hisodat_localities.namevariants">Namensvarianten</label>
+            <label index="tx_hisodat_localities.namevariants">Namensvarianten</label>       
             <label index="tx_hisodat_localities.municipality">Heutige Gemeinde</label>
             <label index="tx_hisodat_localities.field_name">Flurname</label>
             <label index="tx_hisodat_localities.latitude">Breitengrad (Dezimalgrad)</label>
@@ -285,6 +288,7 @@
 			<label index="tx_hisodat_sources.div6">Bearbeitung</label>
             <label index="tx_hisodat_sources.signature">Signatur</label>
             <label index="tx_hisodat_sources.signature_add">Signaturzusatz</label>
+            <label index="tx_hisodat_sources.urn">Eindeutiger Digitaler Bezeichner (URN)</label>            
             <label index="tx_hisodat_sources.archive_uid">Archiv</label>
             <label index="tx_hisodat_sources.literature_uids">Literaturhinweise</label>
             <label index="tx_hisodat_sources.date_start">Datierung (Anfang)</label>
