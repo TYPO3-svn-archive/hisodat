@@ -107,6 +107,7 @@
             <label index="tx_hisodat_sources.literature_uids">Literature</label>
             <label index="tx_hisodat_sources.date_start">Start date</label>
             <label index="tx_hisodat_sources.date_end">End date</label>
+            <label index="tx_hisodat_sources.date_sorting">Date sorting</label>            
             <label index="tx_hisodat_sources.date_comment">Additional date information</label>
             <label index="tx_hisodat_sources.keywords_uids">Keywords</label>
             <label index="tx_hisodat_sources.categories_uids">Categories</label>
@@ -224,6 +225,7 @@
             <label index="tx_hisodat_persons.date_comment">Lebensdaten</label>
             <label index="tx_hisodat_persons.date_start">Geburtsdatum (Datierung)</label>
             <label index="tx_hisodat_persons.date_end">Sterbedatum (Datierung)</label>
+            <label index="tx_hisodat_sources.date_sorting">Datumssortierung</label>            
             <label index="tx_hisodat_persons.description">Beschreibung</label>
             <label index="tx_hisodat_persons.persons_uids">Zugeordnete Personen</label>
             <label index="tx_hisodat_persons.entities_uids">Zugeordnete Entitäten</label>

@@ -1,3 +1,6 @@
+2009-08-07 - 0.0.19 <schradt@uni-mainz.de>
+	* NEW: New field for sorting of dates
+
 2008-09-07 - 0.0.18 <schradt@uni-mainz.de>
 	* NEW: Function to display archives with the source records in list and singleview
 

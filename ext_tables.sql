@@ -191,6 +191,7 @@ CREATE TABLE tx_hisodat_sources (
 	date_start char(10) DEFAULT '' NOT NULL,
 	date_end char(10) DEFAULT '' NOT NULL,
 	date_comment varchar(255) DEFAULT '' NOT NULL,
+	date_sorting varchar(255) DEFAULT '' NOT NULL,	
 	short text NOT NULL,
 	sourcetext text NOT NULL,
 	description text NOT NULL,
