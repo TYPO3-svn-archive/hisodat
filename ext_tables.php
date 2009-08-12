@@ -4,8 +4,6 @@ if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 // GENERAL CONFIGURATION
 t3lib_div::loadTCA('tt_content');
 
-
-
 // FLEXFORMS
 $TCA['tt_content']['types']['list']['subtypes_excludelist']['tx_hisodat']='layout,select_key,pages,recursive';
 $TCA['tt_content']['types']['list']['subtypes_addlist']['tx_hisodat']='pi_flexform';
@@ -13,12 +11,8 @@ $TCA['tt_content']['types']['list']['subtypes_addlist']['tx_hisodat']='pi_flexfo
 t3lib_extMgm::addPiFlexFormValue('tx_hisodat', 'FILE:EXT:hisodat/configuration/flexform.xml');
 t3lib_extMgm::addPlugin(array('HISODAT', 'tx_hisodat'));
 
-
-
 // TYPOSCRIPT
 t3lib_extMgm::addStaticFile($_EXTKEY, './configuration', 'HISODAT: Base');
-
-
 
 // BACKEND RELATED
 if (TYPO3_MODE=='BE') {
@@ -33,9 +27,6 @@ if (TYPO3_MODE=='BE') {
 	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tceforms.php']['getSingleFieldClass'][] = 'EXT:hisodat/configuration/class.tx_hisodat_t3lib_tceforms.php:tx_hisodat_t3lib_tceforms';
 
 }
-
-
-
 
 // TABLE CONFIGURATION
 // archive table: each source belongs to a certain archive
@@ -425,4 +416,27 @@ $TCA['tx_hisodat_mm_ent_pers'] = Array (
 	),
 );
 */
+
+// DAM integration
+if (t3lib_extMgm::isLoaded('dam')) {
+
+	$tempColumns = array('tx_dam_image' => txdam_getMediaTCA('image_field', 'tx_dam_image'));
+	
+	// merge with sources & replace
+	t3lib_extMgm::addTCAcolumns('tx_hisodat_sources',$tempColumns,1);
+	t3lib_extMgm::addToAllTCAtypes('tx_hisodat_sources','tx_dam_image','','after:image');
+		
+	// merge with persons & replace
+	t3lib_extMgm::addTCAcolumns('tx_hisodat_persons',$tempColumns,1);
+	t3lib_extMgm::addToAllTCAtypes('tx_hisodat_persons','tx_dam_image','','after:image');
+		
+	// merge with localities & replace
+	t3lib_extMgm::addTCAcolumns('tx_hisodat_localities',$tempColumns,1);
+	t3lib_extMgm::addToAllTCAtypes('tx_hisodat_localities','tx_dam_image','','after:image');
+	
+	// merge with entities & replace
+	t3lib_extMgm::addTCAcolumns('tx_hisodat_entities',$tempColumns,1);
+	t3lib_extMgm::addToAllTCAtypes('tx_hisodat_entities','tx_dam_image','','after:image');
+	
+}
 ?>

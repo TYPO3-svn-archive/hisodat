@@ -297,7 +297,7 @@ $TCA['tx_hisodat_persons'] = Array (
 				'maxitems' => '10',
 				'minitems' => '0'
 			)
-		),
+		),		
 		'description' => Array (
 			'exclude' => 1,
 			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_persons.description',
