@@ -423,20 +423,20 @@ if (t3lib_extMgm::isLoaded('dam')) {
 	$tempColumns = array('tx_dam_image' => txdam_getMediaTCA('image_field', 'tx_dam_image'));
 	
 	// merge with sources & replace
-	t3lib_extMgm::addTCAcolumns('tx_hisodat_sources',$tempColumns,1);
-	t3lib_extMgm::addToAllTCAtypes('tx_hisodat_sources','tx_dam_image','','after:image');
+#	t3lib_extMgm::addTCAcolumns('tx_hisodat_sources',$tempColumns,1);
+#	t3lib_extMgm::addToAllTCAtypes('tx_hisodat_sources','tx_dam_image','','after:image');
 		
 	// merge with persons & replace
-	t3lib_extMgm::addTCAcolumns('tx_hisodat_persons',$tempColumns,1);
-	t3lib_extMgm::addToAllTCAtypes('tx_hisodat_persons','tx_dam_image','','after:image');
+#	t3lib_extMgm::addTCAcolumns('tx_hisodat_persons',$tempColumns,1);
+#	t3lib_extMgm::addToAllTCAtypes('tx_hisodat_persons','tx_dam_image','','after:image');
 		
 	// merge with localities & replace
-	t3lib_extMgm::addTCAcolumns('tx_hisodat_localities',$tempColumns,1);
-	t3lib_extMgm::addToAllTCAtypes('tx_hisodat_localities','tx_dam_image','','after:image');
+#	t3lib_extMgm::addTCAcolumns('tx_hisodat_localities',$tempColumns,1);
+#	t3lib_extMgm::addToAllTCAtypes('tx_hisodat_localities','tx_dam_image','','after:image');
 	
 	// merge with entities & replace
-	t3lib_extMgm::addTCAcolumns('tx_hisodat_entities',$tempColumns,1);
-	t3lib_extMgm::addToAllTCAtypes('tx_hisodat_entities','tx_dam_image','','after:image');
+#	t3lib_extMgm::addTCAcolumns('tx_hisodat_entities',$tempColumns,1);
+#	t3lib_extMgm::addToAllTCAtypes('tx_hisodat_entities','tx_dam_image','','after:image');
 	
 }
 ?>
