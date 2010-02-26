@@ -56,7 +56,7 @@ class tx_hisodat_models_sources extends tx_lib_object {
 		$this->loadFromSession('searchResultList');
 
 		// if the session returned search data the selection in relation to any given offset is returned
-		if ($this->isNotEmpty() && $action != 'showSource') {
+		if ($this->isNotEmpty() && $action != 'showSource' && $action != 'defaultAction') {
 
 #			echo'LOAD FROM SESSION';
 
@@ -88,7 +88,22 @@ class tx_hisodat_models_sources extends tx_lib_object {
 					return $this->set('searchResultList', $list);
 				}
 			break;
+
+/*
+			// default single is to fetch a single record from selected folders
+			default:
+				
+				switch (get_class($this->controller)) {
+					case 'tx_hisodat_controllers_detailsView':
+					break;
+					case 'tx_hisodat_controllers_listView':
+					break;
+				}
+				
+			break;
+*/			
 		}
+
 	}
 
 	/* Description: resultUids will be filtered down by submitted parameters
@@ -265,6 +280,7 @@ class tx_hisodat_models_sources extends tx_lib_object {
 	}
 
 	/* Fetches all fields of a single record from tx_hisodat_sources from DB
+	 * In case no uid is given, it fetches the first record from the first storage folder
 	 *
 	 * @return	object	The result of the DB query
 	 */
@@ -273,10 +289,18 @@ class tx_hisodat_models_sources extends tx_lib_object {
 		// query settings
 		$where = 'hidden = 0 AND deleted = 0';
 		$where .= ' AND tx_hisodat_sources.pid IN ('.$this->_getPidList().')';
-		$where .= ' AND uid=' . (int) $uid;
+		
+		if ((int) $uid < 1) {
+			
+			$sorting = $this->controller->configurations->get('sorting');
+			$limit = '1';
+			
+		} else {
+			$where .= ' AND uid=' . (int) $uid;
+		}
 		
 		// execute query
-		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('*', $this->tableName, $where, null, null, null);
+		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('*', $this->tableName, $where, null, $sorting, $limit);
 		
 		if ($res) {		
 			$row = $this->_makeRow($res);

@@ -8,13 +8,15 @@
 		<languageKey index="default" type="array">
 			<label index="mainSheetTitle">General</label>
 			<label index="controllerSelection">Plugin Mode</label>
-			<label index="controllerSelection.searchForms">Search</label>
-			<label index="controllerSelection.searchResultList">Searchresults</label>
-			<label index="controllerSelection.detailsView">Record details</label>
-			<label index="controllerSelection.detailsView">Persons view</label>
+			<label index="controllerSelection.searchForms">Sources Searchform</label>
+			<label index="controllerSelection.searchResultList">Sources Searchresults</label>
+			<label index="controllerSelection.detailsView">Sources Details</label>
+			<label index="controllerSelection.persons">Persons View</label>
+			<label index="controllerSelection.localities">Localities View</label>
+			<label index="controllerSelection.entities">Entities View</label>						
 			<label index="storageFolderSelection">Storage folder</label>
 			<label index="recursive">Levels</label>
-			<label index="searchSheetTitle">Search Configuration</label>
+			<label index="searchSheetTitle">Sources: Search</label>
 			<label index="searchTypeSelection">Select searchtype</label>
 			<label index="searchTypeSelection.quickSearchForm">Quick Search</label>
 			<label index="searchTypeSelection.standardSearchForm">Standard Search</label>
@@ -22,28 +24,34 @@
 			<label index="destinationPid">Destination PID for the form</label>
 			<label index="listSheetTitle">Resultlist</label>
 			<label index="singlePid">Destination PID with single view</label>
-			<label index="singleSheetTitle">Singleview</label>
+			<label index="singleSheetTitle">Sources: Singleview</label>
 			<label index="backToListPid">PID for the backlink to listview</label>
+			<label index="showPaginatedList">Show all Records in paginated Listform</label>
+			<label index="showPaginatedSingle">Show all Records in paginated form</label>				
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="mainSheetTitle">Allgemein</label>
 			<label index="controllerSelection">Plugin-Modus</label>
-			<label index="controllerSelection.searchForms">Suche</label>
-			<label index="controllerSelection.searchResultList">Suchergebnisse</label>
-			<label index="controllerSelection.detailsView">Detailansicht</label>
-			<label index="controllerSelection.persons">Personenanzeige</label>			
+			<label index="controllerSelection.searchForms">Quellensuche</label>
+			<label index="controllerSelection.searchResultList">Quellen-Suchergebnisse</label>
+			<label index="controllerSelection.detailsView">Quellen-Detailansicht</label>
+			<label index="controllerSelection.persons">Personenanzeige</label>
+			<label index="controllerSelection.localities">Lokalitätenanzeige</label>
+			<label index="controllerSelection.entities">Entitätenanzeige</label>			
 			<label index="storageFolderSelection">Startpunkt</label>
 			<label index="recursive">Ebenentiefe</label>
-			<label index="searchSheetTitle">Suche</label>
+			<label index="searchSheetTitle">Quellen: Suche</label>
 			<label index="searchTypeSelection">Suchtyp auswählen</label>
 			<label index="searchTypeSelection.quickSearchForm">Schnellsuche</label>
 			<label index="searchTypeSelection.standardSearchForm">Standardsuche</label>
 			<label index="searchTypeSelection.expertSearchForm">Expertensuche</label>
 			<label index="destinationPid">Zielseite für das Suchformular</label>
-			<label index="listSheetTitle">Trefferliste</label>
+			<label index="listSheetTitle">Quellen: Trefferliste</label>
 			<label index="singlePid">Seite mit der Detailansicht</label>
-			<label index="singleSheetTitle">Detailansicht</label>
+			<label index="singleSheetTitle">Quellen: Detailansicht</label>
 			<label index="backToListPid">Zurückseite mit der Listenansicht</label>
+			<label index="showPaginatedList">Alle Datensätze in paginierter Liste anzeigen</label>
+			<label index="showPaginatedSingle">Alle Datensätze in paginierter Einzelansicht anzeigen</label>				
 		</languageKey>
 	</data>
 </T3locallang>

@@ -13,6 +13,7 @@ includeLibs.tx_hisodat_controllers_searchResultList = EXT:hisodat/controllers/cl
 includeLibs.tx_hisodat_controllers_detailsView = EXT:hisodat/controllers/class.tx_hisodat_controllers_detailsView.php
 includeLibs.tx_hisodat_controllers_resultBrowser = EXT:hisodat/resultbrowser/class.tx_hisodat_controllers_resultBrowser.php
 includeLibs.tx_hisodat_controllers_persons = EXT:hisodat/controllers/class.tx_hisodat_controllers_persons.php
+includeLibs.tx_hisodat_models_sources = EXT:hisodat/models/class.tx_hisodat_models_sources.php
 
 # common config
 temp.tx_hisodat.configurations {
@@ -76,6 +77,7 @@ plugin.tx_hisodat.controllerSwitch {
 		configurations < temp.tx_hisodat.configurations
 		configurations {
 			selectFields = *
+			sorting = uid ASC
 			sources.templateFile = {$plugin.tx_hisodat.detailsView.sources.templateFile}
 		}
 	}

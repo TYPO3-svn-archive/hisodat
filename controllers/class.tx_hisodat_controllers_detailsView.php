@@ -37,12 +37,32 @@ require_once (t3lib_extMgm::extPath('div') . 'class.tx_div_ff.php');
 
 class tx_hisodat_controllers_detailsView extends tx_lib_controller {
 
-	var $defaultAction = 'default';
+	var $defaultAction = 'defaultAction';
 
+	/* Default action is to show all sources from the selected folders in a paginated singleview
+	 * 
+	 */
 	public function defaultAction() {
-		return $warning = '<p>Warnung: Der Aufruf erfolgte ohne Actionparameter!</p>';
+		
+		$modelClassName = tx_div::makeInstanceClassName('tx_hisodat_models_sources');
+		$viewClassName = tx_div::makeInstanceClassName('tx_hisodat_views_detailsView');
+		
+		// instantiate and fetch the record
+		$model = new $modelClassName($this);
+		$result = $model->getByUid($this->parameters->get('uid'));
+		
+		// instantiate the view
+		$view = new $viewClassName($this);
+		$view->initSmartyTemplate($this->configurations->get('pathToTemplateDirectory'));
+		$view->assignTemplateData('result', $result);
+		
+		// render
+		return $view->renderTemplate($this->configurations->get('sources.templateFile'));
 	}
 
+	/* This action is executed if we are coming from a (search) result list
+	 * 
+	 */
 	public function showSourceAction() {
 
 		$modelClassName = tx_div::makeInstanceClassName('tx_hisodat_models_sources');

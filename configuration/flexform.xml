@@ -35,6 +35,14 @@
 										<numIndex index="0">LLL:EXT:hisodat/lang/locallang_flexform.xml:controllerSelection.persons</numIndex>
 										<numIndex index="1">persons</numIndex>
 									</numIndex>
+									<numIndex index="5" type="array">
+										<numIndex index="0">LLL:EXT:hisodat/lang/locallang_flexform.xml:controllerSelection.localities</numIndex>
+										<numIndex index="1">persons</numIndex>
+									</numIndex>
+									<numIndex index="6" type="array">
+										<numIndex index="0">LLL:EXT:hisodat/lang/locallang_flexform.xml:controllerSelection.entities</numIndex>
+										<numIndex index="1">persons</numIndex>
+									</numIndex>
 								</items>
  							</config>
 						</TCEforms>
@@ -167,6 +175,15 @@
 							</config>
 						</TCEforms>
 					</singlePid>
+					
+					<showPaginatedList>
+						<TCEforms>
+						<label>LLL:EXT:hisodat/lang/locallang_flexform.xml:showPaginatedList</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</showPaginatedList>						
 
 				</el>
 			</ROOT>
@@ -193,6 +210,15 @@
 							</config>
 						</TCEforms>
 					</backToListPid>
+					
+					<showPaginatedSingle>
+						<TCEforms>
+						<label>LLL:EXT:hisodat/lang/locallang_flexform.xml:showPaginatedSingle</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</showPaginatedSingle>					
 
 				</el>
 			</ROOT>
