@@ -26,6 +26,8 @@ plugin.tx_hisodat.searchForms.standardSearchForm.templateFile = standardSearchFo
 #cat=plugin.tx_hisodat.searchForms/enable/40; type=string; label= Expert search template file: Smarty template for the expert search form
 plugin.tx_hisodat.searchForms.expertSearchForm.templateFile = expertSearchForm.tpl
 
+#cat=plugin.tx_hisodat.searchForms/enable/50; type=string; label= Jump to record form: Smarty template for the jump to record search form
+plugin.tx_hisodat.searchForms.jump2RecordSearchForm.templateFile = jump2RecordSearchForm.tpl
 
 ## RESULT LISTS ##
 

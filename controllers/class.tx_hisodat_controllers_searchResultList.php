@@ -33,13 +33,26 @@
  * @subpackage hisodat
  */
 
-
 class tx_hisodat_controllers_searchResultList extends tx_lib_controller {
 
 	var $defaultAction = 'default';
 
 	public function defaultAction() {
-		return $warning = '<p>Warning: The result list controller was not called by a valid searchform action!</p>';
+		
+		// clean the session
+		$this->storeToSession('searchResultList');
+		
+		// allow template override from FF
+		if ($FFtemplateFile = $this->configurations->get('listTemplateFile')) {
+			$templateFile = substr($FFtemplateFile, strrpos($FFtemplateFile, '/')+1);
+			$this->configurations->set('defaultSearchResult.', array('templateFile' => $templateFile));
+			$this->configurations->set('pathToTemplateDirectory', t3lib_div::dirname($FFtemplateFile).'/');
+		}
+		
+		$view = $this->_prepareData();
+		
+		// render template
+		return $view->renderTemplate($this->configurations->get('defaultSearchResult.templateFile'));
 	}
 
 	/* This action is called by the quicksearch form of the searchform controller and does a fulltext search.

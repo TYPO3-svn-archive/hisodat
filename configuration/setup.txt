@@ -51,6 +51,7 @@ plugin.tx_hisodat.controllerSwitch {
 			quickSearchForm.templateFile = {$plugin.tx_hisodat.searchForms.quickSearchForm.templateFile}
 			standardSearchForm.templateFile = {$plugin.tx_hisodat.searchForms.standardSearchForm.templateFile}
 			expertSearchForm.templateFile = {$plugin.tx_hisodat.searchForms.expertSearchForm.templateFile}
+			jump2RecordSearchForm.templateFile = {$plugin.tx_hisodat.searchForms.jump2RecordSearchForm.templateFile}
 		}
 	}
 
@@ -60,6 +61,7 @@ plugin.tx_hisodat.controllerSwitch {
 		configurations < temp.tx_hisodat.configurations
 		configurations {
 			selectFields = uid,pid,signature,signature_add,short
+			orderBy = signature ASC
 			quickSearchResult {
 				fullTextFields = signature, signature_add, date_comment, short, sourcetext, description, imagecaption
 				templateFile = {$plugin.tx_hisodat.searchResultList.quickSearchResult.templateFile}

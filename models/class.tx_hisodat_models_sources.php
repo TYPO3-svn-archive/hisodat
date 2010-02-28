@@ -32,7 +32,6 @@
  * @subpackage hisodat
  */
 
-
 class tx_hisodat_models_sources extends tx_lib_object {
 
 	var $tableName = 'tx_hisodat_sources';
@@ -48,6 +47,14 @@ class tx_hisodat_models_sources extends tx_lib_object {
 	public function load() {
 
 		$GLOBALS['TYPO3_DB']->store_lastBuiltQuery = TRUE;
+		
+		// register hook objects (if any)
+		$this->hookObjectsArr = array();
+		if (is_array($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['hisodat/models/class.tx_hisodat_models_sources.php']['modelsSourcesHookClass']))	{
+			foreach ($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['hisodat/models/class.tx_hisodat_models_sources.php']['modelsSourcesHookClass'] as $classRef) {
+				$this->hookObjectsArr[] = &t3lib_div::getUserObj($classRef);
+			}
+		}
 
 		// find out which action is calling the model
 		$action = $this->controller->parameters->get('action');
@@ -56,16 +63,16 @@ class tx_hisodat_models_sources extends tx_lib_object {
 		$this->loadFromSession('searchResultList');
 
 		// if the session returned search data the selection in relation to any given offset is returned
-		if ($this->isNotEmpty() && $action != 'showSource' && $action != 'defaultAction') {
+		if ($this->isNotEmpty() && $action != 'showSource' && $action != 'defaultAction' && $action != 'jump2RecordAction') {
 
-#			echo'LOAD FROM SESSION';
+			echo'LOAD FROM SESSION';
 
 			$this->controller->configurations->set('totalResultCount', $this->count());
 			return $this->set('searchResultList', $this->_returnSelection($this));
 		}
 
 		// else do a DB query
-#		echo'DO A QUERY';
+		echo'DO A QUERY';
 
 		switch ($action) {
 			case 'quickSearch':
@@ -89,19 +96,20 @@ class tx_hisodat_models_sources extends tx_lib_object {
 				}
 			break;
 
-/*
 			// default single is to fetch a single record from selected folders
+			// default list is to fetch all records from selected folders
 			default:
-				
+
+
 				switch (get_class($this->controller)) {
 					case 'tx_hisodat_controllers_detailsView':
 					break;
-					case 'tx_hisodat_controllers_listView':
+					case 'tx_hisodat_controllers_searchResultList':
+						$this->getAllFromFolders();
 					break;
 				}
 				
-			break;
-*/			
+			break;	
 		}
 
 	}
@@ -300,15 +308,99 @@ class tx_hisodat_models_sources extends tx_lib_object {
 		}
 		
 		// execute query
-		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('*', $this->tableName, $where, null, $sorting, $limit);
+		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('*', $this->tableName, $where, null, $sorting, $limit);	
 		
 		if ($res) {		
 			$row = $this->_makeRow($res);
 			// free memory
 			$GLOBALS['TYPO3_DB']->sql_free_result($res);
 			return $row;
+		}	
+	}
+	
+	/* Search for exact signature string
+	 * 
+	 */
+	public function getBySignature($signature) {
+		
+		// hook that allows pre processing of the signature string
+		if (count($this->hookObjectsArr > 0)) {
+			foreach ($this->hookObjectsArr as $hookObj)	{
+				if (method_exists($hookObj,'processSignatureString'))	{
+					$hookObj->processSignatureString($signature, $this);
+				}
+			}
+		}
+		
+		$signature = $GLOBALS['TYPO3_DB']->fullQuoteStr(trim($signature), 'tx_hisodat_sources');		
+		$where = 'tx_hisodat_sources.signature='.$signature;
+		
+		// query settings
+		$where .= ' AND hidden=0 AND deleted=0';
+		$where .= ' AND tx_hisodat_sources.pid IN ('.$this->_getPidList().')';
+
+		// execute query
+		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('*', $this->tableName, $where, null, $sorting, $limit);	
+		
+		if ($res) {		
+			$row = $this->_makeRow($res);
+			// free memory
+			$GLOBALS['TYPO3_DB']->sql_free_result($res);
+			return $row;
+		}	
+	}
+	
+	/* Finds the record that is closest to a given date_start
+	 * 
+	 */
+	public function getByYear($year) {
+		
+		// at the moment only dates AD
+		
+		if ((int) $year > 0) {	
+			// build query
+			$where = 'SUBSTR(tx_hisodat_sources.date_start,1,4) >= '.(int) $year;
+			$where .= ' AND hidden = 0 AND deleted = 0';
+			$where .= ' AND tx_hisodat_sources.pid IN ('.$this->_getPidList().')';
+			
+			// execute query
+			$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('*', $this->tableName, $where, null, 'uid ASC', 1);	
+			
+			if ($res) {		
+				$row = $this->_makeRow($res);
+				// free memory
+				$GLOBALS['TYPO3_DB']->sql_free_result($res);
+				return $row;
+			}
 		}
 	}
+	
+	/* Gets all sources from selected storage folders
+	 * 
+	 */
+	public function getAllFromFolders($folders) {
+		
+		if (!$folders) $folders = $this->_getPidList();
+
+		if ($folders) {	
+
+			$where = 'hidden = 0 AND deleted = 0';
+			$where .= ' AND tx_hisodat_sources.pid IN ('.$folders.')';
+
+			($this->controller->configurations->get('selectFields')) ? $selectFields = $this->controller->configurations->get('selectFields') : '*';
+			($this->controller->configurations->get('orderBy')) ? $orderBy = $this->controller->configurations->get('orderBy') : 'uid ASC';
+			
+			// execute query
+			$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($selectFields, $this->tableName, $where, null, $orderBy, null);	
+
+			// store if there was a result
+			if ($res) {		
+				$this->_storeResultList($res);
+				// free memory
+				$GLOBALS['TYPO3_DB']->sql_free_result($res);
+			}
+		}
+	}	
 
 	/*
 	 * 
@@ -437,7 +529,12 @@ class tx_hisodat_models_sources extends tx_lib_object {
 	private function _returnSelection($resultList) {
 		$offset = (int) $this->controller->parameters->get('offset');
 		$listLimit = (int) $this->controller->configurations->get('resultBrowser.resultsPerView');
-		($offset > 0) ? $offset = ($offset*0.1) * $listLimit : $offset = 0;
+// TODO: Fix this nasty offset hack
+		if ($offset > 0 && strlen($offset) == 2) {
+			$offset = ($offset*0.1) * $listLimit;
+		} elseif ($offset > 0 && strlen($offset) == 3) {
+			$offset = ($offset*0.01) * $listLimit;
+		}
 		$selection = new tx_lib_object(array());
 		$i = 0;
 		for ($resultList->rewind(); $resultList->valid(); $resultList->next()) {

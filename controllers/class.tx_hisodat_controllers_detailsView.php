@@ -59,6 +59,46 @@ class tx_hisodat_controllers_detailsView extends tx_lib_controller {
 		// render
 		return $view->renderTemplate($this->configurations->get('sources.templateFile'));
 	}
+	
+	/* Jump to record by: signature, date
+	 * 
+	 */
+	public function jump2RecordAction() {
+
+		$modelClassName = tx_div::makeInstanceClassName('tx_hisodat_models_sources');
+		$viewClassName = tx_div::makeInstanceClassName('tx_hisodat_views_detailsView');
+		
+		// instantiate the model
+		$model = new $modelClassName($this);
+		$model->load();	
+				
+		// determine what to get
+		$jump2RecordParameters = $this->parameters->get('jump2record');
+		
+		if (is_array($jump2RecordParameters)) {
+		
+			switch ((int) $jump2RecordParameters['select']) {
+				
+				// jump to signature
+				case '1':
+					$result = $model->getBySignature($jump2RecordParameters['value']);	
+				break;
+				
+				// jump to year
+				case '2':
+					$result = $model->getByYear($jump2RecordParameters['value']);	
+				break;			
+			}
+		}
+		
+		// instantiate the view
+		$view = new $viewClassName($this);
+		$view->initSmartyTemplate($this->configurations->get('pathToTemplateDirectory'));
+		$view->assignTemplateData('result', $result);
+		
+		// render
+		return $view->renderTemplate($this->configurations->get('sources.templateFile'));
+	}
 
 	/* This action is executed if we are coming from a (search) result list
 	 * 

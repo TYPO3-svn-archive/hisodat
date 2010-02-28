@@ -75,8 +75,13 @@ class tx_hisodat_controllers_searchForms extends tx_lib_controller {
 				return $view->renderTemplate($this->configurations->get('expertSearchForm.templateFile'));
 			break;
 			
+			case 'jump2RecordSearchForm':
+				return $view->renderTemplate($this->configurations->get('jump2RecordSearchForm.templateFile'));
+			break;
+			
 			default:
 				return $view->renderTemplate($this->configurations->get('quickSearchForm.templateFile'));
+			break;
 		}
 	}
 
