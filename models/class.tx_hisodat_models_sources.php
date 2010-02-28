@@ -65,14 +65,14 @@ class tx_hisodat_models_sources extends tx_lib_object {
 		// if the session returned search data the selection in relation to any given offset is returned
 		if ($this->isNotEmpty() && $action != 'showSource' && $action != 'defaultAction' && $action != 'jump2RecordAction') {
 
-			echo'LOAD FROM SESSION';
+#			echo'LOAD FROM SESSION';
 
 			$this->controller->configurations->set('totalResultCount', $this->count());
 			return $this->set('searchResultList', $this->_returnSelection($this));
 		}
 
 		// else do a DB query
-		echo'DO A QUERY';
+#		echo'DO A QUERY';
 
 		switch ($action) {
 			case 'quickSearch':
