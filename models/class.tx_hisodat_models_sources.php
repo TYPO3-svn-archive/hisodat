@@ -105,7 +105,7 @@ class tx_hisodat_models_sources extends tx_lib_object {
 					case 'tx_hisodat_controllers_detailsView':
 					break;
 					case 'tx_hisodat_controllers_searchResultList':
-						$this->getAllFromFolders();
+						$this->getAllFromFolders($this->_getPidList());
 					break;
 				}
 				
@@ -184,7 +184,8 @@ class tx_hisodat_models_sources extends tx_lib_object {
 		// query settings
 		($this->controller->action == 'quickSearchAction') ? $selectFields = $this->controller->configurations->get('selectFields') : $selectFields = 'uid';	
 		$matchFields = $this->controller->configurations->get('quickSearchResult.fullTextFields');
-		$orderBy = 'mtch2 DESC';
+#		$orderBy = 'mtch2 DESC';
+		$orderBy = 'date_sorting';
 		$where = 'hidden = 0 AND deleted = 0';
 		$limit = null;
 		// Pages with records
@@ -223,10 +224,10 @@ class tx_hisodat_models_sources extends tx_lib_object {
 		// perform the search query and generate the result list
 		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($selectFields.$matchAgainst, $this->tableName, $where, null, $orderBy, $limit);
 
-#		debug($GLOBALS['TYPO3_DB']->debug_lastBuiltQuery, 'fullTextSearch');
+#		debug($GLOBALS['TYPO3_DB']->debug_lastBuiltQuery, 'fullTextSearch'); die();
 	
 		if ($GLOBALS['TYPO3_DB']->sql_num_rows($res) > 0) {
-			// for quickSearch, store the result immediately
+			// for quickSearch, store the full result immediately, otherwise just store the uids of the result
 			($this->controller->action == 'quickSearchAction') ? $this->_storeResultList($res) : $this->_storeResultUids($res);
 			// free memory
 			$GLOBALS['TYPO3_DB']->sql_free_result($res);	
