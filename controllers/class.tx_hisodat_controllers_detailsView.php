@@ -47,6 +47,8 @@ class tx_hisodat_controllers_detailsView extends tx_lib_controller {
 		$modelClassName = tx_div::makeInstanceClassName('tx_hisodat_models_sources');
 		$viewClassName = tx_div::makeInstanceClassName('tx_hisodat_views_detailsView');
 		
+		$this->_init();
+		
 		// instantiate and fetch the record
 		$model = new $modelClassName($this);
 		$result = $model->getByUid($this->parameters->get('uid'));
@@ -67,6 +69,8 @@ class tx_hisodat_controllers_detailsView extends tx_lib_controller {
 
 		$modelClassName = tx_div::makeInstanceClassName('tx_hisodat_models_sources');
 		$viewClassName = tx_div::makeInstanceClassName('tx_hisodat_views_detailsView');
+		
+		$this->_init();		
 		
 		// instantiate the model
 		$model = new $modelClassName($this);
@@ -107,6 +111,8 @@ class tx_hisodat_controllers_detailsView extends tx_lib_controller {
 
 		$modelClassName = tx_div::makeInstanceClassName('tx_hisodat_models_sources');
 		$viewClassName = tx_div::makeInstanceClassName('tx_hisodat_views_detailsView');
+		
+		$this->_init();
 
 		if (!$this->parameters->get('uid')) return $warning = 'Warnung: Es wurde keine UID zusammen mit dieser Action übergeben';
 
@@ -117,12 +123,6 @@ class tx_hisodat_controllers_detailsView extends tx_lib_controller {
 		// get the full record of the current row
 		$result = $model->getByUid($this->parameters->get('uid'));
 		$result = $result->getHashArray();
-
-		// this bit should be moved to an overiding action in tx_imh!!
-		$tx_damlightbox_flex = t3lib_div::xml2array($result['tx_damlightbox_flex']);
-		if ($setSpecificDimensions = tx_div_ff::get($tx_damlightbox_flex,'setSpecificDimensions','sLIGHTBOX')) {
-			$GLOBALS['TSFE']->register['setSpecificDimensions'] = $setSpecificDimensions;
-		}
 
 		/* If this action happens in the context of a former search result list, the model will have loaded the former search result
 		 * from the session. It's therefore possible to generate the singleview browser and to set the number for the current hit without
@@ -145,6 +145,19 @@ class tx_hisodat_controllers_detailsView extends tx_lib_controller {
 
 		// render
 		return $view->renderTemplate($this->configurations->get('sources.templateFile'));
+	}
+	
+	/*
+	 * 
+	 */
+	private function _init() {
+		
+		// allow template override from FF
+		if ($FFtemplateFile = $this->configurations->get('singleTemplateFile')) {
+			$templateFile = substr($FFtemplateFile, strrpos($FFtemplateFile, '/')+1);
+			$this->configurations->set('sources.', array('templateFile' => $templateFile));
+			$this->configurations->set('pathToTemplateDirectory', t3lib_div::dirname($FFtemplateFile).'/');
+		}			
 	}
 
 }
