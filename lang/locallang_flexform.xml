@@ -26,7 +26,8 @@
 			<label index="listSheetTitle">Resultlist</label>
 			<label index="singlePid">Destination PID with single view</label>
 			<label index="singleSheetTitle">Sources: Singleview</label>
-			<label index="backToListPid">PID for the backlink to listview</label>			
+			<label index="backToListPid">PID for the backlink to listview</label>
+			<label index="singleTemplateFile">Template File for Single View</label>					
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="mainSheetTitle">Allgemein</label>
@@ -50,8 +51,7 @@
 			<label index="singlePid">Seite mit der Detailansicht</label>
 			<label index="singleSheetTitle">Quellen: Detailansicht</label>
 			<label index="backToListPid">Zurückseite mit der Listenansicht</label>
-			<label index="showPaginatedList">Alle Datensätze in paginierter Liste anzeigen</label>
-			<label index="showPaginatedSingle">Alle Datensätze in paginierter Einzelansicht anzeigen</label>				
+			<label index="singleTemplateFile">Template für die Trefferansicht</label>			
 		</languageKey>
 	</data>
 </T3locallang>
