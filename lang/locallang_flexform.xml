@@ -27,7 +27,8 @@
 			<label index="singlePid">Destination PID with single view</label>
 			<label index="singleSheetTitle">Sources: Singleview</label>
 			<label index="backToListPid">PID for the backlink to listview</label>
-			<label index="singleTemplateFile">Template File for Single View</label>					
+			<label index="singleTemplateFile">Template File for Single View</label>
+			<label index="listTemplateFile">Template File for List View</label>							
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="mainSheetTitle">Allgemein</label>
@@ -45,13 +46,14 @@
 			<label index="searchTypeSelection.quickSearchForm">Schnellsuche</label>
 			<label index="searchTypeSelection.standardSearchForm">Standardsuche</label>
 			<label index="searchTypeSelection.expertSearchForm">Expertensuche</label>
-			<label index="searchTypeSelection.jump2RecordSearchForm">Datensatz anzeigen Formular</label>			
+			<label index="searchTypeSelection.jump2RecordSearchForm">Datensatzauswahl</label>			
 			<label index="destinationPid">Zielseite für das Suchformular</label>
 			<label index="listSheetTitle">Quellen: Trefferliste</label>
 			<label index="singlePid">Seite mit der Detailansicht</label>
 			<label index="singleSheetTitle">Quellen: Detailansicht</label>
 			<label index="backToListPid">Zurückseite mit der Listenansicht</label>
-			<label index="singleTemplateFile">Template für die Trefferansicht</label>			
+			<label index="singleTemplateFile">Template für die Einzelansicht</label>		
+			<label index="listTemplateFile">Template für die Listenansicht</label>
 		</languageKey>
 	</data>
 </T3locallang>

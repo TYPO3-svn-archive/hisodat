@@ -66,9 +66,21 @@ class tx_hisodat_models_sources extends tx_lib_object {
 		if ($this->isNotEmpty() && $action != 'showSource' && $action != 'defaultAction' && $action != 'jump2RecordAction') {
 
 #			echo'LOAD FROM SESSION';
-
+			
+			// load total result count
 			$this->controller->configurations->set('totalResultCount', $this->count());
+			
+			// load former query from session
+			$query = new tx_lib_object(array());
+			$query->loadFromSession('query');
+			$this->controller->configurations->set('query', $query->getArrayCopy());
+			
+			// load result list
 			return $this->set('searchResultList', $this->_returnSelection($this));
+			
+		} else {
+			// we are doing a query so store the query params
+			$this->controller->configurations->set('query', $this->controller->parameters->getArrayCopy());
 		}
 
 		// else do a DB query
@@ -121,9 +133,42 @@ class tx_hisodat_models_sources extends tx_lib_object {
 		
 		// general query settings
 		$selectFields = $this->controller->configurations->get('selectFields');
-		$orderBy = 'date_start';
 		$where = 'hidden = 0 AND deleted = 0';
-		$limit = null;
+		$groupBy = null;
+		$limit = null;		
+		(intval($this->controller->parameters->get('ascdesc')) === 20) ? $ascdesc = ' DESC' : $ascdesc = ' ASC';
+		
+		// order by / group by
+		switch (intval($this->controller->parameters->get('sorting'))) {
+			
+			// place ascending/descending
+			case 20:
+				$orderBy = 'tx_dio_title'.$ascdesc;
+			break;
+			
+			// place and year ascending/descending
+			case 30:
+				$orderBy = 'tx_dio_title'.$ascdesc.', date_sorting'.$ascdesc;
+			break;			
+			
+			// catalogue and year ascending/descending
+			case 40:
+				$orderBy = 'signature'.$ascdesc.', date_sorting'.$ascdesc;
+			break;
+			
+			// catalogue and place ascending/descending
+			case 50:
+				$orderBy = 'signature'.$ascdesc.', tx_dio_title'.$ascdesc;				
+			break;
+			
+			// year ascending/descending
+			default:
+				$orderBy = 'date_sorting'.$ascdesc;
+			break;
+			
+		}
+		
+		// pids with records
 		$where .= ' AND tx_hisodat_sources.pid IN ('.$this->_getPidList().')';		
 
 		// collect and work upon the incoming parameters
@@ -149,13 +194,15 @@ class tx_hisodat_models_sources extends tx_lib_object {
 			$where .= ' AND tx_hisodat_sources.uid IN ('.implode(',', $this->get('resultUids')).')';
 			
 			// perform the search query and generate the result list
-			$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($selectFields, $this->tableName, $where, null, $orderBy, $limit);
+			$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($selectFields, $this->tableName, $where, $groupBy, $orderBy, $limit);
 			
 #			debug($GLOBALS['TYPO3_DB']->debug_lastBuiltQuery, 'standardSearch');
 		
 			if ($GLOBALS['TYPO3_DB']->sql_num_rows($res) > 0) {
 				// store the result
 				$this->_storeResultList($res);
+				// store query params into session
+				$this->controller->parameters->storeToSession('query');
 				// free memory
 				$GLOBALS['TYPO3_DB']->sql_free_result($res);
 			}			
@@ -242,7 +289,7 @@ class tx_hisodat_models_sources extends tx_lib_object {
 		// query settings
 		$res = '';
 		$where = 'hidden = 0 AND deleted = 0';
-		$where .= ' AND tx_hisodat_sources.pid IN ('.$this->_getPidList().')';		
+		$where .= ' AND tx_hisodat_sources.pid IN ('.$this->_getPidList().')';
 		
 		// collect parameters
 		if ($this->controller->parameters->get('date_start')) $this->set('date_start', (int) $this->controller->parameters->get('date_start'));
@@ -254,32 +301,32 @@ class tx_hisodat_models_sources extends tx_lib_object {
 				
 			if (!$this->get('exclude_fuzzy_dates')) {
 				// startdate within the given period
-				$where .= ' AND ((SUBSTR(tx_hisodat_sources.date_start,-4) >= '.$this->get('date_start').' AND SUBSTR(tx_hisodat_sources.date_start,-4) <= '.$this->get('date_end').')';
+				$where .= ' AND ((SUBSTR(tx_hisodat_sources.date_start,1,4) >= '.$this->get('date_start').' AND SUBSTR(tx_hisodat_sources.date_start,1,4) <= '.$this->get('date_end').')';
 				// enddate within given period
-				$where .= ' OR (SUBSTR(tx_hisodat_sources.date_end,-4) <= '.$this->get('date_end').' AND SUBSTR(tx_hisodat_sources.date_end,-4) >= '.$this->get('date_start').')';
+				$where .= ' OR (SUBSTR(tx_hisodat_sources.date_end,1,4) <= '.$this->get('date_end').' AND SUBSTR(tx_hisodat_sources.date_end,1,4) >= '.$this->get('date_start').')';
 				// both dates within the given period
-                $where .= ' OR (SUBSTR(tx_hisodat_sources.date_start,-4) < '.$this->get('date_start').' AND SUBSTR(tx_hisodat_sources.date_end,-4) > '.$this->get('date_end').'))';
+                $where .= ' OR (SUBSTR(tx_hisodat_sources.date_start,1,4) < '.$this->get('date_start').' AND SUBSTR(tx_hisodat_sources.date_end,1,4) > '.$this->get('date_end').'))';
 			} else {
 				// exact match within given period
-				$where .= ' AND ((SUBSTR(tx_hisodat_sources.date_start,-4) >= '.$this->get('date_start').' AND SUBSTR(tx_hisodat_sources.date_end,-4) <= '.$this->get('date_end').'))';
+				$where .= ' AND ((SUBSTR(tx_hisodat_sources.date_start,1,4) >= '.$this->get('date_start').' AND SUBSTR(tx_hisodat_sources.date_end,1,4) <= '.$this->get('date_end').'))';
 			}
 			
 		// only start date given
 		} elseif ($this->get('date_start') && !$this->get('date_end')) {				
-			$where .= ' AND (SUBSTR(tx_hisodat_sources.date_start,-4) >= '.$this->get('date_start');
-			(!$this->get('exclude_fuzzy_dates')) ? $where .= ' OR (SUBSTR(tx_hisodat_sources.date_end,-4) >= '.$this->get('date_start').'))' : $where .= ')';
+			$where .= ' AND (SUBSTR(tx_hisodat_sources.date_start,1,4) >= '.$this->get('date_start');
+			(!$this->get('exclude_fuzzy_dates')) ? $where .= ' OR (SUBSTR(tx_hisodat_sources.date_end,1,4) >= '.$this->get('date_start').'))' : $where .= ')';
 				
 		// only end date given
 		} elseif ($this->get('date_end') && !$this->get('date_start')) {
-			$where .= ' AND (SUBSTR(tx_hisodat_sources.date_end,-4) <= '.$this->get('date_end');
-			(!$this->get('exclude_fuzzy_dates')) ? $where .= ' OR (SUBSTR(tx_hisodat_sources.date_start,-4) <= '.$this->get('date_end').'))' : $where .= ')';	
+			$where .= ' AND (SUBSTR(tx_hisodat_sources.date_end,1,4) <= '.$this->get('date_end');
+			(!$this->get('exclude_fuzzy_dates')) ? $where .= ' OR (SUBSTR(tx_hisodat_sources.date_start,1,4) <= '.$this->get('date_end').'))' : $where .= ')';	
 		}
 
 		// execute query
 		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('uid', $this->tableName, $where, null, null, null);
 
 #		debug($GLOBALS['TYPO3_DB']->debug_lastBuiltQuery, 'dateSearch');		
-		
+	
 		if ($GLOBALS['TYPO3_DB']->sql_num_rows($res) > 0) {
 			// store result
 			$this->_storeResultUids($res);
@@ -452,7 +499,9 @@ class tx_hisodat_models_sources extends tx_lib_object {
 	 * 
 	 */
 	private function _storeResultList($result) {
+		
 		$resultList = new tx_lib_object(array());
+		
 		// check if this is a query result or a list of objects
 		if (is_resource($result)) {
 			$i = 1;
@@ -561,24 +610,35 @@ class tx_hisodat_models_sources extends tx_lib_object {
 	}
 
 	/**
-	 * Function from tslib_pibase for (recursively) collecting page ids from the tree that have been set by the user
+	 * Function from tslib_pibase for (recursively) collecting page ids from the tree that have been set by the user or that have been submitted via the searchform
 	 *
 	 * @return	string		comma list of page ids
 	 */
 	private function _getPidList() {
-		$pid_list = $this->controller->configurations->get('storageFolder');
-		$recursive = $this->controller->configurations->get('recursive');
+		
+		// decide if the pid's have been set via serachform
+		if ($pid_list_arr = $this->controller->parameters->get('pidlist')) {
+		// or from TypoScript
+		} else {
+			$pid_list = $this->controller->configurations->get('storageFolder');
+			$pid_list_arr = array_unique(t3lib_div::trimExplode(',', $pid_list, 1));			
+		}
 		if (!strcmp($pid_list,'')) $pid_list = $GLOBALS['TSFE']->id;
+		
+		$recursive = $this->controller->configurations->get('recursive');
 		$recursive = t3lib_div::intInRange($recursive,0);
-		$pid_list_arr = array_unique(t3lib_div::trimExplode(',', $pid_list, 1));
+		
 		$pid_list = array();
+		
 		foreach($pid_list_arr as $val)	{
+			// intInRange secures that we have only valid integers, even from outside
 			$val = t3lib_div::intInRange($val,0);
 			if ($val)	{
 				$_list = tslib_cObj::getTreeList(-1*$val, $recursive);
 				if ($_list)	$pid_list[] = $_list;
 			}
 		}
+		
 		return implode(',', $pid_list);
 	}
 

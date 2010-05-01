@@ -37,6 +37,9 @@ class tx_hisodat_controllers_searchResultList extends tx_lib_controller {
 
 	var $defaultAction = 'default';
 
+	/* Default is to show all source records from specific folders
+	 * 
+	 */
 	public function defaultAction() {
 		
 		// clean the session
@@ -105,6 +108,9 @@ class tx_hisodat_controllers_searchResultList extends tx_lib_controller {
 		// intantiate the view
 		$view = new $viewClassName($this);
 		$view->initSmartyTemplate($this->configurations->get('pathToTemplateDirectory'));
+		
+		// assign result and query to the view
+		$view->assignTemplateData('query', $this->configurations->get('query'));
 		$view->assignTemplateData('result', $model->get('searchResultList'));
 
 		return $view;

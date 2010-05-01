@@ -182,7 +182,7 @@
 					
 					<listTemplateFile>
 						<TCEforms>
-							<label>LLL:EXT:hisodat/lang/locallang_flexform.xml:templateFile</label>
+							<label>LLL:EXT:hisodat/lang/locallang_flexform.xml:listTemplateFile</label>
 							<config>
 								<type>input</type>
 								<eval>trim</eval>

@@ -42,8 +42,9 @@ class tx_hisodat_controllers_searchForms extends tx_lib_controller {
 	 */
 	public function defaultAction() {
 
-		// clear the session from any former search by storing an empty array
+		// clear the session from any former search by storing empty arrays
 		$this->storeToSession('searchResultList');
+		$this->storeToSession('query');
 
 		// set class names and instantiate
 		$viewClassName = tx_div::makeInstanceClassName('tx_hisodat_views_searchForms');
@@ -66,7 +67,7 @@ class tx_hisodat_controllers_searchForms extends tx_lib_controller {
 				// assign data for display in the form
 				$view->assignTemplateData('oldestDate', tx_hisodat_models_sources::getOldestYoungestDate('date_start'));
 				$view->assignTemplateData('youngestDate', tx_hisodat_models_sources::getOldestYoungestDate('date_end'));
-				$view->assignTemplateData('distinctPersons', tx_hisodat_models_persons::getDistinctPersons());			
+				$view->assignTemplateData('distinctPersons', tx_hisodat_models_persons::getDistinctPersons());		
 				
 				return $view->renderTemplate($this->configurations->get('standardSearchForm.templateFile'));
 			break;
