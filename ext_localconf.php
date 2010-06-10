@@ -11,12 +11,9 @@ $EXTCONF = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['hisodat'])
 // set the pid lists for the foreign_where clauses
 t3lib_extMgm::addPageTSConfig('
 	tx_hisodat.ARCHIVES_PIDLIST = '.$EXTCONF['ARCHIVES_PIDLIST'].'
-	tx_hisodat.LITERATURE_PIDLIST = '.$EXTCONF['LITERATURE_PIDLIST'].'
-	tx_hisodat.KEYWORDS_PIDLIST = '.$EXTCONF['KEYWORDS_PIDLIST'].'
 	tx_hisodat.PERSONS_PIDLIST = '.$EXTCONF['PERSONS_PIDLIST'].'
 	tx_hisodat.LOCALITIES_PIDLIST = '.$EXTCONF['LOCALITIES_PIDLIST'].'
 	tx_hisodat.SOURCES_PIDLIST = '.$EXTCONF['SOURCES_PIDLIST'].'
-#	tx_hisodat.RELATIONS_PIDLIST = '.$EXTCONF['RELATIONS_PIDLIST'].'
 	tx_hisodat.ENTITIES_PIDLIST = '.$EXTCONF['ENTITIES_PIDLIST'].'
 	tx_hisodat.MM_PID = '.$EXTCONF['MM_PID'].'
 	<INCLUDE_TYPOSCRIPT: source="FILE:EXT:hisodat/configuration/pagetsconfig.txt">

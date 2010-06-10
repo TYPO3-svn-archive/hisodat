@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2008 Torsten Schrade (t.schrade@connecta.ag)
+*  (c) 2010 Torsten Schrade (schradt@uni-mainz.de)
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -33,9 +33,6 @@ class tx_hisodat_t3lib_tceforms {
 
 	function getSingleField_preProcess($table, $field, &$row, $altName, $palette, $extra, $pal, $pObj) {
 
-#		$hisodatTables = '';
-# insert a check to extend the whitelist only for the hisodat tables
-
 		// extend the whitelist of TCA properties that can be overriden from PageTSConfig
 		$pObj->allowOverrideMatrix['select'][] = 'wizards';
 		$pObj->allowOverrideMatrix['select'][] = 'foreign_table';
@@ -64,5 +61,4 @@ class tx_hisodat_t3lib_tceforms {
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/hisodat/configuration/class.tx_hisodat_t3lib_tceforms.php'])	{
 	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/hisodat/configuration/class.tx_hisodat_t3lib_tceforms.php']);
 }
-
 ?>

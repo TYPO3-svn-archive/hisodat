@@ -35,8 +35,8 @@
             <label index="signature.description">Tragen Sie hier die Signatur der Quelle, die Quellennummer oder einen ähnlichen, eindeutigen Bezeichner ein.</label>
             <label index="signature_add.description">Hier können Sie Zusätze zur Signatur angeben. Sollten Quellen umgewidmet worden sein, können Sie in diesem Feld die ehemalige Signatur aufnehmen.</label>
             <label index="archive_uid.description">Wählen Sie aus dieser Liste das Archiv aus, in dem die Quelle liegt. Mit Klick auf das Plus können Sie ein neues Archiv anlegen.</label>
-            <label index="date_start.description">Dieses Feld ist für die Datenbanksuche. Geben Sie das exakte Datum ein soweit möglich. Format: TT-MM-JJJJ.</label>
-            <label index="date_end.description">Wenn sich die Datierung über einen Zeitraum erstrecken soll, geben Sie hier das Enddatum ein. Format: TT-MM-JJJJ.</label>
+            <label index="date_start.description">Dieses Feld ist für die Datenbanksuche. Geben Sie das exakte Datum ein soweit möglich. Format: JJJJ-MM-TT.</label>
+            <label index="date_end.description">Wenn sich die Datierung über einen Zeitraum erstrecken soll, geben Sie hier das Enddatum ein. Format: JJJJ-MM-TT.</label>
             <label index="date_comment.description">Datumsangaben in Textform.</label>
             <label index="short.description">Dieses Feld können Sie für eine Kurzwiedergabe des Quelleninhaltes benutzen (z.B. für einen Kopfregest). Die Quellenzusammenfassung wird meist in Übersichts- und Ergebnislisten angezeigt.</label>
             <label index="sourcetext.description">Geben Sie in dieses Feld den Originaltext der Quelle ein.</label>
