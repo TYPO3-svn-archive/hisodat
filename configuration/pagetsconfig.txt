@@ -4,6 +4,11 @@ TCEFORM {
 	tx_hisodat_sources {
 		archive_uid.PAGE_TSCONFIG_IDLIST < tx_hisodat.ARCHIVES_PIDLIST
 		archive_uid.config.wizards.add.params.pid < tx_hisodat.ARCHIVES_PIDLIST
+	}
+	
+	tx_hisodat_mm_src_src {
+		uid_local.PAGE_TSCONFIG_IDLIST < tx_hisodat.SOURCES_PIDLIST
+		uid_foreign.PAGE_TSCONFIG_IDLIST < tx_hisodat.SOURCES_PIDLIST
 	}	
 
 	tx_hisodat_mm_src_pers {
@@ -31,11 +36,10 @@ TCEFORM {
 TCAdefaults {
 
 	# MM Tables
+	tx_hisodat_mm_src_src.pid < tx_hisodat.MM_PID	
 	tx_hisodat_mm_src_pers.pid < tx_hisodat.MM_PID
 	tx_hisodat_mm_src_loc.pid < tx_hisodat.MM_PID
 	tx_hisodat_mm_src_ent.pid < tx_hisodat.MM_PID
+	tx_hisodat_mm_lit.pid < tx_hisodat.MM_PID
 
 }
-
-# hide mm tables in list view (has to be in one line)
-# mod.web_list.hideTables := addToList(tx_hisodat_mm_src_pers,tx_hisodat_mm_src_loc,tx_hisodat_mm_src_ent,tx_hisodat_mm_lit)

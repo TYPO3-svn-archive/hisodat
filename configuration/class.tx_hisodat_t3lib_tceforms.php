@@ -37,6 +37,8 @@ class tx_hisodat_t3lib_tceforms {
 		$pObj->allowOverrideMatrix['select'][] = 'wizards';
 		$pObj->allowOverrideMatrix['select'][] = 'foreign_table';
 		$pObj->allowOverrideMatrix['select'][] = 'foreign_table_where';
+		
+#		debug($pObj->allowOverrideMatrix);
 
 		// editor feature: only execute if the current field is 'editor' and if this field has no value yet
 		if ($field == 'editor_id' && $table == 'tx_hisodat_sources' && !$row['editor']) {

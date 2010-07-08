@@ -31,8 +31,10 @@ CREATE TABLE tx_hisodat_localities (
 
 	title varchar(255) DEFAULT '' NOT NULL,
 	namevariants varchar(255) DEFAULT '' NOT NULL,
+	state varchar(255) DEFAULT '' NOT NULL,
+	province varchar(255) DEFAULT '' NOT NULL,
+	district varchar(255) DEFAULT '' NOT NULL,
 	municipality varchar(255) DEFAULT '' NOT NULL,
-	field_name varchar(255) DEFAULT '' NOT NULL,
 	latitude char(10) DEFAULT '' NOT NULL,
 	longitude char(10) DEFAULT '' NOT NULL,
 	date_comment varchar(255) DEFAULT '' NOT NULL,
@@ -40,7 +42,6 @@ CREATE TABLE tx_hisodat_localities (
 	date_end char(10) DEFAULT '' NOT NULL,
     image tinyblob NOT NULL,
 	description text NOT NULL,
-	literature_uids int(11) unsigned DEFAULT '0' NOT NULL,
 	source_uids int(11) unsigned DEFAULT '0' NOT NULL,	
 
 	PRIMARY KEY (uid),
@@ -69,7 +70,6 @@ CREATE TABLE tx_hisodat_persons (
 	date_end char(10) DEFAULT '' NOT NULL,
     image tinyblob NOT NULL,  
 	description text NOT NULL,
-	literature_uids int(11) unsigned DEFAULT '0' NOT NULL,
 	source_uids int(11) unsigned DEFAULT '0' NOT NULL,
 
 	PRIMARY KEY (uid),
@@ -95,7 +95,6 @@ CREATE TABLE tx_hisodat_entities (
 	date_end char(10) DEFAULT '' NOT NULL,
     image tinyblob NOT NULL,  
 	description text NOT NULL,
-	literature_uids int(11) unsigned DEFAULT '0' NOT NULL,
 	source_uids int(11) unsigned DEFAULT '0' NOT NULL,	
 
 	PRIMARY KEY (uid),
@@ -150,11 +149,20 @@ CREATE TABLE tx_hisodat_sources (
 # Table structure for table 'tx_hisodat_mm_src_src'
 #
 CREATE TABLE tx_hisodat_mm_src_src (
+	uid int(11) NOT NULL auto_increment,
+	pid int(11) DEFAULT '0' NOT NULL,
+	tstamp int(11) DEFAULT '0' NOT NULL,
+	crdate int(11) DEFAULT '0' NOT NULL,
+	cruser_id int(11) DEFAULT '0' NOT NULL,
+	deleted tinyint(4) DEFAULT '0' NOT NULL,
+	hidden tinyint(4) DEFAULT '0' NOT NULL,
+
 	uid_local int(11) DEFAULT '0' NOT NULL,
 	uid_foreign int(11) DEFAULT '0' NOT NULL,
 	tablenames varchar(30) DEFAULT '' NOT NULL,
 	sorting int(11) DEFAULT '0' NOT NULL,
 
+    PRIMARY KEY (uid),
 	KEY uid_local (uid_local),
 	KEY uid_foreign (uid_foreign)
 );

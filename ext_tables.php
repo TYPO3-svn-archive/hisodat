@@ -49,7 +49,7 @@ $TCA['tx_hisodat_archives'] = Array (
 	),
 );
 
-// persons table: source records can have persons or institutions attached who appear in the source
+// persons table: source records can have persons attached
 t3lib_extMgm::allowTableOnStandardPages('tx_hisodat_persons');
 t3lib_extMgm::addLLrefForTCAdescr('tx_hisodat_persons','EXT:hisodat/lang/locallang_csh_persons.php');
 $TCA['tx_hisodat_persons'] = Array (
@@ -138,6 +138,24 @@ $TCA['tx_hisodat_sources'] = Array (
 
 ### MM TABLES ###
 
+t3lib_extMgm::allowTableOnStandardPages('tx_hisodat_mm_src_src');
+#t3lib_extMgm::addLLrefForTCAdescr('tx_hisodat_mm_src_pers','EXT:hisodat/lang/locallang_csh_src_pers_loc.php');
+$TCA['tx_hisodat_mm_src_src'] = Array (
+	'ctrl' => Array (
+		'title' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_mm_src_src',
+		'label' => 'uid_local',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'default_sortby' => 'ORDER BY crdate',
+		'delete' => 'deleted',
+		'enablecolumns' => Array (
+			'disabled' => 'hidden',
+		),
+		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca_mm.php',
+		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_hisodat_records.gif',
+	),
+);
 
 t3lib_extMgm::allowTableOnStandardPages('tx_hisodat_mm_src_pers');
 #t3lib_extMgm::addLLrefForTCAdescr('tx_hisodat_mm_src_pers','EXT:hisodat/lang/locallang_csh_src_pers_loc.php');

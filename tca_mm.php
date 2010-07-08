@@ -3,6 +3,78 @@ if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 
 #$EXTCONF = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['hisodat']);	// unserializing the configuration so we can use it here
 
+$TCA['tx_hisodat_mm_src_src'] = Array (
+	'ctrl' => $TCA['tx_hisodat_mm_src_src']['ctrl'],
+	'interface' => Array (
+		'showRecordFieldList' => 'hidden,uid_local,uid_foreign'
+	),
+	'feInterface' => $TCA['tx_hisodat_mm_src_loc']['feInterface'],
+	'columns' => Array (
+		'hidden' => Array (
+			'exclude' => 1,
+			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
+			'config' => Array (
+				'type' => 'check',
+				'default' => '0'
+			)
+		),
+		'uid_local' => Array (
+			'label' => 'LLL:EXT:hisodat/lang/locallang_db.xml:tx_hisodat_mm_src_src.uid_local',
+			'config' => Array (
+				'type' => 'select',
+				'foreign_table' => 'tx_hisodat_sources',
+				'foreign_table_where' => 'AND tx_hisodat_sources.pid IN (###PAGE_TSCONFIG_IDLIST###) ORDER BY tx_hisodat_sources.signature',
+				'size' => 1,
+				'maxitems' => 1,
+				'wizards' => Array(
+					'edit' => Array(
+						'type' => 'popup',
+						'title' => 'LLL:EXT:hisodat/lang/locallang_db.xml:tx_hisodat_mm_src_pers.uid_src.wizard_edit',
+						'script' => 'wizard_edit.php',
+						'icon' => 'edit2.gif',
+						'JSopenParams' => 'height=500,width=680,status=0,menubar=0,scrollbars=1',
+					),
+				),	
+			)
+		),
+		'uid_foreign' => Array (
+			'label' => 'LLL:EXT:hisodat/lang/locallang_db.xml:tx_hisodat_mm_src_src.uid_foreign',
+			'config' => Array (
+				'type' => 'select',
+				'foreign_table' => 'tx_hisodat_sources',
+				'foreign_table_where' => 'AND tx_hisodat_sources.pid IN (###PAGE_TSCONFIG_IDLIST###) ORDER BY tx_hisodat_sources.signature',
+				'size' => 1,
+				'maxitems' => 1,
+				'wizards' => Array(
+					'edit' => Array(
+						'type' => 'popup',
+						'title' => 'LLL:EXT:hisodat/lang/locallang_db.xml:tx_hisodat_mm_src_pers.uid_src.wizard_edit',
+						'script' => 'wizard_edit.php',
+						'icon' => 'edit2.gif',
+						'JSopenParams' => 'height=500,width=680,status=0,menubar=0,scrollbars=1',
+					),
+				),
+			)
+		),
+		'tablenames' => Array (
+			'config' => Array (
+				'type' => 'passthrough',
+			)
+		),
+		'sorting' => Array (
+			'config' => Array (
+				'type' => 'passthrough',
+			)
+		),
+	),
+	'types' => Array (
+		'0' => Array('showitem' => 'hidden,uid_local,uid_foreign')
+	),
+	'palettes' => Array (
+		'1' => Array('showitem' => '')
+	)
+);
+
 
 $TCA['tx_hisodat_mm_src_pers'] = Array (
 	'ctrl' => $TCA['tx_hisodat_mm_src_pers']['ctrl'],

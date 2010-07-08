@@ -32,7 +32,6 @@
             <label index="tx_hisodat_persons.date_end">Date of death</label>
             <label index="tx_hisodat_persons.description">Description</label>
             <label index="tx_hisodat_persons.source_uids">Associated sources</label>
-            <label index="tx_hisodat_persons.literature_uids">Literature</label>
 
             <label index="tx_hisodat_entities">Entities</label>
             <label index="tx_hisodat_entities.div1">Entity</label>
@@ -44,14 +43,16 @@
             <label index="tx_hisodat_entities.date_end">End date</label>
             <label index="tx_hisodat_entities.description">Description</label>
             <label index="tx_hisodat_entities.source_uids">Associated sources</label>
-            <label index="tx_hisodat_entities.literature_uids">Literature</label>
 
             <label index="tx_hisodat_localities">Localities</label>
             <label index="tx_hisodat_localities.div1">Locality</label>
             <label index="tx_hisodat_localities.div2">Relations</label>
             <label index="tx_hisodat_localities.title">Locality</label>
             <label index="tx_hisodat_localities.namevariants">Variants of the name</label>
-            <label index="tx_hisodat_localities.municipality">Modern name</label>
+            <label index="tx_hisodat_localities.state">State</label>
+            <label index="tx_hisodat_localities.province">Province</label>
+            <label index="tx_hisodat_localities.district">District</label>                                    
+            <label index="tx_hisodat_localities.municipality">Municipality</label>
             <label index="tx_hisodat_localities.field_name">Field name</label>
             <label index="tx_hisodat_localities.latitude">Latitude (Decimal degrees)</label>
             <label index="tx_hisodat_localities.longitude">Longitude (Decimal degrees)</label>
@@ -60,7 +61,6 @@
             <label index="tx_hisodat_localities.date_comment">Additional date information</label>
             <label index="tx_hisodat_localities.description">Description</label>
             <label index="tx_hisodat_localities.source_uids">Associated sources</label>
-            <label index="tx_hisodat_localities.literature_uids">Literature</label>
 
             <label index="tx_hisodat_sources">Sources</label>
 			<label index="tx_hisodat_sources.div1">Source</label>
@@ -72,7 +72,6 @@
             <label index="tx_hisodat_sources.signature_add">Additional signature information</label>
             <label index="tx_hisodat_sources.urn">Persistent Identifier</label>
             <label index="tx_hisodat_sources.archive_uid">Archive</label>
-            <label index="tx_hisodat_sources.literature_uids">Literature</label>
             <label index="tx_hisodat_sources.date_start">Start date</label>
             <label index="tx_hisodat_sources.date_end">End date</label>
             <label index="tx_hisodat_sources.date_sorting">Date sorting</label>            
@@ -111,13 +110,7 @@
             <label index="tx_hisodat_mm_src_ent.issuer">Is Issuer</label>
             <label index="tx_hisodat_mm_src_ent.receiver">Is Receiver</label>
             <label index="tx_hisodat_mm_src_ent.description">Additional information</label>
-
-            <label index="tx_hisodat_mm_lit">Sources / Persons / Localities &lt;-&gt; Literature</label>
-            <label index="tx_hisodat_mm_lit.createnew">New literature record</label>
-            <label index="tx_hisodat_mm_lit.uid_local">This record</label>
-            <label index="tx_hisodat_mm_lit.uid_foreign">Literatur</label>
-            <label index="tx_hisodat_mm_lit.notation">Volume, pages</label>
-
+            
         </languageKey>
         <languageKey index="de" type="array">
             <label index="tt_content.list_type_pi1">Onlinedatenbank für historische Quellen</label>
@@ -125,19 +118,6 @@
             <label index="tx_hisodat_archives">Archive</label>
             <label index="tx_hisodat_archives.title">Archivname</label>
             <label index="tx_hisodat_archives.description">Archivinformationen</label>
-
-            <label index="tx_hisodat_literature">Literatur</label>
-            <label index="tx_hisodat_literature.title">Titel</label>
-            <label index="tx_hisodat_literature.author">Autor</label>
-            <label index="tx_hisodat_literature.publisher">Herausgeber</label>
-            <label index="tx_hisodat_literature.pub_mag">Sammelband/Zeitschrift</label>
-            <label index="tx_hisodat_literature.published">Erschienen (Ort, Jahr)</label>
-            <label index="tx_hisodat_literature.series">Reihe</label>
-            <label index="tx_hisodat_literature.short">Kurzform</label>
-
-            <label index="tx_hisodat_keywords">Schlagworte</label>
-            <label index="tx_hisodat_keywords.title">Schlagwort</label>
-            <label index="tx_hisodat_keywords.description">Beschreibung</label>
 
             <label index="tx_hisodat_persons">Personen</label>
             <label index="tx_hisodat_persons.div1">Person</label>
@@ -159,7 +139,6 @@
             <label index="tx_hisodat_sources.date_sorting">Datumssortierung</label>            
             <label index="tx_hisodat_persons.description">Beschreibung</label>
             <label index="tx_hisodat_persons.source_uids">Zugeordnete Quellen</label>
-            <label index="tx_hisodat_persons.literature_uids">Literaturhinweise</label>
 
             <label index="tx_hisodat_entities">Entitäten</label>
             <label index="tx_hisodat_entities.div1">Entität</label>
@@ -176,7 +155,6 @@
             <label index="tx_hisodat_entities.localities_uids">Zugeordnete Lokalitäten</label>
             <label index="tx_hisodat_entities.entities_uids">Zugeordnete Entitäten</label>
             <label index="tx_hisodat_entities.source_uids">Zugeordnete Quellen</label>            
-            <label index="tx_hisodat_entities.literature_uids">Literaturhinweise</label>
 
             <label index="tx_hisodat_localities">Lokalitäten</label>
             <label index="tx_hisodat_localities.div1">Lokalität</label>
@@ -186,7 +164,10 @@
             <label index="tx_hisodat_localities.div5">Media</label>
             <label index="tx_hisodat_localities.title">Lokalität</label>
             <label index="tx_hisodat_localities.namevariants">Namensvarianten</label>       
-            <label index="tx_hisodat_localities.municipality">Heutige Gemeinde</label>
+            <label index="tx_hisodat_localities.state">Staat</label>
+            <label index="tx_hisodat_localities.province">Bundesland/Provinz</label>
+            <label index="tx_hisodat_localities.district">Landkreis</label>                                    
+            <label index="tx_hisodat_localities.municipality">Gemeinde</label>
             <label index="tx_hisodat_localities.field_name">Flurname</label>
             <label index="tx_hisodat_localities.latitude">Breitengrad (Dezimalgrad)</label>
             <label index="tx_hisodat_localities.longitude">Längengrad (Dezimalgrad)</label>
@@ -195,7 +176,6 @@
             <label index="tx_hisodat_localities.date_comment">Datumsangaben</label>
             <label index="tx_hisodat_localities.description">Beschreibung</label>
             <label index="tx_hisodat_localities.source_uids">Zugeordnete Quellen</label>
-            <label index="tx_hisodat_localities.literature_uids">Literaturhinweise</label>
 
             <label index="tx_hisodat_sources">Quellen</label>
 			<label index="tx_hisodat_sources.div1">Quelle</label>
@@ -208,7 +188,6 @@
             <label index="tx_hisodat_sources.signature_add">Signaturzusatz</label>
             <label index="tx_hisodat_sources.urn">Eindeutiger Digitaler Bezeichner (URN)</label>            
             <label index="tx_hisodat_sources.archive_uid">Archiv</label>
-            <label index="tx_hisodat_sources.literature_uids">Literaturhinweise</label>
             <label index="tx_hisodat_sources.date_start">Datierung (Anfang)</label>
             <label index="tx_hisodat_sources.date_end">Datierung (Ende)</label>
             <label index="tx_hisodat_sources.date_comment">Datumsangaben</label>
@@ -256,15 +235,6 @@
             <label index="tx_hisodat_mm_src_ent.issuer">Ist Aussteller</label>
             <label index="tx_hisodat_mm_src_ent.receiver">Ist Empfänger</label>
             <label index="tx_hisodat_mm_src_ent.description">Weitere Informationen</label>
-
-            <label index="tx_hisodat_mm_lit">Quellen / Personen / Lokalitäten / Entitäten &lt;-&gt; Literaturhinweise</label>
-            <label index="tx_hisodat_mm_lit.createnew">Einen neuen Literaturdatensatz anglegen</label>
-            <label index="tx_hisodat_mm_lit.uid_local">Dieser Datensatz</label>
-            <label index="tx_hisodat_mm_lit.uid_foreign">Literaturhinweis</label>
-			<label index="tx_hisodat_mm_lit.uid_foreign.I.0">Neuen Literaturhinweis ergänzen:</label>
-			<label index="tx_hisodat_mm_lit.uid_foreign.wizard_add">Neuen Literaturdatensatz anlegen</label>
-			<label index="tx_hisodat_mm_lit.uid_foreign.wizard_edit">Ausgewählten Literaturdatensatz bearbeiten</label>
-            <label index="tx_hisodat_mm_lit.notation">Band / Seite</label>
 
         </languageKey>
     </data>
