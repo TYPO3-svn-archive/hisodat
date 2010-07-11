@@ -87,6 +87,8 @@
             <label index="tx_hisodat_sources.sources_uids">Related sources</label>
             <label index="tx_hisodat_sources.editor_id">Editor</label>
             <label index="tx_hisodat_sources.editor_comment">Editorial comments</label>
+            
+			<label index="tx_hisodat_mm_src_src">Sources &lt;-&gt; Sources</label>            
 
             <label index="tx_hisodat_mm_src_loc">Sources &lt;-&gt; Localities</label>
             <label index="tx_hisodat_mm_src_loc.uid_src">Source</label>
@@ -203,6 +205,8 @@
             <label index="tx_hisodat_sources.sources_uids">In Verbindung stehende Quellen</label>
             <label index="tx_hisodat_sources.editor_id">Bearbeiter/in</label>
             <label index="tx_hisodat_sources.editor_comment">Bearbeitungshinweise</label>
+
+			<label index="tx_hisodat_mm_src_src">Quellen &lt;-&gt; Quellen</label>
 
             <label index="tx_hisodat_mm_src_loc">Quellen &lt;-&gt; Lokalitäten</label>
             <label index="tx_hisodat_mm_src_loc.uid_src">Quelle</label>
