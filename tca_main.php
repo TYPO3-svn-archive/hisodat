@@ -102,7 +102,7 @@ $TCA['tx_hisodat_persons'] = Array (
 				'type' => 'input',
 				'size' => '30',
 				'max' => '255',
-				'eval' => 'trim',
+				'eval' => 'trim,unique',
 			)
 		),		
 		'titles' => Array (
@@ -585,7 +585,7 @@ $TCA['tx_hisodat_sources'] = Array (
 				'type' => 'input',
 				'size' => '40',
 				'max' => '255',
-				'eval' => 'trim',
+				'eval' => 'trim,unique',
 			)
 		),		
 		'archive_uid' => Array (
