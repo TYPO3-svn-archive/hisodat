@@ -53,9 +53,7 @@
             <label index="tx_hisodat_localities.province">Province</label>
             <label index="tx_hisodat_localities.district">District</label>                                    
             <label index="tx_hisodat_localities.municipality">Municipality</label>
-            <label index="tx_hisodat_localities.field_name">Field name</label>
-            <label index="tx_hisodat_localities.latitude">Latitude (Decimal degrees)</label>
-            <label index="tx_hisodat_localities.longitude">Longitude (Decimal degrees)</label>
+            <label index="tx_hisodat_localities.geodata">Latitude, Longitude (Decimal degrees)</label>
             <label index="tx_hisodat_localities.date_start">Start date</label>
             <label index="tx_hisodat_localities.date_end">End date</label>
             <label index="tx_hisodat_localities.date_comment">Additional date information</label>
@@ -170,9 +168,7 @@
             <label index="tx_hisodat_localities.province">Bundesland/Provinz</label>
             <label index="tx_hisodat_localities.district">Landkreis</label>                                    
             <label index="tx_hisodat_localities.municipality">Gemeinde</label>
-            <label index="tx_hisodat_localities.field_name">Flurname</label>
-            <label index="tx_hisodat_localities.latitude">Breitengrad (Dezimalgrad)</label>
-            <label index="tx_hisodat_localities.longitude">Längengrad (Dezimalgrad)</label>
+            <label index="tx_hisodat_localities.geodata">Breitengrad, Längengrad (Dezimalgrade)</label>
             <label index="tx_hisodat_localities.date_start">Datierung (Anfang)</label>
             <label index="tx_hisodat_localities.date_end">Datierung (Ende)</label>
             <label index="tx_hisodat_localities.date_comment">Datumsangaben</label>

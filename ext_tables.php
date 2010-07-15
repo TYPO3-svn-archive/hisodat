@@ -71,7 +71,6 @@ $TCA['tx_hisodat_persons'] = Array (
 );
 
 // localities table: each source can have localities attached that appear in the source (court, abbey, village etc.);
-// the localities will later be appended with GEO data
 t3lib_extMgm::allowTableOnStandardPages('tx_hisodat_localities');
 t3lib_extMgm::addLLrefForTCAdescr('tx_hisodat_localities','EXT:hisodat/lang/locallang_csh_localities.php');
 $TCA['tx_hisodat_localities'] = Array (

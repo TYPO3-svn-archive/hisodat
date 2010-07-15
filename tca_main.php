@@ -6,7 +6,8 @@ if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 $TCA['tx_hisodat_archives'] = Array (
 	'ctrl' => $TCA['tx_hisodat_archives']['ctrl'],
 	'interface' => Array (
-		'showRecordFieldList' => 'hidden,title,description'
+		'showRecordFieldList' => 'hidden,title,description',
+		'maxDBListItems' => 500,
 	),
 	'feInterface' => $TCA['tx_hisodat_archives']['feInterface'],
 	'columns' => Array (
@@ -50,7 +51,8 @@ $TCA['tx_hisodat_archives'] = Array (
 $TCA['tx_hisodat_persons'] = Array (
 	'ctrl' => $TCA['tx_hisodat_persons']['ctrl'],
 	'interface' => Array (
-		'showRecordFieldList' => 'hidden,pnd,gender,name,namevariants,titles,date_comment,date_start,date_end,image,description,persons_uids,entities_uids,localities_uids,source_uids'
+		'showRecordFieldList' => 'hidden,pnd,gender,name,namevariants,titles,date_comment,date_start,date_end,image,description,persons_uids,entities_uids,localities_uids,source_uids',
+		'maxDBListItems' => 500,
 	),
 	'feInterface' => $TCA['tx_hisodat_persons']['feInterface'],
 	'columns' => Array (
@@ -217,7 +219,8 @@ $TCA['tx_hisodat_persons'] = Array (
 $TCA['tx_hisodat_localities'] = Array (
 	'ctrl' => $TCA['tx_hisodat_localities']['ctrl'],
 	'interface' => Array (
-		'showRecordFieldList' => 'hidden,title,namevariants,state,province,district,municipality,latitude,longitude,date_comment,date_start,date_end,image,description,source_uids'
+		'showRecordFieldList' => 'hidden,title,namevariants,state,province,district,municipality,geodata,date_comment,date_start,date_end,image,description,source_uids',
+		'maxDBListItems' => 500,
 	),
 	'feInterface' => $TCA['tx_hisodat_localities']['feInterface'],
 	'columns' => Array (
@@ -289,23 +292,13 @@ $TCA['tx_hisodat_localities'] = Array (
 				'eval' => 'trim',
 			)
 		),
-		'latitude' => Array (
+		'geodata' => Array (
 			'exclude' => 1,
-			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.latitude',
+			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.geodata',
 			'config' => Array (
 				'type' => 'input',
-				'size' => '10',
-				'max' => '10',
-				'eval' => 'trim',
-			)
-		),
-		'longitude' => Array (
-			'exclude' => 1,
-			'label' => 'LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.longitude',
-			'config' => Array (
-				'type' => 'input',
-				'size' => '10',
-				'max' => '10',
+				'size' => '30',
+				'max' => '255',
 				'eval' => 'trim',
 			)
 		),
@@ -386,7 +379,7 @@ $TCA['tx_hisodat_localities'] = Array (
 				'foreign_label' => 'uid_src',
 				'size' => 1,
 				'minitems' => 0,
-				'maxitems' => 50,
+				'maxitems' => 999999,
 				'appearance' => Array (
 					'collapseAll' => 1,
 					'expandSingle' =>1,
@@ -398,7 +391,7 @@ $TCA['tx_hisodat_localities'] = Array (
 	'types' => Array (
 		'0' => Array('showitem' => '
 				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.div1,hidden,title,namevariants,source_uids,
-				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.div2,state,province,district,municipality,latitude,longitude,
+				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.div2,state,province,district,municipality,geodata,
 				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.div3,date_comment,date_start,date_end,
 				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.div4,description;;;richtext[cut|copy|paste|formatblock|textcolor|bold|italic|underline|left|center|right|orderedlist|unorderedlist|outdent|indent|link|table|image|line|chMode]:rte_transform[mode=ts_css|imgpath=uploads/pics/],
 				--div--;LLL:EXT:hisodat/lang/locallang_db.php:tx_hisodat_localities.div5,image
@@ -413,7 +406,8 @@ $TCA['tx_hisodat_localities'] = Array (
 $TCA['tx_hisodat_entities'] = Array (
 	'ctrl' => $TCA['tx_hisodat_entities']['ctrl'],
 	'interface' => Array (
-		'showRecordFieldList' => 'hidden,title,namevariants,date_comment,date_start,date_end,image,description,source_uids'
+		'showRecordFieldList' => 'hidden,title,namevariants,date_comment,date_start,date_end,image,description,source_uids',
+		'maxDBListItems' => 500,
 	),
 	'feInterface' => $TCA['tx_hisodat_entities']['feInterface'],
 	'columns' => Array (
@@ -546,7 +540,8 @@ $TCA['tx_hisodat_entities'] = Array (
 $TCA['tx_hisodat_sources'] = Array (
 	'ctrl' => $TCA['tx_hisodat_sources']['ctrl'],
 	'interface' => Array (
-		'showRecordFieldList' => 'hidden,signature,signature_add,urn,archive_uid,date_comment,date_start,date_end,date_sorting,short,sourcetext,description;;;;3-3-3,persons_uids,localities_uids,entities_uids;;;;3-3-3,keywords_uids,literature_uids,sources_uids;;;;3-3-3,image,imagecaption,;;;;3-3-3,editor_id,editor_comment'
+		'showRecordFieldList' => 'hidden,signature,signature_add,urn,archive_uid,date_comment,date_start,date_end,date_sorting,short,sourcetext,description;;;;3-3-3,persons_uids,localities_uids,entities_uids;;;;3-3-3,keywords_uids,literature_uids,sources_uids;;;;3-3-3,image,imagecaption,;;;;3-3-3,editor_id,editor_comment',
+		'maxDBListItems' => 500,
 	),
 	'feInterface' => $TCA['tx_hisodat_sources']['feInterface'],
 	'columns' => Array (
